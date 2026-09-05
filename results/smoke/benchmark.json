@@ -1,0 +1,4104 @@
+{
+  "formatVersion": 1,
+  "mode": "smoke-validation",
+  "timestamp": "2026-09-05T07:34:43.600Z",
+  "codeVersion": "8b7262b",
+  "trainingScenarios": [
+    {
+      "schemaVersion": 1,
+      "id": "open-floor",
+      "name": "Open floor",
+      "description": "A small two-stage factory with open aisles and three robots.",
+      "width": 16,
+      "height": 12,
+      "seed": 41,
+      "obstacles": [],
+      "stations": [
+        {
+          "id": "supply-1",
+          "role": "supply",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "service": {
+            "x": 2,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "supplyItem": "raw",
+          "supplyInterval": 3
+        },
+        {
+          "id": "press-1",
+          "role": "process",
+          "position": {
+            "x": 6,
+            "y": 2
+          },
+          "service": {
+            "x": 6,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "recipeId": "press"
+        },
+        {
+          "id": "assembly-1",
+          "role": "assembly",
+          "position": {
+            "x": 10,
+            "y": 2
+          },
+          "service": {
+            "x": 10,
+            "y": 3
+          },
+          "inputCapacity": 4,
+          "outputCapacity": 3,
+          "recipeId": "assemble"
+        },
+        {
+          "id": "dispatch-1",
+          "role": "delivery",
+          "position": {
+            "x": 13,
+            "y": 8
+          },
+          "service": {
+            "x": 13,
+            "y": 7
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3
+        }
+      ],
+      "robots": [
+        {
+          "id": "R1",
+          "position": {
+            "x": 2,
+            "y": 10
+          }
+        },
+        {
+          "id": "R2",
+          "position": {
+            "x": 5,
+            "y": 10
+          }
+        },
+        {
+          "id": "R3",
+          "position": {
+            "x": 8,
+            "y": 10
+          }
+        }
+      ],
+      "recipes": [
+        {
+          "id": "press",
+          "inputs": {
+            "raw": 1
+          },
+          "output": {
+            "item": "part",
+            "quantity": 1
+          },
+          "duration": 5
+        },
+        {
+          "id": "assemble",
+          "inputs": {
+            "part": 2
+          },
+          "output": {
+            "item": "product",
+            "quantity": 1
+          },
+          "duration": 9
+        }
+      ],
+      "orders": [],
+      "orderStream": {
+        "count": 20,
+        "interval": 28,
+        "pattern": "uniform",
+        "quantity": 1,
+        "item": "product"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "crossroads",
+      "name": "Crossroads",
+      "description": "Crossing traffic through a central two-cell opening, with finite buffers.",
+      "width": 16,
+      "height": 12,
+      "seed": 41,
+      "obstacles": [
+        {
+          "x": 7,
+          "y": 0
+        },
+        {
+          "x": 7,
+          "y": 1
+        },
+        {
+          "x": 7,
+          "y": 2
+        },
+        {
+          "x": 7,
+          "y": 3
+        },
+        {
+          "x": 7,
+          "y": 4
+        },
+        {
+          "x": 7,
+          "y": 7
+        },
+        {
+          "x": 7,
+          "y": 8
+        },
+        {
+          "x": 7,
+          "y": 9
+        },
+        {
+          "x": 7,
+          "y": 10
+        },
+        {
+          "x": 7,
+          "y": 11
+        }
+      ],
+      "stations": [
+        {
+          "id": "supply-1",
+          "role": "supply",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "service": {
+            "x": 2,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "supplyItem": "raw",
+          "supplyInterval": 3
+        },
+        {
+          "id": "press-1",
+          "role": "process",
+          "position": {
+            "x": 12,
+            "y": 2
+          },
+          "service": {
+            "x": 12,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "recipeId": "press"
+        },
+        {
+          "id": "assembly-1",
+          "role": "assembly",
+          "position": {
+            "x": 3,
+            "y": 8
+          },
+          "service": {
+            "x": 3,
+            "y": 7
+          },
+          "inputCapacity": 4,
+          "outputCapacity": 3,
+          "recipeId": "assemble"
+        },
+        {
+          "id": "dispatch-1",
+          "role": "delivery",
+          "position": {
+            "x": 12,
+            "y": 8
+          },
+          "service": {
+            "x": 12,
+            "y": 7
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3
+        }
+      ],
+      "robots": [
+        {
+          "id": "R1",
+          "position": {
+            "x": 1,
+            "y": 10
+          }
+        },
+        {
+          "id": "R2",
+          "position": {
+            "x": 4,
+            "y": 10
+          }
+        },
+        {
+          "id": "R3",
+          "position": {
+            "x": 11,
+            "y": 10
+          }
+        },
+        {
+          "id": "R4",
+          "position": {
+            "x": 14,
+            "y": 10
+          }
+        }
+      ],
+      "recipes": [
+        {
+          "id": "press",
+          "inputs": {
+            "raw": 1
+          },
+          "output": {
+            "item": "part",
+            "quantity": 1
+          },
+          "duration": 5
+        },
+        {
+          "id": "assemble",
+          "inputs": {
+            "part": 2
+          },
+          "output": {
+            "item": "product",
+            "quantity": 1
+          },
+          "duration": 9
+        }
+      ],
+      "orders": [],
+      "orderStream": {
+        "count": 24,
+        "interval": 18,
+        "pattern": "uniform",
+        "quantity": 1,
+        "item": "product"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hotspot",
+      "name": "Hotspot dispatch",
+      "description": "Two production cells and asymmetric demand at two dispatch stations.",
+      "width": 16,
+      "height": 12,
+      "seed": 41,
+      "obstacles": [],
+      "stations": [
+        {
+          "id": "supply-1",
+          "role": "supply",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "service": {
+            "x": 2,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "supplyItem": "raw",
+          "supplyInterval": 3
+        },
+        {
+          "id": "supply-2",
+          "role": "supply",
+          "position": {
+            "x": 13,
+            "y": 2
+          },
+          "service": {
+            "x": 13,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "supplyItem": "raw",
+          "supplyInterval": 3
+        },
+        {
+          "id": "press-1",
+          "role": "process",
+          "position": {
+            "x": 5,
+            "y": 2
+          },
+          "service": {
+            "x": 5,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "recipeId": "press"
+        },
+        {
+          "id": "press-2",
+          "role": "process",
+          "position": {
+            "x": 10,
+            "y": 2
+          },
+          "service": {
+            "x": 10,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "recipeId": "press"
+        },
+        {
+          "id": "assembly-1",
+          "role": "assembly",
+          "position": {
+            "x": 4,
+            "y": 8
+          },
+          "service": {
+            "x": 4,
+            "y": 7
+          },
+          "inputCapacity": 4,
+          "outputCapacity": 3,
+          "recipeId": "assemble"
+        },
+        {
+          "id": "assembly-2",
+          "role": "assembly",
+          "position": {
+            "x": 10,
+            "y": 8
+          },
+          "service": {
+            "x": 10,
+            "y": 7
+          },
+          "inputCapacity": 4,
+          "outputCapacity": 3,
+          "recipeId": "assemble"
+        },
+        {
+          "id": "dispatch-1",
+          "role": "delivery",
+          "position": {
+            "x": 1,
+            "y": 6
+          },
+          "service": {
+            "x": 1,
+            "y": 5
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3
+        },
+        {
+          "id": "dispatch-2",
+          "role": "delivery",
+          "position": {
+            "x": 14,
+            "y": 6
+          },
+          "service": {
+            "x": 14,
+            "y": 5
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3
+        }
+      ],
+      "robots": [
+        {
+          "id": "R1",
+          "position": {
+            "x": 2,
+            "y": 10
+          }
+        },
+        {
+          "id": "R2",
+          "position": {
+            "x": 5,
+            "y": 10
+          }
+        },
+        {
+          "id": "R3",
+          "position": {
+            "x": 8,
+            "y": 10
+          }
+        },
+        {
+          "id": "R4",
+          "position": {
+            "x": 12,
+            "y": 10
+          }
+        }
+      ],
+      "recipes": [
+        {
+          "id": "press",
+          "inputs": {
+            "raw": 1
+          },
+          "output": {
+            "item": "part",
+            "quantity": 1
+          },
+          "duration": 5
+        },
+        {
+          "id": "assemble",
+          "inputs": {
+            "part": 2
+          },
+          "output": {
+            "item": "product",
+            "quantity": 1
+          },
+          "duration": 9
+        }
+      ],
+      "orders": [],
+      "orderStream": {
+        "count": 30,
+        "interval": 16,
+        "pattern": "hotspot",
+        "quantity": 1,
+        "item": "product"
+      }
+    }
+  ],
+  "heldoutScenario": {
+    "schemaVersion": 1,
+    "id": "heldout-offset",
+    "name": "Held-out offset floor",
+    "description": "A separate offset map with a central island; excluded from automatic selection.",
+    "width": 18,
+    "height": 12,
+    "seed": 991,
+    "obstacles": [
+      {
+        "x": 8,
+        "y": 5
+      },
+      {
+        "x": 9,
+        "y": 5
+      },
+      {
+        "x": 8,
+        "y": 6
+      },
+      {
+        "x": 9,
+        "y": 6
+      }
+    ],
+    "stations": [
+      {
+        "id": "supply-1",
+        "role": "supply",
+        "position": {
+          "x": 2,
+          "y": 8
+        },
+        "service": {
+          "x": 2,
+          "y": 7
+        },
+        "inputCapacity": 3,
+        "outputCapacity": 3,
+        "supplyItem": "raw",
+        "supplyInterval": 3
+      },
+      {
+        "id": "press-1",
+        "role": "process",
+        "position": {
+          "x": 7,
+          "y": 2
+        },
+        "service": {
+          "x": 7,
+          "y": 3
+        },
+        "inputCapacity": 3,
+        "outputCapacity": 3,
+        "recipeId": "press"
+      },
+      {
+        "id": "assembly-1",
+        "role": "assembly",
+        "position": {
+          "x": 14,
+          "y": 2
+        },
+        "service": {
+          "x": 14,
+          "y": 3
+        },
+        "inputCapacity": 4,
+        "outputCapacity": 3,
+        "recipeId": "assemble"
+      },
+      {
+        "id": "dispatch-1",
+        "role": "delivery",
+        "position": {
+          "x": 15,
+          "y": 8
+        },
+        "service": {
+          "x": 15,
+          "y": 7
+        },
+        "inputCapacity": 3,
+        "outputCapacity": 3
+      }
+    ],
+    "robots": [
+      {
+        "id": "R1",
+        "position": {
+          "x": 2,
+          "y": 10
+        }
+      },
+      {
+        "id": "R2",
+        "position": {
+          "x": 5,
+          "y": 10
+        }
+      },
+      {
+        "id": "R3",
+        "position": {
+          "x": 8,
+          "y": 10
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "press",
+        "inputs": {
+          "raw": 1
+        },
+        "output": {
+          "item": "part",
+          "quantity": 1
+        },
+        "duration": 5
+      },
+      {
+        "id": "assemble",
+        "inputs": {
+          "part": 2
+        },
+        "output": {
+          "item": "product",
+          "quantity": 1
+        },
+        "duration": 9
+      }
+    ],
+    "orders": [],
+    "orderStream": {
+      "count": 20,
+      "interval": 28,
+      "pattern": "uniform",
+      "quantity": 1,
+      "item": "product"
+    }
+  },
+  "conditions": {
+    "horizon": 240,
+    "evaluationSeeds": [
+      11
+    ],
+    "optimizerSeeds": [
+      7
+    ],
+    "actualSimulationBudgetPerSearch": 18,
+    "heldoutSeed": 101
+  },
+  "objective": "Mean completedOrders / fixed horizon; ties: fewer unfinished orders, then less waiting. Canonical config provides stable exact ties.",
+  "initialization": "Both methods evaluate BASELINE and QUEUE_AWARE first. Their simulations count in each method budget. Each method has a fresh cache.",
+  "selection": "One final config selected across all completed training evaluations, before a single heldout map run. Heldout results never influence selection.",
+  "cancelled": false,
+  "error": null,
+  "totalRuntimeMs": 6834.716666,
+  "actualSimulations": 37,
+  "searches": [
+    {
+      "method": "random",
+      "status": "completed",
+      "optimizerSeed": 7,
+      "horizon": 240,
+      "seeds": [
+        11
+      ],
+      "codeVersion": "8b7262b",
+      "kernelVersion": "1.0.0",
+      "counters": {
+        "proposals": 6,
+        "cacheHits": 0,
+        "simulations": 18
+      },
+      "budget": 18,
+      "best": {
+        "id": 6,
+        "config": {
+          "assignment": "nearest",
+          "priority": "waiting",
+          "routing": "distance",
+          "congestionWeight": 0,
+          "planningWindow": 9,
+          "replanInterval": 2
+        },
+        "status": "completed",
+        "score": {
+          "throughput": 0.0375,
+          "unfinishedOrders": 4,
+          "waitingRatio": 0.03761574074074074
+        },
+        "runs": [
+          {
+            "scenarioId": "open-floor",
+            "scenarioHash": "c24f248c",
+            "config": {
+              "assignment": "nearest",
+              "priority": "waiting",
+              "routing": "distance",
+              "congestionWeight": 0,
+              "planningWindow": 9,
+              "replanInterval": 2
+            },
+            "seed": 11,
+            "horizon": 240,
+            "kernelVersion": "1.0.0",
+            "codeVersion": "8b7262b",
+            "metrics": {
+              "ticks": 240,
+              "completedOrders": 8,
+              "unfinishedOrders": 1,
+              "deliveredUnits": 8,
+              "throughput": 0.03333333333333333,
+              "meanDelay": 32.5,
+              "maxDelay": 57,
+              "waitingRatio": 0.034722222222222224,
+              "stationUtilization": {
+                "assembly-1": 0.3375,
+                "press-1": 0.4375
+              },
+              "stalledTicks": 0,
+              "planningMs": 65.34024800000134
+            },
+            "stateHash": "7d63a3de",
+            "runtimeMs": 67.54212499999994,
+            "planningMs": 65.34024800000134,
+            "status": "completed"
+          },
+          {
+            "scenarioId": "crossroads",
+            "scenarioHash": "05e532c1",
+            "config": {
+              "assignment": "nearest",
+              "priority": "waiting",
+              "routing": "distance",
+              "congestionWeight": 0,
+              "planningWindow": 9,
+              "replanInterval": 2
+            },
+            "seed": 11,
+            "horizon": 240,
+            "kernelVersion": "1.0.0",
+            "codeVersion": "8b7262b",
+            "metrics": {
+              "ticks": 240,
+              "completedOrders": 6,
+              "unfinishedOrders": 8,
+              "deliveredUnits": 6,
+              "throughput": 0.025,
+              "meanDelay": 106.33333333333333,
+              "maxDelay": 129,
+              "waitingRatio": 0.007291666666666667,
+              "stationUtilization": {
+                "assembly-1": 0.2625,
+                "press-1": 0.35833333333333334
+              },
+              "stalledTicks": 0,
+              "planningMs": 123.69425299999739
+            },
+            "stateHash": "63b915ca",
+            "runtimeMs": 126.20004199999994,
+            "planningMs": 123.69425299999739,
+            "status": "completed"
+          },
+          {
+            "scenarioId": "hotspot",
+            "scenarioHash": "021d8edc",
+            "config": {
+              "assignment": "nearest",
+              "priority": "waiting",
+              "routing": "distance",
+              "congestionWeight": 0,
+              "planningWindow": 9,
+              "replanInterval": 2
+            },
+            "seed": 11,
+            "horizon": 240,
+            "kernelVersion": "1.0.0",
+            "codeVersion": "8b7262b",
+            "metrics": {
+              "ticks": 240,
+              "completedOrders": 13,
+              "unfinishedOrders": 3,
+              "deliveredUnits": 13,
+              "throughput": 0.05416666666666667,
+              "meanDelay": 44.30769230769231,
+              "maxDelay": 201,
+              "waitingRatio": 0.07083333333333333,
+              "stationUtilization": {
+                "assembly-1": 0.525,
+                "assembly-2": 0,
+                "press-1": 0.625,
+                "press-2": 0.041666666666666664
+              },
+              "stalledTicks": 0,
+              "planningMs": 107.37150499999962
+            },
+            "stateHash": "0d4e9bdb",
+            "runtimeMs": 111.06658299999981,
+            "planningMs": 107.37150499999962,
+            "status": "completed"
+          }
+        ],
+        "simulationsAtCompletion": 18
+      },
+      "history": [
+        {
+          "simulations": 3,
+          "proposals": 1,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 6,
+          "proposals": 2,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 9,
+          "proposals": 3,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 12,
+          "proposals": 4,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 15,
+          "proposals": 5,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 18,
+          "proposals": 6,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.03761574074074074
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "waiting",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 9,
+            "replanInterval": 2
+          }
+        }
+      ],
+      "records": [
+        {
+          "id": 1,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 1,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 32,
+                "maxDelay": 54,
+                "waitingRatio": 0.04722222222222222,
+                "stationUtilization": {
+                  "assembly-1": 0.3375,
+                  "press-1": 0.42916666666666664
+                },
+                "stalledTicks": 0,
+                "planningMs": 107.0228789999999
+              },
+              "stateHash": "c07dbc4f",
+              "runtimeMs": 114.779125,
+              "planningMs": 107.0228789999999,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 111.66666666666667,
+                "maxDelay": 127,
+                "waitingRatio": 0.015625,
+                "stationUtilization": {
+                  "assembly-1": 0.2375,
+                  "press-1": 0.3333333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 178.84075400000023
+              },
+              "stateHash": "dffabf2c",
+              "runtimeMs": 183.449584,
+              "planningMs": 178.84075400000023,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 13,
+                "unfinishedOrders": 3,
+                "deliveredUnits": 13,
+                "throughput": 0.05416666666666667,
+                "meanDelay": 46.38461538461539,
+                "maxDelay": 205,
+                "waitingRatio": 0.07395833333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.55,
+                  "assembly-2": 0,
+                  "press-1": 0.5833333333333334,
+                  "press-2": 0.08333333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 161.6880469999997
+              },
+              "stateHash": "6d599528",
+              "runtimeMs": 168.81379200000003,
+              "planningMs": 161.6880469999997,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 3
+        },
+        {
+          "id": 2,
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.03333333333333333,
+            "unfinishedOrders": 5,
+            "waitingRatio": 0.0010416666666666667
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.5,
+                "planningWindow": 16,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 9,
+                "unfinishedOrders": 0,
+                "deliveredUnits": 9,
+                "throughput": 0.0375,
+                "meanDelay": 42.44444444444444,
+                "maxDelay": 77,
+                "waitingRatio": 0,
+                "stationUtilization": {
+                  "assembly-1": 0.3958333333333333,
+                  "press-1": 0.5125
+                },
+                "stalledTicks": 0,
+                "planningMs": 177.85979599999985
+              },
+              "stateHash": "346d43bb",
+              "runtimeMs": 184.77383400000008,
+              "planningMs": 177.85979599999985,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.5,
+                "planningWindow": 16,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 117.16666666666667,
+                "maxDelay": 145,
+                "waitingRatio": 0.0020833333333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.2833333333333333,
+                  "press-1": 0.3958333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 359.54041599999914
+              },
+              "stateHash": "6036b2fe",
+              "runtimeMs": 365.8266249999999,
+              "planningMs": 359.54041599999914,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.5,
+                "planningWindow": 16,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 9,
+                "unfinishedOrders": 7,
+                "deliveredUnits": 9,
+                "throughput": 0.0375,
+                "meanDelay": 108.11111111111111,
+                "maxDelay": 199,
+                "waitingRatio": 0.0010416666666666667,
+                "stationUtilization": {
+                  "assembly-1": 0.2625,
+                  "assembly-2": 0.15,
+                  "press-1": 0.3333333333333333,
+                  "press-2": 0.25
+                },
+                "stalledTicks": 0,
+                "planningMs": 290.5318759999989
+              },
+              "stateHash": "05be6dc4",
+              "runtimeMs": 297.409584,
+              "planningMs": 290.5318759999989,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 6
+        },
+        {
+          "id": 3,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.03472222222222222,
+            "unfinishedOrders": 4.666666666666667,
+            "waitingRatio": 0.04305555555555555
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.495143528562039,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 1,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 41.125,
+                "maxDelay": 60,
+                "waitingRatio": 0.04583333333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.3375,
+                  "press-1": 0.4166666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 183.27778500000022
+              },
+              "stateHash": "d3261b47",
+              "runtimeMs": 186.62525000000005,
+              "planningMs": 183.27778500000022,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.495143528562039,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 104.5,
+                "maxDelay": 120,
+                "waitingRatio": 0.025,
+                "stationUtilization": {
+                  "assembly-1": 0.2708333333333333,
+                  "press-1": 0.3541666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 312.32500199999686
+              },
+              "stateHash": "af8f0962",
+              "runtimeMs": 316.10079199999996,
+              "planningMs": 312.32500199999686,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.495143528562039,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 11,
+                "unfinishedOrders": 5,
+                "deliveredUnits": 11,
+                "throughput": 0.04583333333333333,
+                "meanDelay": 44.09090909090909,
+                "maxDelay": 64,
+                "waitingRatio": 0.058333333333333334,
+                "stationUtilization": {
+                  "assembly-1": 0.475,
+                  "assembly-2": 0,
+                  "press-1": 0.5625,
+                  "press-2": 0.020833333333333332
+                },
+                "stalledTicks": 0,
+                "planningMs": 340.15815800000087
+              },
+              "stateHash": "4e4da3a4",
+              "runtimeMs": 345.39274999999975,
+              "planningMs": 340.15815800000087,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 9
+        },
+        {
+          "id": 4,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.64911044947803,
+            "planningWindow": 11,
+            "replanInterval": 2
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.036111111111111115,
+            "unfinishedOrders": 4.333333333333333,
+            "waitingRatio": 0.0008101851851851852
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.64911044947803,
+                "planningWindow": 11,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 1,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 41.125,
+                "maxDelay": 64,
+                "waitingRatio": 0.001388888888888889,
+                "stationUtilization": {
+                  "assembly-1": 0.3375,
+                  "press-1": 0.4166666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 105.1859480000021
+              },
+              "stateHash": "d93334a9",
+              "runtimeMs": 107.84858299999996,
+              "planningMs": 105.1859480000021,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.64911044947803,
+                "planningWindow": 11,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 113.16666666666667,
+                "maxDelay": 140,
+                "waitingRatio": 0,
+                "stationUtilization": {
+                  "assembly-1": 0.25833333333333336,
+                  "press-1": 0.3333333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 178.665368999998
+              },
+              "stateHash": "059d6e30",
+              "runtimeMs": 181.994917,
+              "planningMs": 178.665368999998,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.64911044947803,
+                "planningWindow": 11,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 12,
+                "unfinishedOrders": 4,
+                "deliveredUnits": 12,
+                "throughput": 0.05,
+                "meanDelay": 46.083333333333336,
+                "maxDelay": 59,
+                "waitingRatio": 0.0010416666666666667,
+                "stationUtilization": {
+                  "assembly-1": 0.4708333333333333,
+                  "assembly-2": 0,
+                  "press-1": 0.55,
+                  "press-2": 0.041666666666666664
+                },
+                "stalledTicks": 0,
+                "planningMs": 164.72846100000152
+              },
+              "stateHash": "e3faa045",
+              "runtimeMs": 169.30024999999978,
+              "planningMs": 164.72846100000152,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 12
+        },
+        {
+          "id": 5,
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 5
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.029166666666666664,
+            "unfinishedOrders": 6,
+            "waitingRatio": 0.08275462962962964
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 5
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 1,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 50.375,
+                "maxDelay": 71,
+                "waitingRatio": 0.10972222222222222,
+                "stationUtilization": {
+                  "assembly-1": 0.375,
+                  "press-1": 0.4791666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 68.21625399999948
+              },
+              "stateHash": "35c572b6",
+              "runtimeMs": 71.08504200000016,
+              "planningMs": 68.21625399999948,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 5
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 5,
+                "unfinishedOrders": 9,
+                "deliveredUnits": 5,
+                "throughput": 0.020833333333333332,
+                "meanDelay": 114.4,
+                "maxDelay": 133,
+                "waitingRatio": 0.04895833333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.2791666666666667,
+                  "press-1": 0.3958333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 122.55991199999971
+              },
+              "stateHash": "249d2c7a",
+              "runtimeMs": 125.6614169999998,
+              "planningMs": 122.55991199999971,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 5
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 111,
+                "maxDelay": 133,
+                "waitingRatio": 0.08958333333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.225,
+                  "assembly-2": 0.15,
+                  "press-1": 0.3333333333333333,
+                  "press-2": 0.25
+                },
+                "stalledTicks": 0,
+                "planningMs": 99.61446099999966
+              },
+              "stateHash": "92976774",
+              "runtimeMs": 104.09083399999963,
+              "planningMs": 99.61446099999966,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 15
+        },
+        {
+          "id": 6,
+          "config": {
+            "assignment": "nearest",
+            "priority": "waiting",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 9,
+            "replanInterval": 2
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.03761574074074074
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "nearest",
+                "priority": "waiting",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 9,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 1,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 32.5,
+                "maxDelay": 57,
+                "waitingRatio": 0.034722222222222224,
+                "stationUtilization": {
+                  "assembly-1": 0.3375,
+                  "press-1": 0.4375
+                },
+                "stalledTicks": 0,
+                "planningMs": 65.34024800000134
+              },
+              "stateHash": "7d63a3de",
+              "runtimeMs": 67.54212499999994,
+              "planningMs": 65.34024800000134,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "nearest",
+                "priority": "waiting",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 9,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 106.33333333333333,
+                "maxDelay": 129,
+                "waitingRatio": 0.007291666666666667,
+                "stationUtilization": {
+                  "assembly-1": 0.2625,
+                  "press-1": 0.35833333333333334
+                },
+                "stalledTicks": 0,
+                "planningMs": 123.69425299999739
+              },
+              "stateHash": "63b915ca",
+              "runtimeMs": 126.20004199999994,
+              "planningMs": 123.69425299999739,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "nearest",
+                "priority": "waiting",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 9,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 13,
+                "unfinishedOrders": 3,
+                "deliveredUnits": 13,
+                "throughput": 0.05416666666666667,
+                "meanDelay": 44.30769230769231,
+                "maxDelay": 201,
+                "waitingRatio": 0.07083333333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.525,
+                  "assembly-2": 0,
+                  "press-1": 0.625,
+                  "press-2": 0.041666666666666664
+                },
+                "stalledTicks": 0,
+                "planningMs": 107.37150499999962
+              },
+              "stateHash": "0d4e9bdb",
+              "runtimeMs": 111.06658299999981,
+              "planningMs": 107.37150499999962,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 18
+        }
+      ],
+      "runs": [
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 1,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 32,
+            "maxDelay": 54,
+            "waitingRatio": 0.04722222222222222,
+            "stationUtilization": {
+              "assembly-1": 0.3375,
+              "press-1": 0.42916666666666664
+            },
+            "stalledTicks": 0,
+            "planningMs": 107.0228789999999
+          },
+          "stateHash": "c07dbc4f",
+          "runtimeMs": 114.779125,
+          "planningMs": 107.0228789999999,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 111.66666666666667,
+            "maxDelay": 127,
+            "waitingRatio": 0.015625,
+            "stationUtilization": {
+              "assembly-1": 0.2375,
+              "press-1": 0.3333333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 178.84075400000023
+          },
+          "stateHash": "dffabf2c",
+          "runtimeMs": 183.449584,
+          "planningMs": 178.84075400000023,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 13,
+            "unfinishedOrders": 3,
+            "deliveredUnits": 13,
+            "throughput": 0.05416666666666667,
+            "meanDelay": 46.38461538461539,
+            "maxDelay": 205,
+            "waitingRatio": 0.07395833333333333,
+            "stationUtilization": {
+              "assembly-1": 0.55,
+              "assembly-2": 0,
+              "press-1": 0.5833333333333334,
+              "press-2": 0.08333333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 161.6880469999997
+          },
+          "stateHash": "6d599528",
+          "runtimeMs": 168.81379200000003,
+          "planningMs": 161.6880469999997,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 9,
+            "unfinishedOrders": 0,
+            "deliveredUnits": 9,
+            "throughput": 0.0375,
+            "meanDelay": 42.44444444444444,
+            "maxDelay": 77,
+            "waitingRatio": 0,
+            "stationUtilization": {
+              "assembly-1": 0.3958333333333333,
+              "press-1": 0.5125
+            },
+            "stalledTicks": 0,
+            "planningMs": 177.85979599999985
+          },
+          "stateHash": "346d43bb",
+          "runtimeMs": 184.77383400000008,
+          "planningMs": 177.85979599999985,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 117.16666666666667,
+            "maxDelay": 145,
+            "waitingRatio": 0.0020833333333333333,
+            "stationUtilization": {
+              "assembly-1": 0.2833333333333333,
+              "press-1": 0.3958333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 359.54041599999914
+          },
+          "stateHash": "6036b2fe",
+          "runtimeMs": 365.8266249999999,
+          "planningMs": 359.54041599999914,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 9,
+            "unfinishedOrders": 7,
+            "deliveredUnits": 9,
+            "throughput": 0.0375,
+            "meanDelay": 108.11111111111111,
+            "maxDelay": 199,
+            "waitingRatio": 0.0010416666666666667,
+            "stationUtilization": {
+              "assembly-1": 0.2625,
+              "assembly-2": 0.15,
+              "press-1": 0.3333333333333333,
+              "press-2": 0.25
+            },
+            "stalledTicks": 0,
+            "planningMs": 290.5318759999989
+          },
+          "stateHash": "05be6dc4",
+          "runtimeMs": 297.409584,
+          "planningMs": 290.5318759999989,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 1,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 41.125,
+            "maxDelay": 60,
+            "waitingRatio": 0.04583333333333333,
+            "stationUtilization": {
+              "assembly-1": 0.3375,
+              "press-1": 0.4166666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 183.27778500000022
+          },
+          "stateHash": "d3261b47",
+          "runtimeMs": 186.62525000000005,
+          "planningMs": 183.27778500000022,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 104.5,
+            "maxDelay": 120,
+            "waitingRatio": 0.025,
+            "stationUtilization": {
+              "assembly-1": 0.2708333333333333,
+              "press-1": 0.3541666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 312.32500199999686
+          },
+          "stateHash": "af8f0962",
+          "runtimeMs": 316.10079199999996,
+          "planningMs": 312.32500199999686,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 11,
+            "unfinishedOrders": 5,
+            "deliveredUnits": 11,
+            "throughput": 0.04583333333333333,
+            "meanDelay": 44.09090909090909,
+            "maxDelay": 64,
+            "waitingRatio": 0.058333333333333334,
+            "stationUtilization": {
+              "assembly-1": 0.475,
+              "assembly-2": 0,
+              "press-1": 0.5625,
+              "press-2": 0.020833333333333332
+            },
+            "stalledTicks": 0,
+            "planningMs": 340.15815800000087
+          },
+          "stateHash": "4e4da3a4",
+          "runtimeMs": 345.39274999999975,
+          "planningMs": 340.15815800000087,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.64911044947803,
+            "planningWindow": 11,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 1,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 41.125,
+            "maxDelay": 64,
+            "waitingRatio": 0.001388888888888889,
+            "stationUtilization": {
+              "assembly-1": 0.3375,
+              "press-1": 0.4166666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 105.1859480000021
+          },
+          "stateHash": "d93334a9",
+          "runtimeMs": 107.84858299999996,
+          "planningMs": 105.1859480000021,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.64911044947803,
+            "planningWindow": 11,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 113.16666666666667,
+            "maxDelay": 140,
+            "waitingRatio": 0,
+            "stationUtilization": {
+              "assembly-1": 0.25833333333333336,
+              "press-1": 0.3333333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 178.665368999998
+          },
+          "stateHash": "059d6e30",
+          "runtimeMs": 181.994917,
+          "planningMs": 178.665368999998,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.64911044947803,
+            "planningWindow": 11,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 12,
+            "unfinishedOrders": 4,
+            "deliveredUnits": 12,
+            "throughput": 0.05,
+            "meanDelay": 46.083333333333336,
+            "maxDelay": 59,
+            "waitingRatio": 0.0010416666666666667,
+            "stationUtilization": {
+              "assembly-1": 0.4708333333333333,
+              "assembly-2": 0,
+              "press-1": 0.55,
+              "press-2": 0.041666666666666664
+            },
+            "stalledTicks": 0,
+            "planningMs": 164.72846100000152
+          },
+          "stateHash": "e3faa045",
+          "runtimeMs": 169.30024999999978,
+          "planningMs": 164.72846100000152,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 5
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 1,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 50.375,
+            "maxDelay": 71,
+            "waitingRatio": 0.10972222222222222,
+            "stationUtilization": {
+              "assembly-1": 0.375,
+              "press-1": 0.4791666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 68.21625399999948
+          },
+          "stateHash": "35c572b6",
+          "runtimeMs": 71.08504200000016,
+          "planningMs": 68.21625399999948,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 5
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 5,
+            "unfinishedOrders": 9,
+            "deliveredUnits": 5,
+            "throughput": 0.020833333333333332,
+            "meanDelay": 114.4,
+            "maxDelay": 133,
+            "waitingRatio": 0.04895833333333333,
+            "stationUtilization": {
+              "assembly-1": 0.2791666666666667,
+              "press-1": 0.3958333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 122.55991199999971
+          },
+          "stateHash": "249d2c7a",
+          "runtimeMs": 125.6614169999998,
+          "planningMs": 122.55991199999971,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 5
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 111,
+            "maxDelay": 133,
+            "waitingRatio": 0.08958333333333333,
+            "stationUtilization": {
+              "assembly-1": 0.225,
+              "assembly-2": 0.15,
+              "press-1": 0.3333333333333333,
+              "press-2": 0.25
+            },
+            "stalledTicks": 0,
+            "planningMs": 99.61446099999966
+          },
+          "stateHash": "92976774",
+          "runtimeMs": 104.09083399999963,
+          "planningMs": 99.61446099999966,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "nearest",
+            "priority": "waiting",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 9,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 1,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 32.5,
+            "maxDelay": 57,
+            "waitingRatio": 0.034722222222222224,
+            "stationUtilization": {
+              "assembly-1": 0.3375,
+              "press-1": 0.4375
+            },
+            "stalledTicks": 0,
+            "planningMs": 65.34024800000134
+          },
+          "stateHash": "7d63a3de",
+          "runtimeMs": 67.54212499999994,
+          "planningMs": 65.34024800000134,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "nearest",
+            "priority": "waiting",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 9,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 106.33333333333333,
+            "maxDelay": 129,
+            "waitingRatio": 0.007291666666666667,
+            "stationUtilization": {
+              "assembly-1": 0.2625,
+              "press-1": 0.35833333333333334
+            },
+            "stalledTicks": 0,
+            "planningMs": 123.69425299999739
+          },
+          "stateHash": "63b915ca",
+          "runtimeMs": 126.20004199999994,
+          "planningMs": 123.69425299999739,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "nearest",
+            "priority": "waiting",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 9,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 13,
+            "unfinishedOrders": 3,
+            "deliveredUnits": 13,
+            "throughput": 0.05416666666666667,
+            "meanDelay": 44.30769230769231,
+            "maxDelay": 201,
+            "waitingRatio": 0.07083333333333333,
+            "stationUtilization": {
+              "assembly-1": 0.525,
+              "assembly-2": 0,
+              "press-1": 0.625,
+              "press-2": 0.041666666666666664
+            },
+            "stalledTicks": 0,
+            "planningMs": 107.37150499999962
+          },
+          "stateHash": "0d4e9bdb",
+          "runtimeMs": 111.06658299999981,
+          "planningMs": 107.37150499999962,
+          "status": "completed"
+        }
+      ],
+      "runtimeMs": 3259.65225
+    },
+    {
+      "method": "ga",
+      "status": "completed",
+      "optimizerSeed": 7,
+      "horizon": 240,
+      "seeds": [
+        11
+      ],
+      "codeVersion": "8b7262b",
+      "kernelVersion": "1.0.0",
+      "counters": {
+        "proposals": 6,
+        "cacheHits": 0,
+        "simulations": 18
+      },
+      "budget": 18,
+      "best": {
+        "id": 1,
+        "config": {
+          "assignment": "nearest",
+          "priority": "fixed",
+          "routing": "distance",
+          "congestionWeight": 0,
+          "planningWindow": 12,
+          "replanInterval": 3
+        },
+        "status": "completed",
+        "score": {
+          "throughput": 0.0375,
+          "unfinishedOrders": 4,
+          "waitingRatio": 0.04560185185185186
+        },
+        "runs": [
+          {
+            "scenarioId": "open-floor",
+            "scenarioHash": "c24f248c",
+            "config": {
+              "assignment": "nearest",
+              "priority": "fixed",
+              "routing": "distance",
+              "congestionWeight": 0,
+              "planningWindow": 12,
+              "replanInterval": 3
+            },
+            "seed": 11,
+            "horizon": 240,
+            "kernelVersion": "1.0.0",
+            "codeVersion": "8b7262b",
+            "metrics": {
+              "ticks": 240,
+              "completedOrders": 8,
+              "unfinishedOrders": 1,
+              "deliveredUnits": 8,
+              "throughput": 0.03333333333333333,
+              "meanDelay": 32,
+              "maxDelay": 54,
+              "waitingRatio": 0.04722222222222222,
+              "stationUtilization": {
+                "assembly-1": 0.3375,
+                "press-1": 0.42916666666666664
+              },
+              "stalledTicks": 0,
+              "planningMs": 87.74482400000261
+            },
+            "stateHash": "c07dbc4f",
+            "runtimeMs": 89.89883400000008,
+            "planningMs": 87.74482400000261,
+            "status": "completed"
+          },
+          {
+            "scenarioId": "crossroads",
+            "scenarioHash": "05e532c1",
+            "config": {
+              "assignment": "nearest",
+              "priority": "fixed",
+              "routing": "distance",
+              "congestionWeight": 0,
+              "planningWindow": 12,
+              "replanInterval": 3
+            },
+            "seed": 11,
+            "horizon": 240,
+            "kernelVersion": "1.0.0",
+            "codeVersion": "8b7262b",
+            "metrics": {
+              "ticks": 240,
+              "completedOrders": 6,
+              "unfinishedOrders": 8,
+              "deliveredUnits": 6,
+              "throughput": 0.025,
+              "meanDelay": 111.66666666666667,
+              "maxDelay": 127,
+              "waitingRatio": 0.015625,
+              "stationUtilization": {
+                "assembly-1": 0.2375,
+                "press-1": 0.3333333333333333
+              },
+              "stalledTicks": 0,
+              "planningMs": 172.58041499999626
+            },
+            "stateHash": "dffabf2c",
+            "runtimeMs": 175.17170799999985,
+            "planningMs": 172.58041499999626,
+            "status": "completed"
+          },
+          {
+            "scenarioId": "hotspot",
+            "scenarioHash": "021d8edc",
+            "config": {
+              "assignment": "nearest",
+              "priority": "fixed",
+              "routing": "distance",
+              "congestionWeight": 0,
+              "planningWindow": 12,
+              "replanInterval": 3
+            },
+            "seed": 11,
+            "horizon": 240,
+            "kernelVersion": "1.0.0",
+            "codeVersion": "8b7262b",
+            "metrics": {
+              "ticks": 240,
+              "completedOrders": 13,
+              "unfinishedOrders": 3,
+              "deliveredUnits": 13,
+              "throughput": 0.05416666666666667,
+              "meanDelay": 46.38461538461539,
+              "maxDelay": 205,
+              "waitingRatio": 0.07395833333333333,
+              "stationUtilization": {
+                "assembly-1": 0.55,
+                "assembly-2": 0,
+                "press-1": 0.5833333333333334,
+                "press-2": 0.08333333333333333
+              },
+              "stalledTicks": 0,
+              "planningMs": 141.80140699999856
+            },
+            "stateHash": "6d599528",
+            "runtimeMs": 145.49466699999994,
+            "planningMs": 141.80140699999856,
+            "status": "completed"
+          }
+        ],
+        "simulationsAtCompletion": 3
+      },
+      "history": [
+        {
+          "simulations": 3,
+          "proposals": 1,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 6,
+          "proposals": 2,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 9,
+          "proposals": 3,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 12,
+          "proposals": 4,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 15,
+          "proposals": 5,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 18,
+          "proposals": 6,
+          "bestScore": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        }
+      ],
+      "records": [
+        {
+          "id": 1,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.0375,
+            "unfinishedOrders": 4,
+            "waitingRatio": 0.04560185185185186
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 1,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 32,
+                "maxDelay": 54,
+                "waitingRatio": 0.04722222222222222,
+                "stationUtilization": {
+                  "assembly-1": 0.3375,
+                  "press-1": 0.42916666666666664
+                },
+                "stalledTicks": 0,
+                "planningMs": 87.74482400000261
+              },
+              "stateHash": "c07dbc4f",
+              "runtimeMs": 89.89883400000008,
+              "planningMs": 87.74482400000261,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 111.66666666666667,
+                "maxDelay": 127,
+                "waitingRatio": 0.015625,
+                "stationUtilization": {
+                  "assembly-1": 0.2375,
+                  "press-1": 0.3333333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 172.58041499999626
+              },
+              "stateHash": "dffabf2c",
+              "runtimeMs": 175.17170799999985,
+              "planningMs": 172.58041499999626,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 13,
+                "unfinishedOrders": 3,
+                "deliveredUnits": 13,
+                "throughput": 0.05416666666666667,
+                "meanDelay": 46.38461538461539,
+                "maxDelay": 205,
+                "waitingRatio": 0.07395833333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.55,
+                  "assembly-2": 0,
+                  "press-1": 0.5833333333333334,
+                  "press-2": 0.08333333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 141.80140699999856
+              },
+              "stateHash": "6d599528",
+              "runtimeMs": 145.49466699999994,
+              "planningMs": 141.80140699999856,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 3
+        },
+        {
+          "id": 2,
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.03333333333333333,
+            "unfinishedOrders": 5,
+            "waitingRatio": 0.0010416666666666667
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.5,
+                "planningWindow": 16,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 9,
+                "unfinishedOrders": 0,
+                "deliveredUnits": 9,
+                "throughput": 0.0375,
+                "meanDelay": 42.44444444444444,
+                "maxDelay": 77,
+                "waitingRatio": 0,
+                "stationUtilization": {
+                  "assembly-1": 0.3958333333333333,
+                  "press-1": 0.5125
+                },
+                "stalledTicks": 0,
+                "planningMs": 166.22900499999878
+              },
+              "stateHash": "346d43bb",
+              "runtimeMs": 168.91716700000006,
+              "planningMs": 166.22900499999878,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.5,
+                "planningWindow": 16,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 117.16666666666667,
+                "maxDelay": 145,
+                "waitingRatio": 0.0020833333333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.2833333333333333,
+                  "press-1": 0.3958333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 340.67737000000125
+              },
+              "stateHash": "6036b2fe",
+              "runtimeMs": 344.187625,
+              "planningMs": 340.67737000000125,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.5,
+                "planningWindow": 16,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 9,
+                "unfinishedOrders": 7,
+                "deliveredUnits": 9,
+                "throughput": 0.0375,
+                "meanDelay": 108.11111111111111,
+                "maxDelay": 199,
+                "waitingRatio": 0.0010416666666666667,
+                "stationUtilization": {
+                  "assembly-1": 0.2625,
+                  "assembly-2": 0.15,
+                  "press-1": 0.3333333333333333,
+                  "press-2": 0.25
+                },
+                "stalledTicks": 0,
+                "planningMs": 288.22955199999524
+              },
+              "stateHash": "05be6dc4",
+              "runtimeMs": 292.49974999999995,
+              "planningMs": 288.22955199999524,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 6
+        },
+        {
+          "id": 3,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.03472222222222222,
+            "unfinishedOrders": 4.666666666666667,
+            "waitingRatio": 0.04305555555555555
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.495143528562039,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 1,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 41.125,
+                "maxDelay": 60,
+                "waitingRatio": 0.04583333333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.3375,
+                  "press-1": 0.4166666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 181.4679659999847
+              },
+              "stateHash": "d3261b47",
+              "runtimeMs": 183.59779199999957,
+              "planningMs": 181.4679659999847,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.495143528562039,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 104.5,
+                "maxDelay": 120,
+                "waitingRatio": 0.025,
+                "stationUtilization": {
+                  "assembly-1": 0.2708333333333333,
+                  "press-1": 0.3541666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 311.845494999995
+              },
+              "stateHash": "af8f0962",
+              "runtimeMs": 314.41949999999997,
+              "planningMs": 311.845494999995,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.495143528562039,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 11,
+                "unfinishedOrders": 5,
+                "deliveredUnits": 11,
+                "throughput": 0.04583333333333333,
+                "meanDelay": 44.09090909090909,
+                "maxDelay": 64,
+                "waitingRatio": 0.058333333333333334,
+                "stationUtilization": {
+                  "assembly-1": 0.475,
+                  "assembly-2": 0,
+                  "press-1": 0.5625,
+                  "press-2": 0.020833333333333332
+                },
+                "stalledTicks": 0,
+                "planningMs": 346.24478900000395
+              },
+              "stateHash": "4e4da3a4",
+              "runtimeMs": 350.18383300000005,
+              "planningMs": 346.24478900000395,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 9
+        },
+        {
+          "id": 4,
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.7031846040600573,
+            "planningWindow": 10,
+            "replanInterval": 3
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.029166666666666664,
+            "unfinishedOrders": 6,
+            "waitingRatio": 0.012268518518518519
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.7031846040600573,
+                "planningWindow": 10,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 1,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 49,
+                "maxDelay": 68,
+                "waitingRatio": 0.013888888888888888,
+                "stationUtilization": {
+                  "assembly-1": 0.375,
+                  "press-1": 0.4791666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 58.55612199999632
+              },
+              "stateHash": "a7abc1a1",
+              "runtimeMs": 61.7782500000003,
+              "planningMs": 58.55612199999632,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.7031846040600573,
+                "planningWindow": 10,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 116,
+                "maxDelay": 133,
+                "waitingRatio": 0.011458333333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.2708333333333333,
+                  "press-1": 0.375
+                },
+                "stalledTicks": 0,
+                "planningMs": 114.84937000000355
+              },
+              "stateHash": "0bd437b6",
+              "runtimeMs": 118.36041699999987,
+              "planningMs": 114.84937000000355,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.7031846040600573,
+                "planningWindow": 10,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 7,
+                "unfinishedOrders": 9,
+                "deliveredUnits": 7,
+                "throughput": 0.029166666666666667,
+                "meanDelay": 113.28571428571429,
+                "maxDelay": 130,
+                "waitingRatio": 0.011458333333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.225,
+                  "assembly-2": 0.15,
+                  "press-1": 0.3541666666666667,
+                  "press-2": 0.23333333333333334
+                },
+                "stalledTicks": 0,
+                "planningMs": 83.58719600001314
+              },
+              "stateHash": "25e720dc",
+              "runtimeMs": 88.10975000000053,
+              "planningMs": 83.58719600001314,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 12
+        },
+        {
+          "id": 5,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 0.29274110128934483,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.03333333333333333,
+            "unfinishedOrders": 5,
+            "waitingRatio": 0.04363425925925926
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 0.29274110128934483,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 8,
+                "unfinishedOrders": 1,
+                "deliveredUnits": 8,
+                "throughput": 0.03333333333333333,
+                "meanDelay": 43.5,
+                "maxDelay": 62,
+                "waitingRatio": 0.04861111111111111,
+                "stationUtilization": {
+                  "assembly-1": 0.3375,
+                  "press-1": 0.4
+                },
+                "stalledTicks": 0,
+                "planningMs": 195.00092599999607
+              },
+              "stateHash": "8daf00b5",
+              "runtimeMs": 197.77387499999986,
+              "planningMs": 195.00092599999607,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 0.29274110128934483,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 5,
+                "unfinishedOrders": 9,
+                "deliveredUnits": 5,
+                "throughput": 0.020833333333333332,
+                "meanDelay": 113.4,
+                "maxDelay": 138,
+                "waitingRatio": 0.017708333333333333,
+                "stationUtilization": {
+                  "assembly-1": 0.22916666666666666,
+                  "press-1": 0.325
+                },
+                "stalledTicks": 0,
+                "planningMs": 320.7319119999984
+              },
+              "stateHash": "a40d3f1b",
+              "runtimeMs": 323.7772500000001,
+              "planningMs": 320.7319119999984,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 0.29274110128934483,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 11,
+                "unfinishedOrders": 5,
+                "deliveredUnits": 11,
+                "throughput": 0.04583333333333333,
+                "meanDelay": 49.09090909090909,
+                "maxDelay": 58,
+                "waitingRatio": 0.06458333333333334,
+                "stationUtilization": {
+                  "assembly-1": 0.45,
+                  "assembly-2": 0,
+                  "press-1": 0.5458333333333333,
+                  "press-2": 0.020833333333333332
+                },
+                "stalledTicks": 0,
+                "planningMs": 346.9714589999985
+              },
+              "stateHash": "a041a524",
+              "runtimeMs": 351.07504099999915,
+              "planningMs": 346.9714589999985,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 15
+        },
+        {
+          "id": 6,
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.7241802352145774,
+            "planningWindow": 10,
+            "replanInterval": 4
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.03333333333333333,
+            "unfinishedOrders": 5,
+            "waitingRatio": 0.037615740740740734
+          },
+          "runs": [
+            {
+              "scenarioId": "open-floor",
+              "scenarioHash": "c24f248c",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.7241802352145774,
+                "planningWindow": 10,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 9,
+                "unfinishedOrders": 0,
+                "deliveredUnits": 9,
+                "throughput": 0.0375,
+                "meanDelay": 37.77777777777778,
+                "maxDelay": 66,
+                "waitingRatio": 0.06388888888888888,
+                "stationUtilization": {
+                  "assembly-1": 0.375,
+                  "press-1": 0.4875
+                },
+                "stalledTicks": 0,
+                "planningMs": 50.43408100000579
+              },
+              "stateHash": "ece375cf",
+              "runtimeMs": 52.84458300000006,
+              "planningMs": 50.43408100000579,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "crossroads",
+              "scenarioHash": "05e532c1",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.7241802352145774,
+                "planningWindow": 10,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 6,
+                "unfinishedOrders": 8,
+                "deliveredUnits": 6,
+                "throughput": 0.025,
+                "meanDelay": 117.33333333333333,
+                "maxDelay": 136,
+                "waitingRatio": 0.007291666666666667,
+                "stationUtilization": {
+                  "assembly-1": 0.2708333333333333,
+                  "press-1": 0.3958333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 93.64545000001726
+              },
+              "stateHash": "67d06264",
+              "runtimeMs": 96.57074999999986,
+              "planningMs": 93.64545000001726,
+              "status": "completed"
+            },
+            {
+              "scenarioId": "hotspot",
+              "scenarioHash": "021d8edc",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.7241802352145774,
+                "planningWindow": 10,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 240,
+              "kernelVersion": "1.0.0",
+              "codeVersion": "8b7262b",
+              "metrics": {
+                "ticks": 240,
+                "completedOrders": 9,
+                "unfinishedOrders": 7,
+                "deliveredUnits": 9,
+                "throughput": 0.0375,
+                "meanDelay": 110.77777777777777,
+                "maxDelay": 172,
+                "waitingRatio": 0.041666666666666664,
+                "stationUtilization": {
+                  "assembly-1": 0.2625,
+                  "assembly-2": 0.15,
+                  "press-1": 0.3375,
+                  "press-2": 0.22916666666666666
+                },
+                "stalledTicks": 0,
+                "planningMs": 80.62904400000025
+              },
+              "stateHash": "2fdf3a40",
+              "runtimeMs": 84.48029099999985,
+              "planningMs": 80.62904400000025,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 18
+        }
+      ],
+      "runs": [
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 1,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 32,
+            "maxDelay": 54,
+            "waitingRatio": 0.04722222222222222,
+            "stationUtilization": {
+              "assembly-1": 0.3375,
+              "press-1": 0.42916666666666664
+            },
+            "stalledTicks": 0,
+            "planningMs": 87.74482400000261
+          },
+          "stateHash": "c07dbc4f",
+          "runtimeMs": 89.89883400000008,
+          "planningMs": 87.74482400000261,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 111.66666666666667,
+            "maxDelay": 127,
+            "waitingRatio": 0.015625,
+            "stationUtilization": {
+              "assembly-1": 0.2375,
+              "press-1": 0.3333333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 172.58041499999626
+          },
+          "stateHash": "dffabf2c",
+          "runtimeMs": 175.17170799999985,
+          "planningMs": 172.58041499999626,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 13,
+            "unfinishedOrders": 3,
+            "deliveredUnits": 13,
+            "throughput": 0.05416666666666667,
+            "meanDelay": 46.38461538461539,
+            "maxDelay": 205,
+            "waitingRatio": 0.07395833333333333,
+            "stationUtilization": {
+              "assembly-1": 0.55,
+              "assembly-2": 0,
+              "press-1": 0.5833333333333334,
+              "press-2": 0.08333333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 141.80140699999856
+          },
+          "stateHash": "6d599528",
+          "runtimeMs": 145.49466699999994,
+          "planningMs": 141.80140699999856,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 9,
+            "unfinishedOrders": 0,
+            "deliveredUnits": 9,
+            "throughput": 0.0375,
+            "meanDelay": 42.44444444444444,
+            "maxDelay": 77,
+            "waitingRatio": 0,
+            "stationUtilization": {
+              "assembly-1": 0.3958333333333333,
+              "press-1": 0.5125
+            },
+            "stalledTicks": 0,
+            "planningMs": 166.22900499999878
+          },
+          "stateHash": "346d43bb",
+          "runtimeMs": 168.91716700000006,
+          "planningMs": 166.22900499999878,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 117.16666666666667,
+            "maxDelay": 145,
+            "waitingRatio": 0.0020833333333333333,
+            "stationUtilization": {
+              "assembly-1": 0.2833333333333333,
+              "press-1": 0.3958333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 340.67737000000125
+          },
+          "stateHash": "6036b2fe",
+          "runtimeMs": 344.187625,
+          "planningMs": 340.67737000000125,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 9,
+            "unfinishedOrders": 7,
+            "deliveredUnits": 9,
+            "throughput": 0.0375,
+            "meanDelay": 108.11111111111111,
+            "maxDelay": 199,
+            "waitingRatio": 0.0010416666666666667,
+            "stationUtilization": {
+              "assembly-1": 0.2625,
+              "assembly-2": 0.15,
+              "press-1": 0.3333333333333333,
+              "press-2": 0.25
+            },
+            "stalledTicks": 0,
+            "planningMs": 288.22955199999524
+          },
+          "stateHash": "05be6dc4",
+          "runtimeMs": 292.49974999999995,
+          "planningMs": 288.22955199999524,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 1,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 41.125,
+            "maxDelay": 60,
+            "waitingRatio": 0.04583333333333333,
+            "stationUtilization": {
+              "assembly-1": 0.3375,
+              "press-1": 0.4166666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 181.4679659999847
+          },
+          "stateHash": "d3261b47",
+          "runtimeMs": 183.59779199999957,
+          "planningMs": 181.4679659999847,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 104.5,
+            "maxDelay": 120,
+            "waitingRatio": 0.025,
+            "stationUtilization": {
+              "assembly-1": 0.2708333333333333,
+              "press-1": 0.3541666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 311.845494999995
+          },
+          "stateHash": "af8f0962",
+          "runtimeMs": 314.41949999999997,
+          "planningMs": 311.845494999995,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 11,
+            "unfinishedOrders": 5,
+            "deliveredUnits": 11,
+            "throughput": 0.04583333333333333,
+            "meanDelay": 44.09090909090909,
+            "maxDelay": 64,
+            "waitingRatio": 0.058333333333333334,
+            "stationUtilization": {
+              "assembly-1": 0.475,
+              "assembly-2": 0,
+              "press-1": 0.5625,
+              "press-2": 0.020833333333333332
+            },
+            "stalledTicks": 0,
+            "planningMs": 346.24478900000395
+          },
+          "stateHash": "4e4da3a4",
+          "runtimeMs": 350.18383300000005,
+          "planningMs": 346.24478900000395,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.7031846040600573,
+            "planningWindow": 10,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 1,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 49,
+            "maxDelay": 68,
+            "waitingRatio": 0.013888888888888888,
+            "stationUtilization": {
+              "assembly-1": 0.375,
+              "press-1": 0.4791666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 58.55612199999632
+          },
+          "stateHash": "a7abc1a1",
+          "runtimeMs": 61.7782500000003,
+          "planningMs": 58.55612199999632,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.7031846040600573,
+            "planningWindow": 10,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 116,
+            "maxDelay": 133,
+            "waitingRatio": 0.011458333333333333,
+            "stationUtilization": {
+              "assembly-1": 0.2708333333333333,
+              "press-1": 0.375
+            },
+            "stalledTicks": 0,
+            "planningMs": 114.84937000000355
+          },
+          "stateHash": "0bd437b6",
+          "runtimeMs": 118.36041699999987,
+          "planningMs": 114.84937000000355,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.7031846040600573,
+            "planningWindow": 10,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 7,
+            "unfinishedOrders": 9,
+            "deliveredUnits": 7,
+            "throughput": 0.029166666666666667,
+            "meanDelay": 113.28571428571429,
+            "maxDelay": 130,
+            "waitingRatio": 0.011458333333333333,
+            "stationUtilization": {
+              "assembly-1": 0.225,
+              "assembly-2": 0.15,
+              "press-1": 0.3541666666666667,
+              "press-2": 0.23333333333333334
+            },
+            "stalledTicks": 0,
+            "planningMs": 83.58719600001314
+          },
+          "stateHash": "25e720dc",
+          "runtimeMs": 88.10975000000053,
+          "planningMs": 83.58719600001314,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 0.29274110128934483,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 8,
+            "unfinishedOrders": 1,
+            "deliveredUnits": 8,
+            "throughput": 0.03333333333333333,
+            "meanDelay": 43.5,
+            "maxDelay": 62,
+            "waitingRatio": 0.04861111111111111,
+            "stationUtilization": {
+              "assembly-1": 0.3375,
+              "press-1": 0.4
+            },
+            "stalledTicks": 0,
+            "planningMs": 195.00092599999607
+          },
+          "stateHash": "8daf00b5",
+          "runtimeMs": 197.77387499999986,
+          "planningMs": 195.00092599999607,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 0.29274110128934483,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 5,
+            "unfinishedOrders": 9,
+            "deliveredUnits": 5,
+            "throughput": 0.020833333333333332,
+            "meanDelay": 113.4,
+            "maxDelay": 138,
+            "waitingRatio": 0.017708333333333333,
+            "stationUtilization": {
+              "assembly-1": 0.22916666666666666,
+              "press-1": 0.325
+            },
+            "stalledTicks": 0,
+            "planningMs": 320.7319119999984
+          },
+          "stateHash": "a40d3f1b",
+          "runtimeMs": 323.7772500000001,
+          "planningMs": 320.7319119999984,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 0.29274110128934483,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 11,
+            "unfinishedOrders": 5,
+            "deliveredUnits": 11,
+            "throughput": 0.04583333333333333,
+            "meanDelay": 49.09090909090909,
+            "maxDelay": 58,
+            "waitingRatio": 0.06458333333333334,
+            "stationUtilization": {
+              "assembly-1": 0.45,
+              "assembly-2": 0,
+              "press-1": 0.5458333333333333,
+              "press-2": 0.020833333333333332
+            },
+            "stalledTicks": 0,
+            "planningMs": 346.9714589999985
+          },
+          "stateHash": "a041a524",
+          "runtimeMs": 351.07504099999915,
+          "planningMs": 346.9714589999985,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "open-floor",
+          "scenarioHash": "c24f248c",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.7241802352145774,
+            "planningWindow": 10,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 9,
+            "unfinishedOrders": 0,
+            "deliveredUnits": 9,
+            "throughput": 0.0375,
+            "meanDelay": 37.77777777777778,
+            "maxDelay": 66,
+            "waitingRatio": 0.06388888888888888,
+            "stationUtilization": {
+              "assembly-1": 0.375,
+              "press-1": 0.4875
+            },
+            "stalledTicks": 0,
+            "planningMs": 50.43408100000579
+          },
+          "stateHash": "ece375cf",
+          "runtimeMs": 52.84458300000006,
+          "planningMs": 50.43408100000579,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "crossroads",
+          "scenarioHash": "05e532c1",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.7241802352145774,
+            "planningWindow": 10,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 6,
+            "unfinishedOrders": 8,
+            "deliveredUnits": 6,
+            "throughput": 0.025,
+            "meanDelay": 117.33333333333333,
+            "maxDelay": 136,
+            "waitingRatio": 0.007291666666666667,
+            "stationUtilization": {
+              "assembly-1": 0.2708333333333333,
+              "press-1": 0.3958333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 93.64545000001726
+          },
+          "stateHash": "67d06264",
+          "runtimeMs": 96.57074999999986,
+          "planningMs": 93.64545000001726,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "hotspot",
+          "scenarioHash": "021d8edc",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.7241802352145774,
+            "planningWindow": 10,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 240,
+          "kernelVersion": "1.0.0",
+          "codeVersion": "8b7262b",
+          "metrics": {
+            "ticks": 240,
+            "completedOrders": 9,
+            "unfinishedOrders": 7,
+            "deliveredUnits": 9,
+            "throughput": 0.0375,
+            "meanDelay": 110.77777777777777,
+            "maxDelay": 172,
+            "waitingRatio": 0.041666666666666664,
+            "stationUtilization": {
+              "assembly-1": 0.2625,
+              "assembly-2": 0.15,
+              "press-1": 0.3375,
+              "press-2": 0.22916666666666666
+            },
+            "stalledTicks": 0,
+            "planningMs": 80.62904400000025
+          },
+          "stateHash": "2fdf3a40",
+          "runtimeMs": 84.48029099999985,
+          "planningMs": 80.62904400000025,
+          "status": "completed"
+        }
+      ],
+      "runtimeMs": 3468.4109579999995
+    }
+  ],
+  "frozenConfig": {
+    "assignment": "nearest",
+    "priority": "waiting",
+    "routing": "distance",
+    "congestionWeight": 0,
+    "planningWindow": 9,
+    "replanInterval": 2
+  },
+  "heldout": {
+    "scenarioId": "heldout-offset",
+    "scenarioHash": "7de282e7",
+    "config": {
+      "assignment": "nearest",
+      "priority": "waiting",
+      "routing": "distance",
+      "congestionWeight": 0,
+      "planningWindow": 9,
+      "replanInterval": 2
+    },
+    "seed": 101,
+    "horizon": 240,
+    "kernelVersion": "1.0.0",
+    "codeVersion": "8b7262b",
+    "metrics": {
+      "ticks": 240,
+      "completedOrders": 6,
+      "unfinishedOrders": 3,
+      "deliveredUnits": 6,
+      "throughput": 0.025,
+      "meanDelay": 68.66666666666667,
+      "maxDelay": 78,
+      "waitingRatio": 0.011111111111111112,
+      "stationUtilization": {
+        "assembly-1": 0.2625,
+        "press-1": 0.3333333333333333
+      },
+      "stalledTicks": 0,
+      "planningMs": 72.24995600000057
+    },
+    "stateHash": "542567d2",
+    "runtimeMs": 74.24562500000047,
+    "planningMs": 72.24995600000057,
+    "status": "completed"
+  }
+}

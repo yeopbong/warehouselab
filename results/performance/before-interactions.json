@@ -1,0 +1,261 @@
+{
+  "formatVersion": 1,
+  "mode": "before",
+  "timestamp": "2026-09-05T09:26:48.743Z",
+  "url": "http://127.0.0.1:4175",
+  "sourceVersion": "063f22c-original",
+  "selectedSourceSha256": "299869fda20b5014bdd179ffc4dfd1b6afba804cb1b9753d21b8f1bc8a2e32bd",
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "cpu": "Apple M2",
+    "logicalCores": 8,
+    "memoryGiB": 16,
+    "chrome": "152.0.7977.76",
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "dpr": 1,
+    "browser": {
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "hardwareConcurrency": 8,
+      "devicePixelRatio": 1,
+      "reducedMotion": false
+    }
+  },
+  "conditions": {
+    "normalSeconds": 30,
+    "highSeconds": 10,
+    "normalSpeedOption": "1",
+    "highSpeedOption": "64",
+    "sustainedSceneSha256": "b04885fef0401b1058648022204eca710745cefe6a09dc3c0e9e38626a0284bf",
+    "baselineConfig": {
+      "assignment": "nearest",
+      "priority": "fixed",
+      "routing": "distance",
+      "congestionWeight": 0,
+      "planningWindow": 12,
+      "replanInterval": 3
+    }
+  },
+  "notes": [
+    "rAF intervals describe callback scheduling, not screen-presented FPS. Headless Chrome has no physical display presentation measurement.",
+    "Canvas paint-frame intervals count animation frames containing a main map drawing call; canvas API time excludes JS preparation and browser compositor work.",
+    "Worker bytes are sampled JSON-size estimates (one in 20 per message type), not exact structured-clone transfer bytes. Encoding instrumentation duration is reported.",
+    "Input feedback begins at captured click/change/wheel dispatch and ends at a subsequent rAF observing the visible UI condition; worker acknowledgement is separate.",
+    "1× uses each version’s explicitly implemented clock; actual ticks/s is reported. The revised app changes 1× from the old ~12.5 tick/s target to 6 tick/s."
+  ],
+  "samples": [],
+  "interactions": [
+    {
+      "name": "tab-Optimize",
+      "expected": "Optimize",
+      "targetTick": null,
+      "inputAt": 272.40000009536743,
+      "eventType": "click",
+      "workerAckMs": null,
+      "visibleFeedbackMs": 14
+    },
+    {
+      "name": "tab-Inspector",
+      "expected": "Inspector",
+      "targetTick": null,
+      "inputAt": 554.7000000476837,
+      "eventType": "click",
+      "workerAckMs": null,
+      "visibleFeedbackMs": 14.5
+    },
+    {
+      "name": "select-robot",
+      "expected": null,
+      "targetTick": null,
+      "inputAt": 611.9000000953674,
+      "eventType": "change",
+      "workerAckMs": null,
+      "visibleFeedbackMs": 7.8999998569488525
+    },
+    {
+      "name": "tab-Policy",
+      "expected": "Policy",
+      "targetTick": null,
+      "inputAt": 638.6000001430511,
+      "eventType": "click",
+      "workerAckMs": null,
+      "visibleFeedbackMs": 13.799999952316284
+    },
+    {
+      "name": "tab-Optimize",
+      "expected": "Optimize",
+      "targetTick": null,
+      "inputAt": 722,
+      "eventType": "click",
+      "workerAckMs": null,
+      "visibleFeedbackMs": 14
+    },
+    {
+      "name": "search-cancel",
+      "expected": null,
+      "targetTick": null,
+      "inputAt": 805.2000000476837,
+      "eventType": "click",
+      "workerAckMs": 702.4000000953674,
+      "visibleFeedbackMs": 14.400000095367432
+    },
+    {
+      "name": "comparison-cancel",
+      "expected": null,
+      "targetTick": null,
+      "inputAt": 1688.7000000476837,
+      "eventType": "click",
+      "workerAckMs": 295.40000009536743,
+      "visibleFeedbackMs": 14.099999904632568
+    }
+  ],
+  "consoleErrors": [],
+  "failures": [],
+  "screenshots": [],
+  "servedAssets": [
+    {
+      "path": "/assets/index-BdRyO3No.js",
+      "bytes": 238978,
+      "sha256": "fe330d62cb8823dfc29e0e1a07c007061c82d2f7aa9fab30f8f306b92c268bba",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-C6_37oBB.css",
+      "bytes": 17950,
+      "sha256": "54b5eeff5db0025586a886d0fea87de7ae0db390920a7fe15b10a198daeef862",
+      "status": 200
+    },
+    {
+      "path": "/assets/simulation.worker-o14hPQJN.js",
+      "bytes": 21871,
+      "sha256": "94e1c2a020baf00be8cbde26a0f97740fc1f7a7a5dff2ac14004b02cbaeb7d3b",
+      "status": 200
+    },
+    {
+      "path": "/assets/search.worker-Cz8HGEgS.js",
+      "bytes": 29735,
+      "sha256": "b83a0cbaa67cc6972f5db061052c48f0b058714cabec06a59db361d44534a424",
+      "status": 200
+    }
+  ],
+  "zoomDuringSearch": {
+    "available": false,
+    "reason": "Original canvas does not implement zoom/pan."
+  },
+  "optimizationInteractionSample": {
+    "active": false,
+    "startAt": 335,
+    "endAt": 1573.4000000953674,
+    "rafIntervals": [
+      16.700000000000045,
+      16.69999999999999,
+      16.69999999999999,
+      16.69999999999999,
+      16.600000000000023,
+      16.599999999999966,
+      16.700000000000045,
+      16.69999999999999,
+      16.69999999999999,
+      16.600000000000023,
+      16.699999999999932,
+      16.700000000000045,
+      16.600000000000023,
+      16.600000000000023,
+      16.699999999999932,
+      16.800000000000068,
+      16.59999999999991,
+      16.700000000000045,
+      16.600000000000023,
+      16.699999999999932,
+      16.700000000000045,
+      16.600000000000023,
+      16.699999999999932,
+      16.600000000000023,
+      16.700000000000045,
+      16.600000000000023,
+      16.699999999999932,
+      16.700000000000045,
+      16.699999999999932,
+      16.600000000000023,
+      16.700000000000045,
+      16.600000000000023,
+      16.699999999999932,
+      16.700000000000045,
+      16.699999999999932,
+      16.600000000000023,
+      16.700000000000045,
+      16.699999999999932,
+      16.700000000000045,
+      16.600000000000023,
+      16.600000000000023,
+      16.700000000000045,
+      16.699999999999818,
+      16.700000000000045,
+      16.600000000000136,
+      16.699999999999818,
+      16.700000000000045,
+      16.600000000000136,
+      16.699999999999818,
+      16.600000000000136,
+      16.700000000000045,
+      16.699999999999818,
+      16.600000000000136,
+      16.700000000000045,
+      16.699999999999818,
+      16.700000000000045,
+      16.700000000000045,
+      16.59999999999991,
+      16.700000000000045,
+      16.600000000000136,
+      16.699999999999818,
+      16.700000000000045,
+      16.700000000000045,
+      16.5,
+      16.799999999999955,
+      16.700000000000045,
+      16.59999999999991,
+      16.700000000000045,
+      16.700000000000045,
+      16.59999999999991,
+      16.700000000000045,
+      16.600000000000136,
+      16.699999999999818,
+      16.700000000000045
+    ],
+    "paintFrameIntervals": [],
+    "longTasks": [],
+    "bitmapResets": 2,
+    "canvasCalls": 247,
+    "canvasApiMs": 0.20000028610229492,
+    "workerMessages": {
+      "search:progress": 4,
+      "search:result": 1
+    },
+    "workerJsonSamples": {
+      "search:progress": {
+        "samples": 1,
+        "bytes": 127
+      },
+      "search:result": {
+        "samples": 1,
+        "bytes": 3130
+      }
+    },
+    "workerEstimateBytes": 3638,
+    "workerMeasureMs": 0,
+    "firstWorkerTick": null,
+    "lastWorkerTick": null,
+    "startUiTick": 0,
+    "endUiTick": 0
+  },
+  "pageGeometry": {
+    "viewportHeight": 900,
+    "scrollHeight": 1080,
+    "scrollWidth": 1440,
+    "viewportWidth": 1440
+  }
+}

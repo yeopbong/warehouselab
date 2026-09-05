@@ -1,0 +1,39 @@
+{
+  "name": "warehouselab",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "validate": "npm run typecheck && npm test && npm run build && npm run benchmark -- --quick",
+    "benchmark": "node --import tsx scripts/benchmark.ts",
+    "headless": "node --import tsx scripts/headless.ts",
+    "format": "prettier --write src scripts tests e2e *.ts *.json *.html .github",
+    "examples": "node --import tsx scripts/export-examples.ts",
+    "measure:browser": "node scripts/measure-browser.mjs"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2",
+    "vitest": "^5.0.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "assignment": "earliest",
+  "priority": "waiting",
+  "routing": "congestion",
+  "congestionWeight": 1.5,
+  "planningWindow": 16,
+  "replanInterval": 2
+}

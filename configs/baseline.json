@@ -1,0 +1,8 @@
+{
+  "assignment": "nearest",
+  "priority": "fixed",
+  "routing": "distance",
+  "congestionWeight": 0,
+  "planningWindow": 12,
+  "replanInterval": 3
+}

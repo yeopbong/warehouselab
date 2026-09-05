@@ -1,0 +1,2155 @@
+{
+  "formatVersion": 2,
+  "mode": "smoke-validation",
+  "timestamp": "2026-09-05T09:47:27.660Z",
+  "codeVersion": "40aaab7",
+  "scope": "benchmark-set",
+  "demandMode": "sustained-pre-generated",
+  "trainingScenarios": [
+    {
+      "schemaVersion": 1,
+      "id": "sustained-production",
+      "name": "Sustained production",
+      "description": "Twelve robots, three production cells and two dispatch stations. A seeded stream supplies 2,000 orders every five ticks; observe sustained throughput and backlog over 600–1,200 ticks, with no warm-up.",
+      "width": 24,
+      "height": 18,
+      "seed": 512,
+      "obstacles": [],
+      "stations": [
+        {
+          "id": "supply-1",
+          "role": "supply",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "service": {
+            "x": 2,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "supplyItem": "raw",
+          "supplyInterval": 3
+        },
+        {
+          "id": "supply-2",
+          "role": "supply",
+          "position": {
+            "x": 10,
+            "y": 2
+          },
+          "service": {
+            "x": 10,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "supplyItem": "raw",
+          "supplyInterval": 3
+        },
+        {
+          "id": "supply-3",
+          "role": "supply",
+          "position": {
+            "x": 18,
+            "y": 2
+          },
+          "service": {
+            "x": 18,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "supplyItem": "raw",
+          "supplyInterval": 3
+        },
+        {
+          "id": "press-1",
+          "role": "process",
+          "position": {
+            "x": 6,
+            "y": 2
+          },
+          "service": {
+            "x": 6,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "recipeId": "press"
+        },
+        {
+          "id": "press-2",
+          "role": "process",
+          "position": {
+            "x": 14,
+            "y": 2
+          },
+          "service": {
+            "x": 14,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "recipeId": "press"
+        },
+        {
+          "id": "press-3",
+          "role": "process",
+          "position": {
+            "x": 22,
+            "y": 2
+          },
+          "service": {
+            "x": 22,
+            "y": 3
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3,
+          "recipeId": "press"
+        },
+        {
+          "id": "assembly-1",
+          "role": "assembly",
+          "position": {
+            "x": 6,
+            "y": 10
+          },
+          "service": {
+            "x": 6,
+            "y": 9
+          },
+          "inputCapacity": 4,
+          "outputCapacity": 3,
+          "recipeId": "assemble"
+        },
+        {
+          "id": "assembly-2",
+          "role": "assembly",
+          "position": {
+            "x": 14,
+            "y": 10
+          },
+          "service": {
+            "x": 14,
+            "y": 9
+          },
+          "inputCapacity": 4,
+          "outputCapacity": 3,
+          "recipeId": "assemble"
+        },
+        {
+          "id": "assembly-3",
+          "role": "assembly",
+          "position": {
+            "x": 22,
+            "y": 10
+          },
+          "service": {
+            "x": 22,
+            "y": 9
+          },
+          "inputCapacity": 4,
+          "outputCapacity": 3,
+          "recipeId": "assemble"
+        },
+        {
+          "id": "dispatch-1",
+          "role": "delivery",
+          "position": {
+            "x": 3,
+            "y": 12
+          },
+          "service": {
+            "x": 3,
+            "y": 11
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3
+        },
+        {
+          "id": "dispatch-2",
+          "role": "delivery",
+          "position": {
+            "x": 19,
+            "y": 12
+          },
+          "service": {
+            "x": 19,
+            "y": 11
+          },
+          "inputCapacity": 3,
+          "outputCapacity": 3
+        }
+      ],
+      "robots": [
+        {
+          "id": "R01",
+          "position": {
+            "x": 1,
+            "y": 16
+          }
+        },
+        {
+          "id": "R02",
+          "position": {
+            "x": 3,
+            "y": 16
+          }
+        },
+        {
+          "id": "R03",
+          "position": {
+            "x": 5,
+            "y": 16
+          }
+        },
+        {
+          "id": "R04",
+          "position": {
+            "x": 7,
+            "y": 16
+          }
+        },
+        {
+          "id": "R05",
+          "position": {
+            "x": 9,
+            "y": 16
+          }
+        },
+        {
+          "id": "R06",
+          "position": {
+            "x": 11,
+            "y": 16
+          }
+        },
+        {
+          "id": "R07",
+          "position": {
+            "x": 13,
+            "y": 16
+          }
+        },
+        {
+          "id": "R08",
+          "position": {
+            "x": 15,
+            "y": 16
+          }
+        },
+        {
+          "id": "R09",
+          "position": {
+            "x": 17,
+            "y": 16
+          }
+        },
+        {
+          "id": "R10",
+          "position": {
+            "x": 19,
+            "y": 16
+          }
+        },
+        {
+          "id": "R11",
+          "position": {
+            "x": 21,
+            "y": 16
+          }
+        },
+        {
+          "id": "R12",
+          "position": {
+            "x": 23,
+            "y": 16
+          }
+        }
+      ],
+      "recipes": [
+        {
+          "id": "press",
+          "inputs": {
+            "raw": 1
+          },
+          "output": {
+            "item": "part",
+            "quantity": 1
+          },
+          "duration": 5
+        },
+        {
+          "id": "assemble",
+          "inputs": {
+            "part": 2
+          },
+          "output": {
+            "item": "product",
+            "quantity": 1
+          },
+          "duration": 9
+        }
+      ],
+      "orders": [],
+      "orderStream": {
+        "count": 2000,
+        "interval": 5,
+        "pattern": "uniform",
+        "quantity": 1,
+        "item": "product"
+      }
+    }
+  ],
+  "heldoutScenario": null,
+  "conditions": {
+    "horizon": 600,
+    "evaluationSeeds": [
+      11
+    ],
+    "optimizerSeeds": [
+      7
+    ],
+    "actualSimulationBudgetPerSearch": 4,
+    "actualSimulationsPerCandidate": 1,
+    "heldoutSeed": null,
+    "warmupTicks": 0
+  },
+  "objective": "Mean completedOrders / fixed horizon; ties: fewer unfinished orders, then less waiting. Canonical config provides stable exact ties.",
+  "initialization": "Both methods evaluate BASELINE and QUEUE_AWARE first. Their simulations count in each method budget. Each method has a fresh cache.",
+  "selection": "Best config is selected only on the explicit evaluation scene(s). No independent heldout claim.",
+  "cancelled": false,
+  "error": null,
+  "totalRuntimeMs": 35051.054665999996,
+  "actualSimulations": 8,
+  "searches": [
+    {
+      "method": "random",
+      "status": "completed",
+      "optimizerSeed": 7,
+      "horizon": 600,
+      "seeds": [
+        11
+      ],
+      "codeVersion": "40aaab7",
+      "kernelVersion": "1.1.0",
+      "counters": {
+        "proposals": 4,
+        "cacheHits": 0,
+        "simulations": 4
+      },
+      "budget": 4,
+      "best": {
+        "id": 2,
+        "config": {
+          "assignment": "earliest",
+          "priority": "waiting",
+          "routing": "congestion",
+          "congestionWeight": 1.5,
+          "planningWindow": 16,
+          "replanInterval": 2
+        },
+        "status": "completed",
+        "score": {
+          "throughput": 0.11166666666666666,
+          "unfinishedOrders": 54,
+          "waitingRatio": 0.0015277777777777779
+        },
+        "runs": [
+          {
+            "scenarioId": "sustained-production",
+            "scenarioHash": "20e2cc13",
+            "config": {
+              "assignment": "earliest",
+              "priority": "waiting",
+              "routing": "congestion",
+              "congestionWeight": 1.5,
+              "planningWindow": 16,
+              "replanInterval": 2
+            },
+            "seed": 11,
+            "horizon": 600,
+            "kernelVersion": "1.1.0",
+            "codeVersion": "40aaab7",
+            "metrics": {
+              "ticks": 600,
+              "completedOrders": 67,
+              "unfinishedOrders": 54,
+              "deliveredUnits": 67,
+              "throughput": 0.11166666666666666,
+              "meanDelay": 176.59701492537314,
+              "maxDelay": 280,
+              "oldestUnfinishedAge": 264,
+              "waitingRatio": 0.0015277777777777779,
+              "stationUtilization": {
+                "assembly-1": 0.375,
+                "assembly-2": 0.36,
+                "assembly-3": 0.3616666666666667,
+                "press-1": 0.43833333333333335,
+                "press-2": 0.43666666666666665,
+                "press-3": 0.4666666666666667
+              },
+              "stalledTicks": 0,
+              "planningMs": 4442.502107000006
+            },
+            "stateHash": "24304887",
+            "runtimeMs": 4927.830334,
+            "planningMs": 4442.502107000006,
+            "status": "completed"
+          }
+        ],
+        "simulationsAtCompletion": 2
+      },
+      "history": [
+        {
+          "simulations": 1,
+          "proposals": 1,
+          "bestScore": {
+            "throughput": 0.07833333333333334,
+            "unfinishedOrders": 74,
+            "waitingRatio": 0.22180555555555556
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 2,
+          "proposals": 2,
+          "bestScore": {
+            "throughput": 0.11166666666666666,
+            "unfinishedOrders": 54,
+            "waitingRatio": 0.0015277777777777779
+          },
+          "bestConfig": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          }
+        },
+        {
+          "simulations": 3,
+          "proposals": 3,
+          "bestScore": {
+            "throughput": 0.11166666666666666,
+            "unfinishedOrders": 54,
+            "waitingRatio": 0.0015277777777777779
+          },
+          "bestConfig": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          }
+        },
+        {
+          "simulations": 4,
+          "proposals": 4,
+          "bestScore": {
+            "throughput": 0.11166666666666666,
+            "unfinishedOrders": 54,
+            "waitingRatio": 0.0015277777777777779
+          },
+          "bestConfig": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          }
+        }
+      ],
+      "records": [
+        {
+          "id": 1,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.07833333333333334,
+            "unfinishedOrders": 74,
+            "waitingRatio": 0.22180555555555556
+          },
+          "runs": [
+            {
+              "scenarioId": "sustained-production",
+              "scenarioHash": "20e2cc13",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 600,
+              "kernelVersion": "1.1.0",
+              "codeVersion": "40aaab7",
+              "metrics": {
+                "ticks": 600,
+                "completedOrders": 47,
+                "unfinishedOrders": 74,
+                "deliveredUnits": 47,
+                "throughput": 0.07833333333333334,
+                "meanDelay": 187.7659574468085,
+                "maxDelay": 351,
+                "oldestUnfinishedAge": 365,
+                "waitingRatio": 0.22180555555555556,
+                "stationUtilization": {
+                  "assembly-1": 0.375,
+                  "assembly-2": 0.3,
+                  "assembly-3": 0.06,
+                  "press-1": 0.3333333333333333,
+                  "press-2": 0.44166666666666665,
+                  "press-3": 0.10833333333333334
+                },
+                "stalledTicks": 0,
+                "planningMs": 2482.369007999999
+              },
+              "stateHash": "801c4598",
+              "runtimeMs": 2829.943916,
+              "planningMs": 2482.369007999999,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 1
+        },
+        {
+          "id": 2,
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.11166666666666666,
+            "unfinishedOrders": 54,
+            "waitingRatio": 0.0015277777777777779
+          },
+          "runs": [
+            {
+              "scenarioId": "sustained-production",
+              "scenarioHash": "20e2cc13",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.5,
+                "planningWindow": 16,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 600,
+              "kernelVersion": "1.1.0",
+              "codeVersion": "40aaab7",
+              "metrics": {
+                "ticks": 600,
+                "completedOrders": 67,
+                "unfinishedOrders": 54,
+                "deliveredUnits": 67,
+                "throughput": 0.11166666666666666,
+                "meanDelay": 176.59701492537314,
+                "maxDelay": 280,
+                "oldestUnfinishedAge": 264,
+                "waitingRatio": 0.0015277777777777779,
+                "stationUtilization": {
+                  "assembly-1": 0.375,
+                  "assembly-2": 0.36,
+                  "assembly-3": 0.3616666666666667,
+                  "press-1": 0.43833333333333335,
+                  "press-2": 0.43666666666666665,
+                  "press-3": 0.4666666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 4442.502107000006
+              },
+              "stateHash": "24304887",
+              "runtimeMs": 4927.830334,
+              "planningMs": 4442.502107000006,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 2
+        },
+        {
+          "id": 3,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.075,
+            "unfinishedOrders": 76,
+            "waitingRatio": 0.04902777777777778
+          },
+          "runs": [
+            {
+              "scenarioId": "sustained-production",
+              "scenarioHash": "20e2cc13",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.495143528562039,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 600,
+              "kernelVersion": "1.1.0",
+              "codeVersion": "40aaab7",
+              "metrics": {
+                "ticks": 600,
+                "completedOrders": 45,
+                "unfinishedOrders": 76,
+                "deliveredUnits": 45,
+                "throughput": 0.075,
+                "meanDelay": 234.84444444444443,
+                "maxDelay": 377,
+                "oldestUnfinishedAge": 375,
+                "waitingRatio": 0.04902777777777778,
+                "stationUtilization": {
+                  "assembly-1": 0.375,
+                  "assembly-2": 0.255,
+                  "assembly-3": 0.09,
+                  "press-1": 0.4583333333333333,
+                  "press-2": 0.3233333333333333,
+                  "press-3": 0.08333333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 6024.461952000016
+              },
+              "stateHash": "c275d6a4",
+              "runtimeMs": 6562.799542000001,
+              "planningMs": 6024.461952000016,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 3
+        },
+        {
+          "id": 4,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.64911044947803,
+            "planningWindow": 11,
+            "replanInterval": 2
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.08666666666666667,
+            "unfinishedOrders": 69,
+            "waitingRatio": 0.002361111111111111
+          },
+          "runs": [
+            {
+              "scenarioId": "sustained-production",
+              "scenarioHash": "20e2cc13",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.64911044947803,
+                "planningWindow": 11,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 600,
+              "kernelVersion": "1.1.0",
+              "codeVersion": "40aaab7",
+              "metrics": {
+                "ticks": 600,
+                "completedOrders": 52,
+                "unfinishedOrders": 69,
+                "deliveredUnits": 52,
+                "throughput": 0.08666666666666667,
+                "meanDelay": 206.15384615384616,
+                "maxDelay": 341,
+                "oldestUnfinishedAge": 339,
+                "waitingRatio": 0.002361111111111111,
+                "stationUtilization": {
+                  "assembly-1": 0.42,
+                  "assembly-2": 0.315,
+                  "assembly-3": 0.075,
+                  "press-1": 0.475,
+                  "press-2": 0.38166666666666665,
+                  "press-3": 0.11666666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 2450.5682759999927
+              },
+              "stateHash": "5fedae98",
+              "runtimeMs": 2774.950249999998,
+              "planningMs": 2450.5682759999927,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 4
+        }
+      ],
+      "runs": [
+        {
+          "scenarioId": "sustained-production",
+          "scenarioHash": "20e2cc13",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 600,
+          "kernelVersion": "1.1.0",
+          "codeVersion": "40aaab7",
+          "metrics": {
+            "ticks": 600,
+            "completedOrders": 47,
+            "unfinishedOrders": 74,
+            "deliveredUnits": 47,
+            "throughput": 0.07833333333333334,
+            "meanDelay": 187.7659574468085,
+            "maxDelay": 351,
+            "oldestUnfinishedAge": 365,
+            "waitingRatio": 0.22180555555555556,
+            "stationUtilization": {
+              "assembly-1": 0.375,
+              "assembly-2": 0.3,
+              "assembly-3": 0.06,
+              "press-1": 0.3333333333333333,
+              "press-2": 0.44166666666666665,
+              "press-3": 0.10833333333333334
+            },
+            "stalledTicks": 0,
+            "planningMs": 2482.369007999999
+          },
+          "stateHash": "801c4598",
+          "runtimeMs": 2829.943916,
+          "planningMs": 2482.369007999999,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "sustained-production",
+          "scenarioHash": "20e2cc13",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 600,
+          "kernelVersion": "1.1.0",
+          "codeVersion": "40aaab7",
+          "metrics": {
+            "ticks": 600,
+            "completedOrders": 67,
+            "unfinishedOrders": 54,
+            "deliveredUnits": 67,
+            "throughput": 0.11166666666666666,
+            "meanDelay": 176.59701492537314,
+            "maxDelay": 280,
+            "oldestUnfinishedAge": 264,
+            "waitingRatio": 0.0015277777777777779,
+            "stationUtilization": {
+              "assembly-1": 0.375,
+              "assembly-2": 0.36,
+              "assembly-3": 0.3616666666666667,
+              "press-1": 0.43833333333333335,
+              "press-2": 0.43666666666666665,
+              "press-3": 0.4666666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 4442.502107000006
+          },
+          "stateHash": "24304887",
+          "runtimeMs": 4927.830334,
+          "planningMs": 4442.502107000006,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "sustained-production",
+          "scenarioHash": "20e2cc13",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 600,
+          "kernelVersion": "1.1.0",
+          "codeVersion": "40aaab7",
+          "metrics": {
+            "ticks": 600,
+            "completedOrders": 45,
+            "unfinishedOrders": 76,
+            "deliveredUnits": 45,
+            "throughput": 0.075,
+            "meanDelay": 234.84444444444443,
+            "maxDelay": 377,
+            "oldestUnfinishedAge": 375,
+            "waitingRatio": 0.04902777777777778,
+            "stationUtilization": {
+              "assembly-1": 0.375,
+              "assembly-2": 0.255,
+              "assembly-3": 0.09,
+              "press-1": 0.4583333333333333,
+              "press-2": 0.3233333333333333,
+              "press-3": 0.08333333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 6024.461952000016
+          },
+          "stateHash": "c275d6a4",
+          "runtimeMs": 6562.799542000001,
+          "planningMs": 6024.461952000016,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "sustained-production",
+          "scenarioHash": "20e2cc13",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.64911044947803,
+            "planningWindow": 11,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 600,
+          "kernelVersion": "1.1.0",
+          "codeVersion": "40aaab7",
+          "metrics": {
+            "ticks": 600,
+            "completedOrders": 52,
+            "unfinishedOrders": 69,
+            "deliveredUnits": 52,
+            "throughput": 0.08666666666666667,
+            "meanDelay": 206.15384615384616,
+            "maxDelay": 341,
+            "oldestUnfinishedAge": 339,
+            "waitingRatio": 0.002361111111111111,
+            "stationUtilization": {
+              "assembly-1": 0.42,
+              "assembly-2": 0.315,
+              "assembly-3": 0.075,
+              "press-1": 0.475,
+              "press-2": 0.38166666666666665,
+              "press-3": 0.11666666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 2450.5682759999927
+          },
+          "stateHash": "5fedae98",
+          "runtimeMs": 2774.950249999998,
+          "planningMs": 2450.5682759999927,
+          "status": "completed"
+        }
+      ],
+      "runtimeMs": 17141.565041,
+      "cacheCapacity": 2048,
+      "evaluation": {
+        "scope": "benchmark-set",
+        "scenarios": [
+          {
+            "schemaVersion": 1,
+            "id": "sustained-production",
+            "name": "Sustained production",
+            "description": "Twelve robots, three production cells and two dispatch stations. A seeded stream supplies 2,000 orders every five ticks; observe sustained throughput and backlog over 600–1,200 ticks, with no warm-up.",
+            "width": 24,
+            "height": 18,
+            "seed": 512,
+            "obstacles": [],
+            "stations": [
+              {
+                "id": "supply-1",
+                "role": "supply",
+                "position": {
+                  "x": 2,
+                  "y": 2
+                },
+                "service": {
+                  "x": 2,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "supplyItem": "raw",
+                "supplyInterval": 3
+              },
+              {
+                "id": "supply-2",
+                "role": "supply",
+                "position": {
+                  "x": 10,
+                  "y": 2
+                },
+                "service": {
+                  "x": 10,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "supplyItem": "raw",
+                "supplyInterval": 3
+              },
+              {
+                "id": "supply-3",
+                "role": "supply",
+                "position": {
+                  "x": 18,
+                  "y": 2
+                },
+                "service": {
+                  "x": 18,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "supplyItem": "raw",
+                "supplyInterval": 3
+              },
+              {
+                "id": "press-1",
+                "role": "process",
+                "position": {
+                  "x": 6,
+                  "y": 2
+                },
+                "service": {
+                  "x": 6,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "recipeId": "press"
+              },
+              {
+                "id": "press-2",
+                "role": "process",
+                "position": {
+                  "x": 14,
+                  "y": 2
+                },
+                "service": {
+                  "x": 14,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "recipeId": "press"
+              },
+              {
+                "id": "press-3",
+                "role": "process",
+                "position": {
+                  "x": 22,
+                  "y": 2
+                },
+                "service": {
+                  "x": 22,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "recipeId": "press"
+              },
+              {
+                "id": "assembly-1",
+                "role": "assembly",
+                "position": {
+                  "x": 6,
+                  "y": 10
+                },
+                "service": {
+                  "x": 6,
+                  "y": 9
+                },
+                "inputCapacity": 4,
+                "outputCapacity": 3,
+                "recipeId": "assemble"
+              },
+              {
+                "id": "assembly-2",
+                "role": "assembly",
+                "position": {
+                  "x": 14,
+                  "y": 10
+                },
+                "service": {
+                  "x": 14,
+                  "y": 9
+                },
+                "inputCapacity": 4,
+                "outputCapacity": 3,
+                "recipeId": "assemble"
+              },
+              {
+                "id": "assembly-3",
+                "role": "assembly",
+                "position": {
+                  "x": 22,
+                  "y": 10
+                },
+                "service": {
+                  "x": 22,
+                  "y": 9
+                },
+                "inputCapacity": 4,
+                "outputCapacity": 3,
+                "recipeId": "assemble"
+              },
+              {
+                "id": "dispatch-1",
+                "role": "delivery",
+                "position": {
+                  "x": 3,
+                  "y": 12
+                },
+                "service": {
+                  "x": 3,
+                  "y": 11
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3
+              },
+              {
+                "id": "dispatch-2",
+                "role": "delivery",
+                "position": {
+                  "x": 19,
+                  "y": 12
+                },
+                "service": {
+                  "x": 19,
+                  "y": 11
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3
+              }
+            ],
+            "robots": [
+              {
+                "id": "R01",
+                "position": {
+                  "x": 1,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R02",
+                "position": {
+                  "x": 3,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R03",
+                "position": {
+                  "x": 5,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R04",
+                "position": {
+                  "x": 7,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R05",
+                "position": {
+                  "x": 9,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R06",
+                "position": {
+                  "x": 11,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R07",
+                "position": {
+                  "x": 13,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R08",
+                "position": {
+                  "x": 15,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R09",
+                "position": {
+                  "x": 17,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R10",
+                "position": {
+                  "x": 19,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R11",
+                "position": {
+                  "x": 21,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R12",
+                "position": {
+                  "x": 23,
+                  "y": 16
+                }
+              }
+            ],
+            "recipes": [
+              {
+                "id": "press",
+                "inputs": {
+                  "raw": 1
+                },
+                "output": {
+                  "item": "part",
+                  "quantity": 1
+                },
+                "duration": 5
+              },
+              {
+                "id": "assemble",
+                "inputs": {
+                  "part": 2
+                },
+                "output": {
+                  "item": "product",
+                  "quantity": 1
+                },
+                "duration": 9
+              }
+            ],
+            "orders": [],
+            "orderStream": {
+              "count": 2000,
+              "interval": 5,
+              "pattern": "uniform",
+              "quantity": 1,
+              "item": "product"
+            }
+          }
+        ],
+        "scenarioHashes": [
+          "20e2cc13"
+        ],
+        "seeds": [
+          11
+        ],
+        "horizon": 600,
+        "codeVersion": "40aaab7",
+        "kernelVersion": "1.1.0",
+        "parameterSpace": {
+          "assignment": [
+            "nearest",
+            "earliest"
+          ],
+          "priority": [
+            "fixed",
+            "waiting"
+          ],
+          "routing": [
+            "distance",
+            "congestion"
+          ],
+          "congestionWeight": [
+            0,
+            5
+          ],
+          "planningWindow": [
+            4,
+            32
+          ],
+          "replanInterval": [
+            1,
+            8
+          ]
+        },
+        "evaluationsPerCandidate": 1,
+        "measurement": "completed-orders-through-horizon",
+        "evaluationHash": "c3d00497"
+      },
+      "scope": "benchmark-set",
+      "scenarioHashes": [
+        "20e2cc13"
+      ],
+      "evaluationHash": "c3d00497",
+      "evaluationsPerCandidate": 1,
+      "currentRun": null
+    },
+    {
+      "method": "ga",
+      "status": "completed",
+      "optimizerSeed": 7,
+      "horizon": 600,
+      "seeds": [
+        11
+      ],
+      "codeVersion": "40aaab7",
+      "kernelVersion": "1.1.0",
+      "counters": {
+        "proposals": 4,
+        "cacheHits": 0,
+        "simulations": 4
+      },
+      "budget": 4,
+      "best": {
+        "id": 2,
+        "config": {
+          "assignment": "earliest",
+          "priority": "waiting",
+          "routing": "congestion",
+          "congestionWeight": 1.5,
+          "planningWindow": 16,
+          "replanInterval": 2
+        },
+        "status": "completed",
+        "score": {
+          "throughput": 0.11166666666666666,
+          "unfinishedOrders": 54,
+          "waitingRatio": 0.0015277777777777779
+        },
+        "runs": [
+          {
+            "scenarioId": "sustained-production",
+            "scenarioHash": "20e2cc13",
+            "config": {
+              "assignment": "earliest",
+              "priority": "waiting",
+              "routing": "congestion",
+              "congestionWeight": 1.5,
+              "planningWindow": 16,
+              "replanInterval": 2
+            },
+            "seed": 11,
+            "horizon": 600,
+            "kernelVersion": "1.1.0",
+            "codeVersion": "40aaab7",
+            "metrics": {
+              "ticks": 600,
+              "completedOrders": 67,
+              "unfinishedOrders": 54,
+              "deliveredUnits": 67,
+              "throughput": 0.11166666666666666,
+              "meanDelay": 176.59701492537314,
+              "maxDelay": 280,
+              "oldestUnfinishedAge": 264,
+              "waitingRatio": 0.0015277777777777779,
+              "stationUtilization": {
+                "assembly-1": 0.375,
+                "assembly-2": 0.36,
+                "assembly-3": 0.3616666666666667,
+                "press-1": 0.43833333333333335,
+                "press-2": 0.43666666666666665,
+                "press-3": 0.4666666666666667
+              },
+              "stalledTicks": 0,
+              "planningMs": 4421.314785000006
+            },
+            "stateHash": "24304887",
+            "runtimeMs": 4893.220958999998,
+            "planningMs": 4421.314785000006,
+            "status": "completed"
+          }
+        ],
+        "simulationsAtCompletion": 2
+      },
+      "history": [
+        {
+          "simulations": 1,
+          "proposals": 1,
+          "bestScore": {
+            "throughput": 0.07833333333333334,
+            "unfinishedOrders": 74,
+            "waitingRatio": 0.22180555555555556
+          },
+          "bestConfig": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          }
+        },
+        {
+          "simulations": 2,
+          "proposals": 2,
+          "bestScore": {
+            "throughput": 0.11166666666666666,
+            "unfinishedOrders": 54,
+            "waitingRatio": 0.0015277777777777779
+          },
+          "bestConfig": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          }
+        },
+        {
+          "simulations": 3,
+          "proposals": 3,
+          "bestScore": {
+            "throughput": 0.11166666666666666,
+            "unfinishedOrders": 54,
+            "waitingRatio": 0.0015277777777777779
+          },
+          "bestConfig": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          }
+        },
+        {
+          "simulations": 4,
+          "proposals": 4,
+          "bestScore": {
+            "throughput": 0.11166666666666666,
+            "unfinishedOrders": 54,
+            "waitingRatio": 0.0015277777777777779
+          },
+          "bestConfig": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          }
+        }
+      ],
+      "records": [
+        {
+          "id": 1,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.07833333333333334,
+            "unfinishedOrders": 74,
+            "waitingRatio": 0.22180555555555556
+          },
+          "runs": [
+            {
+              "scenarioId": "sustained-production",
+              "scenarioHash": "20e2cc13",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "distance",
+                "congestionWeight": 0,
+                "planningWindow": 12,
+                "replanInterval": 3
+              },
+              "seed": 11,
+              "horizon": 600,
+              "kernelVersion": "1.1.0",
+              "codeVersion": "40aaab7",
+              "metrics": {
+                "ticks": 600,
+                "completedOrders": 47,
+                "unfinishedOrders": 74,
+                "deliveredUnits": 47,
+                "throughput": 0.07833333333333334,
+                "meanDelay": 187.7659574468085,
+                "maxDelay": 351,
+                "oldestUnfinishedAge": 365,
+                "waitingRatio": 0.22180555555555556,
+                "stationUtilization": {
+                  "assembly-1": 0.375,
+                  "assembly-2": 0.3,
+                  "assembly-3": 0.06,
+                  "press-1": 0.3333333333333333,
+                  "press-2": 0.44166666666666665,
+                  "press-3": 0.10833333333333334
+                },
+                "stalledTicks": 0,
+                "planningMs": 2388.473504000034
+              },
+              "stateHash": "801c4598",
+              "runtimeMs": 2697.089791999999,
+              "planningMs": 2388.473504000034,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 1
+        },
+        {
+          "id": 2,
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.11166666666666666,
+            "unfinishedOrders": 54,
+            "waitingRatio": 0.0015277777777777779
+          },
+          "runs": [
+            {
+              "scenarioId": "sustained-production",
+              "scenarioHash": "20e2cc13",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 1.5,
+                "planningWindow": 16,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 600,
+              "kernelVersion": "1.1.0",
+              "codeVersion": "40aaab7",
+              "metrics": {
+                "ticks": 600,
+                "completedOrders": 67,
+                "unfinishedOrders": 54,
+                "deliveredUnits": 67,
+                "throughput": 0.11166666666666666,
+                "meanDelay": 176.59701492537314,
+                "maxDelay": 280,
+                "oldestUnfinishedAge": 264,
+                "waitingRatio": 0.0015277777777777779,
+                "stationUtilization": {
+                  "assembly-1": 0.375,
+                  "assembly-2": 0.36,
+                  "assembly-3": 0.3616666666666667,
+                  "press-1": 0.43833333333333335,
+                  "press-2": 0.43666666666666665,
+                  "press-3": 0.4666666666666667
+                },
+                "stalledTicks": 0,
+                "planningMs": 4421.314785000006
+              },
+              "stateHash": "24304887",
+              "runtimeMs": 4893.220958999998,
+              "planningMs": 4421.314785000006,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 2
+        },
+        {
+          "id": 3,
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.075,
+            "unfinishedOrders": 76,
+            "waitingRatio": 0.04902777777777778
+          },
+          "runs": [
+            {
+              "scenarioId": "sustained-production",
+              "scenarioHash": "20e2cc13",
+              "config": {
+                "assignment": "nearest",
+                "priority": "fixed",
+                "routing": "congestion",
+                "congestionWeight": 3.495143528562039,
+                "planningWindow": 19,
+                "replanInterval": 4
+              },
+              "seed": 11,
+              "horizon": 600,
+              "kernelVersion": "1.1.0",
+              "codeVersion": "40aaab7",
+              "metrics": {
+                "ticks": 600,
+                "completedOrders": 45,
+                "unfinishedOrders": 76,
+                "deliveredUnits": 45,
+                "throughput": 0.075,
+                "meanDelay": 234.84444444444443,
+                "maxDelay": 377,
+                "oldestUnfinishedAge": 375,
+                "waitingRatio": 0.04902777777777778,
+                "stationUtilization": {
+                  "assembly-1": 0.375,
+                  "assembly-2": 0.255,
+                  "assembly-3": 0.09,
+                  "press-1": 0.4583333333333333,
+                  "press-2": 0.3233333333333333,
+                  "press-3": 0.08333333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 6113.098999000009
+              },
+              "stateHash": "c275d6a4",
+              "runtimeMs": 6652.822499999998,
+              "planningMs": 6113.098999000009,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 3
+        },
+        {
+          "id": 4,
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 0.6091434651752934,
+            "planningWindow": 14,
+            "replanInterval": 2
+          },
+          "status": "completed",
+          "score": {
+            "throughput": 0.11,
+            "unfinishedOrders": 55,
+            "waitingRatio": 0.0016666666666666668
+          },
+          "runs": [
+            {
+              "scenarioId": "sustained-production",
+              "scenarioHash": "20e2cc13",
+              "config": {
+                "assignment": "earliest",
+                "priority": "waiting",
+                "routing": "congestion",
+                "congestionWeight": 0.6091434651752934,
+                "planningWindow": 14,
+                "replanInterval": 2
+              },
+              "seed": 11,
+              "horizon": 600,
+              "kernelVersion": "1.1.0",
+              "codeVersion": "40aaab7",
+              "metrics": {
+                "ticks": 600,
+                "completedOrders": 66,
+                "unfinishedOrders": 55,
+                "deliveredUnits": 66,
+                "throughput": 0.11,
+                "meanDelay": 176.92424242424244,
+                "maxDelay": 272,
+                "oldestUnfinishedAge": 270,
+                "waitingRatio": 0.0016666666666666668,
+                "stationUtilization": {
+                  "assembly-1": 0.37,
+                  "assembly-2": 0.36,
+                  "assembly-3": 0.345,
+                  "press-1": 0.43333333333333335,
+                  "press-2": 0.435,
+                  "press-3": 0.4483333333333333
+                },
+                "stalledTicks": 0,
+                "planningMs": 3190.229118000123
+              },
+              "stateHash": "1b3f8f1c",
+              "runtimeMs": 3594.372958,
+              "planningMs": 3190.229118000123,
+              "status": "completed"
+            }
+          ],
+          "simulationsAtCompletion": 4
+        }
+      ],
+      "runs": [
+        {
+          "scenarioId": "sustained-production",
+          "scenarioHash": "20e2cc13",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "distance",
+            "congestionWeight": 0,
+            "planningWindow": 12,
+            "replanInterval": 3
+          },
+          "seed": 11,
+          "horizon": 600,
+          "kernelVersion": "1.1.0",
+          "codeVersion": "40aaab7",
+          "metrics": {
+            "ticks": 600,
+            "completedOrders": 47,
+            "unfinishedOrders": 74,
+            "deliveredUnits": 47,
+            "throughput": 0.07833333333333334,
+            "meanDelay": 187.7659574468085,
+            "maxDelay": 351,
+            "oldestUnfinishedAge": 365,
+            "waitingRatio": 0.22180555555555556,
+            "stationUtilization": {
+              "assembly-1": 0.375,
+              "assembly-2": 0.3,
+              "assembly-3": 0.06,
+              "press-1": 0.3333333333333333,
+              "press-2": 0.44166666666666665,
+              "press-3": 0.10833333333333334
+            },
+            "stalledTicks": 0,
+            "planningMs": 2388.473504000034
+          },
+          "stateHash": "801c4598",
+          "runtimeMs": 2697.089791999999,
+          "planningMs": 2388.473504000034,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "sustained-production",
+          "scenarioHash": "20e2cc13",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 1.5,
+            "planningWindow": 16,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 600,
+          "kernelVersion": "1.1.0",
+          "codeVersion": "40aaab7",
+          "metrics": {
+            "ticks": 600,
+            "completedOrders": 67,
+            "unfinishedOrders": 54,
+            "deliveredUnits": 67,
+            "throughput": 0.11166666666666666,
+            "meanDelay": 176.59701492537314,
+            "maxDelay": 280,
+            "oldestUnfinishedAge": 264,
+            "waitingRatio": 0.0015277777777777779,
+            "stationUtilization": {
+              "assembly-1": 0.375,
+              "assembly-2": 0.36,
+              "assembly-3": 0.3616666666666667,
+              "press-1": 0.43833333333333335,
+              "press-2": 0.43666666666666665,
+              "press-3": 0.4666666666666667
+            },
+            "stalledTicks": 0,
+            "planningMs": 4421.314785000006
+          },
+          "stateHash": "24304887",
+          "runtimeMs": 4893.220958999998,
+          "planningMs": 4421.314785000006,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "sustained-production",
+          "scenarioHash": "20e2cc13",
+          "config": {
+            "assignment": "nearest",
+            "priority": "fixed",
+            "routing": "congestion",
+            "congestionWeight": 3.495143528562039,
+            "planningWindow": 19,
+            "replanInterval": 4
+          },
+          "seed": 11,
+          "horizon": 600,
+          "kernelVersion": "1.1.0",
+          "codeVersion": "40aaab7",
+          "metrics": {
+            "ticks": 600,
+            "completedOrders": 45,
+            "unfinishedOrders": 76,
+            "deliveredUnits": 45,
+            "throughput": 0.075,
+            "meanDelay": 234.84444444444443,
+            "maxDelay": 377,
+            "oldestUnfinishedAge": 375,
+            "waitingRatio": 0.04902777777777778,
+            "stationUtilization": {
+              "assembly-1": 0.375,
+              "assembly-2": 0.255,
+              "assembly-3": 0.09,
+              "press-1": 0.4583333333333333,
+              "press-2": 0.3233333333333333,
+              "press-3": 0.08333333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 6113.098999000009
+          },
+          "stateHash": "c275d6a4",
+          "runtimeMs": 6652.822499999998,
+          "planningMs": 6113.098999000009,
+          "status": "completed"
+        },
+        {
+          "scenarioId": "sustained-production",
+          "scenarioHash": "20e2cc13",
+          "config": {
+            "assignment": "earliest",
+            "priority": "waiting",
+            "routing": "congestion",
+            "congestionWeight": 0.6091434651752934,
+            "planningWindow": 14,
+            "replanInterval": 2
+          },
+          "seed": 11,
+          "horizon": 600,
+          "kernelVersion": "1.1.0",
+          "codeVersion": "40aaab7",
+          "metrics": {
+            "ticks": 600,
+            "completedOrders": 66,
+            "unfinishedOrders": 55,
+            "deliveredUnits": 66,
+            "throughput": 0.11,
+            "meanDelay": 176.92424242424244,
+            "maxDelay": 272,
+            "oldestUnfinishedAge": 270,
+            "waitingRatio": 0.0016666666666666668,
+            "stationUtilization": {
+              "assembly-1": 0.37,
+              "assembly-2": 0.36,
+              "assembly-3": 0.345,
+              "press-1": 0.43333333333333335,
+              "press-2": 0.435,
+              "press-3": 0.4483333333333333
+            },
+            "stalledTicks": 0,
+            "planningMs": 3190.229118000123
+          },
+          "stateHash": "1b3f8f1c",
+          "runtimeMs": 3594.372958,
+          "planningMs": 3190.229118000123,
+          "status": "completed"
+        }
+      ],
+      "runtimeMs": 17875.980709,
+      "cacheCapacity": 2048,
+      "evaluation": {
+        "scope": "benchmark-set",
+        "scenarios": [
+          {
+            "schemaVersion": 1,
+            "id": "sustained-production",
+            "name": "Sustained production",
+            "description": "Twelve robots, three production cells and two dispatch stations. A seeded stream supplies 2,000 orders every five ticks; observe sustained throughput and backlog over 600–1,200 ticks, with no warm-up.",
+            "width": 24,
+            "height": 18,
+            "seed": 512,
+            "obstacles": [],
+            "stations": [
+              {
+                "id": "supply-1",
+                "role": "supply",
+                "position": {
+                  "x": 2,
+                  "y": 2
+                },
+                "service": {
+                  "x": 2,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "supplyItem": "raw",
+                "supplyInterval": 3
+              },
+              {
+                "id": "supply-2",
+                "role": "supply",
+                "position": {
+                  "x": 10,
+                  "y": 2
+                },
+                "service": {
+                  "x": 10,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "supplyItem": "raw",
+                "supplyInterval": 3
+              },
+              {
+                "id": "supply-3",
+                "role": "supply",
+                "position": {
+                  "x": 18,
+                  "y": 2
+                },
+                "service": {
+                  "x": 18,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "supplyItem": "raw",
+                "supplyInterval": 3
+              },
+              {
+                "id": "press-1",
+                "role": "process",
+                "position": {
+                  "x": 6,
+                  "y": 2
+                },
+                "service": {
+                  "x": 6,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "recipeId": "press"
+              },
+              {
+                "id": "press-2",
+                "role": "process",
+                "position": {
+                  "x": 14,
+                  "y": 2
+                },
+                "service": {
+                  "x": 14,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "recipeId": "press"
+              },
+              {
+                "id": "press-3",
+                "role": "process",
+                "position": {
+                  "x": 22,
+                  "y": 2
+                },
+                "service": {
+                  "x": 22,
+                  "y": 3
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3,
+                "recipeId": "press"
+              },
+              {
+                "id": "assembly-1",
+                "role": "assembly",
+                "position": {
+                  "x": 6,
+                  "y": 10
+                },
+                "service": {
+                  "x": 6,
+                  "y": 9
+                },
+                "inputCapacity": 4,
+                "outputCapacity": 3,
+                "recipeId": "assemble"
+              },
+              {
+                "id": "assembly-2",
+                "role": "assembly",
+                "position": {
+                  "x": 14,
+                  "y": 10
+                },
+                "service": {
+                  "x": 14,
+                  "y": 9
+                },
+                "inputCapacity": 4,
+                "outputCapacity": 3,
+                "recipeId": "assemble"
+              },
+              {
+                "id": "assembly-3",
+                "role": "assembly",
+                "position": {
+                  "x": 22,
+                  "y": 10
+                },
+                "service": {
+                  "x": 22,
+                  "y": 9
+                },
+                "inputCapacity": 4,
+                "outputCapacity": 3,
+                "recipeId": "assemble"
+              },
+              {
+                "id": "dispatch-1",
+                "role": "delivery",
+                "position": {
+                  "x": 3,
+                  "y": 12
+                },
+                "service": {
+                  "x": 3,
+                  "y": 11
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3
+              },
+              {
+                "id": "dispatch-2",
+                "role": "delivery",
+                "position": {
+                  "x": 19,
+                  "y": 12
+                },
+                "service": {
+                  "x": 19,
+                  "y": 11
+                },
+                "inputCapacity": 3,
+                "outputCapacity": 3
+              }
+            ],
+            "robots": [
+              {
+                "id": "R01",
+                "position": {
+                  "x": 1,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R02",
+                "position": {
+                  "x": 3,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R03",
+                "position": {
+                  "x": 5,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R04",
+                "position": {
+                  "x": 7,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R05",
+                "position": {
+                  "x": 9,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R06",
+                "position": {
+                  "x": 11,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R07",
+                "position": {
+                  "x": 13,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R08",
+                "position": {
+                  "x": 15,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R09",
+                "position": {
+                  "x": 17,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R10",
+                "position": {
+                  "x": 19,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R11",
+                "position": {
+                  "x": 21,
+                  "y": 16
+                }
+              },
+              {
+                "id": "R12",
+                "position": {
+                  "x": 23,
+                  "y": 16
+                }
+              }
+            ],
+            "recipes": [
+              {
+                "id": "press",
+                "inputs": {
+                  "raw": 1
+                },
+                "output": {
+                  "item": "part",
+                  "quantity": 1
+                },
+                "duration": 5
+              },
+              {
+                "id": "assemble",
+                "inputs": {
+                  "part": 2
+                },
+                "output": {
+                  "item": "product",
+                  "quantity": 1
+                },
+                "duration": 9
+              }
+            ],
+            "orders": [],
+            "orderStream": {
+              "count": 2000,
+              "interval": 5,
+              "pattern": "uniform",
+              "quantity": 1,
+              "item": "product"
+            }
+          }
+        ],
+        "scenarioHashes": [
+          "20e2cc13"
+        ],
+        "seeds": [
+          11
+        ],
+        "horizon": 600,
+        "codeVersion": "40aaab7",
+        "kernelVersion": "1.1.0",
+        "parameterSpace": {
+          "assignment": [
+            "nearest",
+            "earliest"
+          ],
+          "priority": [
+            "fixed",
+            "waiting"
+          ],
+          "routing": [
+            "distance",
+            "congestion"
+          ],
+          "congestionWeight": [
+            0,
+            5
+          ],
+          "planningWindow": [
+            4,
+            32
+          ],
+          "replanInterval": [
+            1,
+            8
+          ]
+        },
+        "evaluationsPerCandidate": 1,
+        "measurement": "completed-orders-through-horizon",
+        "evaluationHash": "c3d00497"
+      },
+      "scope": "benchmark-set",
+      "scenarioHashes": [
+        "20e2cc13"
+      ],
+      "evaluationHash": "c3d00497",
+      "evaluationsPerCandidate": 1,
+      "currentRun": null
+    }
+  ],
+  "frozenConfig": {
+    "assignment": "earliest",
+    "priority": "waiting",
+    "routing": "congestion",
+    "congestionWeight": 1.5,
+    "planningWindow": 16,
+    "replanInterval": 2
+  },
+  "heldout": null,
+  "heldoutBaseline": null
+}

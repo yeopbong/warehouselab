@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "heldout-offset",
+  "name": "Held-out offset floor",
+  "description": "A separate offset map with a central island; excluded from automatic selection.",
+  "width": 18,
+  "height": 12,
+  "seed": 991,
+  "obstacles": [
+    {
+      "x": 8,
+      "y": 5
+    },
+    {
+      "x": 9,
+      "y": 5
+    },
+    {
+      "x": 8,
+      "y": 6
+    },
+    {
+      "x": 9,
+      "y": 6
+    }
+  ],
+  "stations": [
+    {
+      "id": "supply-1",
+      "role": "supply",
+      "position": {
+        "x": 2,
+        "y": 8
+      },
+      "service": {
+        "x": 2,
+        "y": 7
+      },
+      "inputCapacity": 3,
+      "outputCapacity": 3,
+      "supplyItem": "raw",
+      "supplyInterval": 3
+    },
+    {
+      "id": "press-1",
+      "role": "process",
+      "position": {
+        "x": 7,
+        "y": 2
+      },
+      "service": {
+        "x": 7,
+        "y": 3
+      },
+      "inputCapacity": 3,
+      "outputCapacity": 3,
+      "recipeId": "press"
+    },
+    {
+      "id": "assembly-1",
+      "role": "assembly",
+      "position": {
+        "x": 14,
+        "y": 2
+      },
+      "service": {
+        "x": 14,
+        "y": 3
+      },
+      "inputCapacity": 4,
+      "outputCapacity": 3,
+      "recipeId": "assemble"
+    },
+    {
+      "id": "dispatch-1",
+      "role": "delivery",
+      "position": {
+        "x": 15,
+        "y": 8
+      },
+      "service": {
+        "x": 15,
+        "y": 7
+      },
+      "inputCapacity": 3,
+      "outputCapacity": 3
+    }
+  ],
+  "robots": [
+    {
+      "id": "R1",
+      "position": {
+        "x": 2,
+        "y": 10
+      }
+    },
+    {
+      "id": "R2",
+      "position": {
+        "x": 5,
+        "y": 10
+      }
+    },
+    {
+      "id": "R3",
+      "position": {
+        "x": 8,
+        "y": 10
+      }
+    }
+  ],
+  "recipes": [
+    {
+      "id": "press",
+      "inputs": {
+        "raw": 1
+      },
+      "output": {
+        "item": "part",
+        "quantity": 1
+      },
+      "duration": 5
+    },
+    {
+      "id": "assemble",
+      "inputs": {
+        "part": 2
+      },
+      "output": {
+        "item": "product",
+        "quantity": 1
+      },
+      "duration": 9
+    }
+  ],
+  "orders": [],
+  "orderStream": {
+    "count": 20,
+    "interval": 28,
+    "pattern": "uniform",
+    "quantity": 1,
+    "item": "product"
+  }
+}
