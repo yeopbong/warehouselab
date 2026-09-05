@@ -90,6 +90,10 @@ export default function OptimizePanel({
       <p className="evaluation-cost">
         {calls} simulation{calls === 1 ? '' : 's'} per candidate · seed {scenario.seed}
       </p>
+      <p className="muted">
+        Higher mean orders per tick wins. Ties prefer fewer unfinished orders, then less traffic
+        waiting. Every candidate uses the same layouts, seed and horizon.
+      </p>
       <Field label="Search method">
         <select
           aria-label="Search method"
@@ -101,6 +105,12 @@ export default function OptimizePanel({
           <option value="random">Random search</option>
         </select>
       </Field>
+      <p className="muted" data-testid="search-method-help">
+        {method === 'random'
+          ? 'Random search samples legal policy configurations independently.'
+          : 'The GA selects better-scoring candidates, combines their discrete choices and continuous weight, then mutates them.'}{' '}
+        Both methods start with the supplied Baseline and Queue aware presets.
+      </p>
       <div className="field-pair">
         <Field label="Simulation budget">
           <input
@@ -121,6 +131,13 @@ export default function OptimizePanel({
           />
         </Field>
       </div>
+      {method === 'ga' && Number(budget) > 0 && Number(budget) <= 3 * calls && (
+        <p className="muted" data-testid="search-budget-hint">
+          Small budgets may only initialize the population. This search starts with three
+          candidates, including two presets: {3 * calls} simulations without cache reuse. Allow
+          more calls to explore offspring.
+        </p>
+      )}
       <Field label="Optimizer seed">
         <input
           type="number"
@@ -181,6 +198,19 @@ export default function OptimizePanel({
           data-scope={result.evaluation.scope}
           data-scenario-hash={result.evaluation.scenarioHashes[0]}
         >
+          {result.best && (
+            <>
+              <span data-testid="best-origin">
+                Recorded search best:{' '}
+                {result.best.id === 1
+                  ? 'supplied Baseline preset'
+                  : result.best.id === 2
+                    ? 'supplied Queue aware preset'
+                    : 'search proposal'}
+                .
+              </span>{' '}
+            </>
+          )}
           From {result.evaluation.scenarios.map((s) => s.name).join(', ')} ·{' '}
           {result.evaluation.horizon} ticks · seed {result.seeds.join(', ')}
           {stale && (
