@@ -1,6 +1,8 @@
 # WarehouseLab
 
-WarehouseLab is a multi-robot factory simulator with layout editing, replay, and policy search. Build a grid-based factory, move materials through a two-stage production chain, and inspect queues, inventory, robot traffic, and completed orders.
+[**Open WarehouseLab**](https://yeopbong.github.io/warehouselab/) — no account, installation, or API key needed. Press **Start** to run the example factory.
+
+WarehouseLab is a multi-robot factory simulator with layout editing, replay, and policy search. Move materials through a two-stage production chain and inspect queues, inventory, traffic, and completed orders.
 
 ![WarehouseLab factory editor and simulation controls](docs/workbench.png)
 
@@ -8,10 +10,10 @@ WarehouseLab is a multi-robot factory simulator with layout editing, replay, and
 
 - Edit walls, stations, and robots with drag tools, Undo/Redo, and JSON import/export.
 - Run, pause, step, and replay executed ticks; inspect robot tasks and production metrics.
-- Compare dispatch and routing policies, or search their parameters with random search and a basic mixed-variable genetic algorithm.
-- Reproduce runs through the browser or Node CLI using the same deterministic TypeScript kernel, recorded seeds, and scene configurations.
+- Adjust task assignment, traffic priority, route cost, congestion weight, planning window, and replanning interval.
+- Compare preset or searched policies using the same deterministic TypeScript kernel in the browser and Node CLI.
 
-The application runs locally without an account, database, or application server.
+Search ranks complete simulations by mean completed orders per tick, then fewer unfinished orders and less traffic waiting. Random search samples configurations; the mixed-variable GA selects, crosses, and mutates configurations using these results. Both first evaluate the same two presets, which count toward the budget. A selected candidate may therefore be a preset.
 
 ## Run locally
 
@@ -24,12 +26,12 @@ npm ci
 npm run dev
 ```
 
-Open the URL printed by Vite, normally `http://127.0.0.1:5173`. Select **Start** to run the initial factory. For a production build, run `npm run build`, then `npm run preview`.
+Open the printed URL, normally `http://127.0.0.1:5173`. For a production build, run `npm run build`, then `npm run preview`.
 
 ## Limits and documentation
 
-Complex layouts can produce congestion or deadlocks; the planner does not guarantee deadlock freedom. Large maps and long runs cost more computation. The supplied experiments do **not** establish that the genetic algorithm outperforms the preset policies. Original examples have finite order batches; a separate sustained-demand scene extends the workload.
+Complex layouts can produce congestion or deadlocks, and large runs cost more computation. Original examples have finite order batches. The supplied experiments do **not** establish GA superiority: the quick run matched baseline throughput, and both searches selected the supplied queue-aware policy in the sustained-demand run.
 
-See the [usage guide](docs/usage.md) for controls, policy parameters, CLI commands, and benchmark settings. [Design](docs/design.md) and [planning notes](docs/planning-notes.md) describe the model and algorithms. [Validation](docs/validation.md) links experiment results and their source versions; [performance measurements](docs/performance.md) document browser timing and its limitations.
+See [usage](docs/usage.md) for controls, saving, search budgets, and CLI commands; [design](docs/design.md) and [planning notes](docs/planning-notes.md) for methods; and [validation and results](docs/validation.md) and [performance measurements](docs/performance.md) for recorded conditions and limitations.
 
 Project code is available under the [MIT license](LICENSE). See [third-party sources](THIRD_PARTY.md) for dependencies and references.
