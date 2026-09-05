@@ -2,14 +2,16 @@
 
 ## Start a factory
 
-Use **Node.js 22.12 or newer** and npm:
+Open [WarehouseLab online](https://yeopbong.github.io/warehouselab/) in a modern browser. No account, installation, or API key is needed; simulation and policy search run in your browser. **Open floor** is ready at tick 0. Press **Start**, then use **Pause** and the timeline to inspect executed ticks. Choose **Policy** to adjust dispatch and routing or **Optimize** to evaluate configurations.
+
+For local use, install **Node.js 22.12 or newer** and npm, then run from the project directory:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open the URL printed by Vite, normally [http://127.0.0.1:5173](http://127.0.0.1:5173). **Open floor** is ready at tick 0. Press **Start**. At **1× = 6 ticks/second**, robots move slowly enough to follow; select a faster setting to see production sooner. Click a robot or machine to inspect it.
+Open the URL printed by Vite, normally [http://127.0.0.1:5173](http://127.0.0.1:5173). The online and local versions use the same application and simulation kernel. At **1× = 6 ticks/second**, robots move slowly enough to follow; select a faster setting to see production sooner. Click a robot or machine to inspect it.
 
 ```text
 1 raw ── press: 5 ticks ──> 1 part
@@ -31,6 +33,8 @@ An order completes only after its finished product reaches the delivery service 
 
 Shortcuts outside text fields: **V** select, **H** pan, **W** wall, **E** erase, **M** move, **Esc** select, **Ctrl/⌘ Z** undo, **Shift Ctrl/⌘ Z** redo, **Ctrl/⌘ S** save. Space is reserved for map panning and does not hijack text input.
 
+Local saves belong to this browser and site; they do not synchronize between the online version, localhost, or other devices. Export JSON to keep a portable copy or share a factory. Refreshing starts the example again; choose **File → Restore** to load your saved factory.
+
 The desktop layout fits 1440×900 and 1280×800 without scrolling the page. Long properties scroll internally. On narrow screens the properties panel starts collapsed and opens over the map.
 
 Normal animation interpolates adjacent, already executed ticks. It never follows an unexecuted planned path or draws a shortcut across several ticks. Above 8×, with reduced motion, or after background resume, the display uses real discrete samples. If computation cannot meet the requested speed, actual tick/s drops; the simulation does not skip ticks. Replay keeps 24 checkpoints including tick 0. Seeking before evicted checkpoints can require more computation.
@@ -39,9 +43,15 @@ Normal animation interpolates adjacent, already executed ticks. It never follows
 
 **Optimize → Current factory** is the default. Starting a search freezes the current edited scene, its order seed, horizon, parameter ranges and code/kernel version. **Benchmark set** explicitly evaluates the first three built-in maps. Each candidate costs one actual simulation per map × seed: one call in the default current-factory UI, three in the benchmark UI.
 
-Choose Random search or Mixed-variable GA, set a simulation budget and horizon, then Start search. Both methods start with the same two counted human policies. Progress shows actual calls, proposals, cache hits and compact best results. Cancel is handled at cooperative tick boundaries, including within a long candidate or comparison; already started partial calls remain counted and cannot become the best result. A single expensive tick must finish before cancellation is acknowledged.
+Choose Random search or Mixed-variable GA, set a simulation budget and horizon, then Start search. The browser defaults to six calls and a 240-tick horizon. Both methods start with the same two counted human policies. Progress shows actual calls, proposals, cache hits and compact best results. Cancel is handled at cooperative tick boundaries, including within a long candidate or comparison; already started partial calls remain counted and cannot become the best result. A single expensive tick must finish before cancellation is acknowledged.
 
-Results retain their full frozen scope and scenario hashes. Editing later does not relabel an old score as a new-map result. **Apply candidate to current factory** applies only the policy and restarts the currently shown layout and seed. **Compare baseline vs candidate** reruns both from that same current layout and seed, using the displayed comparison horizon. It does not compare a historical training score to a new run. Export best/results/comparison to reproduce the recorded conditions. Imported policies are marked as imported, without invented training provenance.
+**How configurations are evaluated.** Each policy runs from tick 0 on the frozen maps and seeds for the same horizon. The primary score is mean `completedOrders / horizon`. Ties prefer fewer unfinished orders, then a lower traffic-waiting ratio; canonical configuration order makes any remaining tie deterministic. Delays and stalls are diagnostics, not extra score penalties. Only complete evaluations can win; collision or material-conservation failures stop the search.
+
+**How proposals are made.** Random search samples the legal categorical choices, integer ranges and continuous congestion weight shown below. The GA first fills a population, including the two presets: three candidates in the browser and default/`--quick` benchmark, or six with `--full`. It then uses two-way tournament selection, uniform categorical/integer inheritance, arithmetic crossover for the continuous weight, bounded mutation and one retained elite per complete generation. Distance routing always normalizes its inactive congestion weight to zero. Both methods use independent caches and count actual simulation calls.
+
+A small budget may finish before the GA produces offspring. Without cache reuse, the browser's initial population costs three calls on one map or nine on the three-map set; allow additional calls to explore offspring. The recorded experiments used small budgets and do not demonstrate that GA outperforms the supplied presets.
+
+Results retain their full frozen scope and scenario hashes. **Baseline** and **Queue aware** are supplied presets; a search candidate can be either of those presets or a newly proposed configuration. Selection alone is not evidence of improvement. Editing later does not relabel an old score as a new-map result. **Apply candidate to current factory** applies only the policy and restarts the currently shown layout and seed. **Compare baseline vs candidate** reruns both from that same current layout and seed, using the displayed comparison horizon. It does not compare a historical training score to a new run. Export best/results/comparison to reproduce the recorded conditions. Imported policies are marked as imported, without invented training provenance.
 
 Superseded calculations emit separate retired accounting records. About & diagnostics can export a bounded archive of three previous/retired results, including cancelled partial calls, while late messages cannot overwrite the active factory.
 

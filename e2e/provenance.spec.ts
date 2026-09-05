@@ -9,7 +9,7 @@ import type { SearchResponse } from '../src/workers/search-protocol';
 
 test('narrow-screen File menu remains visible and usable', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/');
+  await page.goto('./');
   await page.locator('.file-menu summary').click();
   for (const name of [
     'New scene',
@@ -164,7 +164,7 @@ const scene = (id: string, seed: number): Scenario => ({
 test('a cancelled search with no best preserves the previous candidate and its exact training origin', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page);
   await openOptimize(page);
   await page.getByRole('spinbutton', { name: 'Simulation budget', exact: true }).fill('2');
@@ -197,7 +197,7 @@ test('candidate import invalidates late completed search and comparison response
   page,
 }) => {
   await installControlledBoundaries(page);
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page);
   await openOptimize(page);
   await page.getByRole('spinbutton', { name: 'Simulation budget', exact: true }).fill('2');
@@ -243,7 +243,7 @@ test('candidate import invalidates late completed search and comparison response
 
 test('a delayed scene import cannot overwrite a subsequently selected preset', async ({ page }) => {
   await installControlledBoundaries(page);
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page);
   const name = 'delayed-before-preset.json';
   await importJSON(page, 'scene', name, {
@@ -268,7 +268,7 @@ test('the later scene import wins even when the earlier file read resolves last'
   page,
 }) => {
   await installControlledBoundaries(page);
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page);
   const name = 'delayed-scene-first.json';
   await importJSON(page, 'scene', name, {
@@ -294,7 +294,7 @@ test('the later candidate import wins even when the earlier file read resolves l
   page,
 }) => {
   await installControlledBoundaries(page);
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page);
   await openOptimize(page);
   const name = 'delayed-candidate-first.json';
@@ -315,7 +315,7 @@ test('the later candidate import wins even when the earlier file read resolves l
 test('switching stations with equal capacities discards unapplied station drafts', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page);
   await page.getByRole('combobox', { name: 'Factory preset' }).selectOption('hotspot');
   await boundary(page);

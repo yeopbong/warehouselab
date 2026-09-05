@@ -700,6 +700,49 @@ export default function App() {
             </div>
             {drawer === 'about' ? (
               <>
+                <h3>Using WarehouseLab</h3>
+                <p>
+                  Explore how robots supply machines and deliver finished orders. Press Start, then
+                  Pause to inspect a robot or replay an executed tick. Map tools edit the initial
+                  factory; Policy changes dispatch and routing, and Optimize evaluates
+                  configurations.
+                </p>
+                <p>
+                  Search results are measurements for the recorded layout, seed and horizon. A
+                  winning configuration may be a supplied preset. The recorded experiments do not
+                  establish that GA beats the presets; complex layouts can still congest or
+                  deadlock.
+                </p>
+                <p>
+                  Save keeps one factory in this browser; File → Restore loads it after refresh.
+                  Export JSON makes a portable copy.
+                </p>
+                <p>
+                  <a
+                    href="https://github.com/yeopbong/warehouselab/blob/main/docs/usage.md"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Usage guide
+                  </a>
+                  {' · '}
+                  <a
+                    href="https://github.com/yeopbong/warehouselab/blob/main/docs/validation.md"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Recorded results
+                  </a>
+                  {' · '}
+                  <a
+                    href="https://github.com/yeopbong/warehouselab"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Source code
+                  </a>
+                </p>
+                <h3>Diagnostics & shortcuts</h3>
                 <p>
                   WarehouseLab · deterministic integer-tick production logistics. 1× = 6 ticks/s;
                   16× and above show sampled executed states.
@@ -895,7 +938,7 @@ export default function App() {
             <button onClick={() => openDrawer('orders')}>Orders</button>
             <button onClick={() => openDrawer('logs')}>Log</button>
             <button aria-label="About and diagnostics" onClick={() => openDrawer('about')}>
-              ?
+              Help
             </button>
           </div>
         </div>

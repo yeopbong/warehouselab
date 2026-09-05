@@ -155,7 +155,7 @@ test('current factory search freezes the edited layout and benchmark scope remai
   page,
 }) => {
   await observeWorkers(page);
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page, 0);
   await page.getByTestId('tool-obstacle').click();
   await boundary(page, 0);
@@ -212,7 +212,7 @@ test('current factory search freezes the edited layout and benchmark scope remai
 test('zoomed/panned wall strokes form one undo record and object moves preserve service geometry', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page, 0);
   const canvas = page.getByTestId('factory-map');
   const initialCell = Number(await canvas.getAttribute('data-cell-size'));
@@ -269,7 +269,7 @@ test('zoomed/panned wall strokes form one undo record and object moves preserve 
 test('number drafts accept multiple digits, commit once, and reject invalid values without resetting', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page, 0);
   const workbench = page.getByTestId('workbench'),
     revision = Number(await workbench.getAttribute('data-revision'));
@@ -307,7 +307,7 @@ test('number drafts accept multiple digits, commit once, and reject invalid valu
 test('Escape and same-factory undo cancel unfinished pointer gestures before they can commit', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page, 0);
   await page.getByTestId('tool-obstacle').click();
   await boundary(page, 0);
@@ -344,7 +344,7 @@ test('real worker trajectories drive displayed turns, waits and cargo; playback 
   page,
 }) => {
   await observeWorkers(page);
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page, 0);
   await page.getByRole('combobox', { name: 'Simulation speed' }).selectOption('4');
   await boundary(page, 0);
@@ -487,7 +487,7 @@ test('search and comparison cancel at safe boundaries, and scene changes reject 
   page,
 }) => {
   await observeWorkers(page);
-  await page.goto('/');
+  await page.goto('./');
   await boundary(page, 0);
   await page.getByRole('tab', { name: 'Optimize', exact: true }).click();
   await page.getByRole('spinbutton', { name: 'Simulation budget', exact: true }).fill('3000');
@@ -553,7 +553,7 @@ for (const viewport of [
     page,
   }) => {
     await page.setViewportSize(viewport);
-    await page.goto('/');
+    await page.goto('./');
     await boundary(page, 0);
     const check = async () => {
       const size = await page.evaluate(() => ({
