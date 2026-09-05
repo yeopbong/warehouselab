@@ -39,7 +39,7 @@ test('real production, deterministic replay, inspection, editing, persistence, s
   page.on('console', (message) => {
     if (message.type() === 'error') errors.push(message.text());
   });
-  await page.goto('/');
+  await page.goto('./');
   await expect(page.getByRole('heading', { name: 'WarehouseLab', exact: true })).toBeVisible();
   await page.getByRole('combobox', { name: 'Simulation speed' }).selectOption('64');
   await page.getByTestId('play-pause').click();
@@ -110,7 +110,7 @@ test('real production, deterministic replay, inspection, editing, persistence, s
 test('validates JSON import, preserves exported scene, and reports cancelled search', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('./');
   const downloadPromise = page.waitForEvent('download');
   await fileAction(page, 'Export JSON');
   const download = await downloadPromise;
@@ -162,7 +162,7 @@ test('validates JSON import, preserves exported scene, and reports cancelled sea
 
 test('map remains usable at a narrow viewport', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/');
+  await page.goto('./');
   await expect(page.getByTestId('factory-map')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(391);
   await page.getByRole('button', { name: 'Step +1' }).click();
