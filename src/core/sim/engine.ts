@@ -249,8 +249,6 @@ function assignTasks(s: SimState): void {
     ),
   };
   const reachability = new Map<string, (point: Point) => number>();
-  // Order priority is independent of robot planning priority. Form one global delivery
-  // list before visiting production inputs; stable order IDs break same-age ties.
   const needs = s.orders
     .filter((order) => order.arrival <= s.tick && order.remaining > order.reserved)
     .sort((a, b) => a.arrival - b.arrival || a.id.localeCompare(b.id))
@@ -306,9 +304,6 @@ function assignTasks(s: SimState): void {
       const distanceToDestination =
         reachability.get(dest.id) ?? staticDistanceToGoal(grid, dest.service);
       reachability.set(dest.id, distanceToDestination);
-      // Stock and capacity alone do not make a transport executable. Both its pickup
-      // and the chosen robot must share the destination's static connected component.
-      // This only filters impossible tasks; live traffic still requires reservations.
       const source = available.find((station) => distanceToDestination(station.service) >= 0);
       if (!source) break;
       const robots = eligible.filter((robot) => distanceToDestination(robot.position) >= 0);
@@ -368,7 +363,6 @@ export function step(s: SimState): void {
   }
   const before = new Map(s.robots.map((r) => [r.id, { ...r.position }]));
   const moves = planRobotMoves(s, goals);
-  // Commit simultaneously. The planner also validates; this guard protects the physical kernel boundary.
   for (const r of s.robots) {
     const p = moves.get(r.id) ?? r.position;
     if (distance(r.position, p) > 1) throw new Error('Illegal move');
@@ -517,7 +511,6 @@ export function stateDigest(s: SimState): string {
   const { planningMs: _timing, ...state } = s;
   return contentHash(state);
 }
-/** Shared result envelope for synchronous CLI runs and cooperatively yielded worker runs. */
 export function summarizeRun(
   s: SimState,
   horizon: number,

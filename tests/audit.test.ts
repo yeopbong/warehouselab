@@ -170,13 +170,11 @@ describe('independent validation and policy audit regressions', () => {
     robot.status = 'loading';
     robot.serviceUntil = 21;
     const next = { source: 'press-1', destination: 'assembly-1' };
-    // Current: 1 remaining load + 4 travel + 1 unload. Next: 1 load + 4 travel + 1 unload.
     expect(estimatedFinish(state, robot, next)).toBe(12);
     robot.position = { x: 6, y: 3 };
     robot.tasks[0].phase = 'carrying';
     robot.load = { item: 'raw', quantity: 1 };
     robot.status = 'unloading';
-    // Current: 1 remaining unload. Next: 1 load + 4 travel + 1 unload.
     expect(estimatedFinish(state, robot, next)).toBe(7);
   });
 

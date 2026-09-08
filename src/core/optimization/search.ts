@@ -13,7 +13,6 @@ import {
 } from './evaluation';
 
 export type SearchMethod = 'random' | 'ga';
-/** FIFO within one search; every eviction/re-evaluation remains an actual budgeted call. */
 export const SEARCH_CACHE_CAPACITY = 2048;
 export interface Score {
   throughput: number;
@@ -62,7 +61,6 @@ export interface SearchResult extends SearchProgress {
   kernelVersion: string;
   codeVersion: string;
   records: CandidateEvaluation[];
-  /** Actual simulator invocations only. Cached runs remain in candidate records. */
   runs: RunResult[];
   runtimeMs: number;
   cacheCapacity: number;
@@ -83,7 +81,6 @@ export interface SearchOptions {
   shouldCancel?: () => boolean;
   yieldControl?: () => Promise<void>;
   onProgress?: (progress: SearchProgress) => void;
-  /** Dependency injection supports small, meaningful budget/error tests. */
   simulate?: typeof runSimulation;
 }
 
@@ -94,8 +91,6 @@ export function cacheKey(
   horizon: number,
   codeVersion: string,
 ): string {
-  // Keep canonical content in the key as well as exported hashes: short hash collisions
-  // must never turn a different map or order stream into a cached evaluation.
   return stableStringify({
     scenario,
     config: normalizeConfig(config),
@@ -106,7 +101,6 @@ export function cacheKey(
   });
 }
 
-/** Negative means a is preferable. No collision or inventory penalties are used. */
 export function compareScores(a: Score, b: Score): number {
   return (
     b.throughput - a.throughput ||
@@ -137,7 +131,6 @@ export function sampleConfig(rng: () => number): PolicyConfig {
     replanInterval: integer(rng, 1, 8),
   });
 }
-/** Uniform categorical/integer inheritance; bounded arithmetic continuous crossover. */
 export function crossover(a: PolicyConfig, b: PolicyConfig, rng: () => number): PolicyConfig {
   const alpha = rng();
   return normalizeConfig({
@@ -149,7 +142,6 @@ export function crossover(a: PolicyConfig, b: PolicyConfig, rng: () => number): 
     replanInterval: choose(rng, a.replanInterval, b.replanInterval),
   });
 }
-/** Categories resample legally; integers take bounded integer steps; weight stays continuous. */
 export function mutate(config: PolicyConfig, rng: () => number, rate = 0.3): PolicyConfig {
   const c = { ...config };
   if (rng() < rate) c.assignment = choose(rng, 'nearest', 'earliest');
@@ -173,11 +165,6 @@ function assertPositiveInteger(value: number, name: string): void {
     throw new Error(`${name} must be a positive safe integer`);
 }
 
-/**
- * Sequential async orchestration around the shared deterministic kernel. Every actual
- * call counts, including initial human candidates and failed attempts. Cancellation
- * runs between safe tick chunks and calls; no partial set is selected.
- */
 export async function runSearch(options: SearchOptions): Promise<SearchResult> {
   const { method, horizon, budget, optimizerSeed } = options;
   if (method !== 'random' && method !== 'ga') throw new Error('Unknown search method');
@@ -253,7 +240,6 @@ export async function runSearch(options: SearchOptions): Promise<SearchResult> {
     return compareCandidates(a, b) <= 0 ? a : b;
   };
   const nextConfig = (): PolicyConfig => {
-    // Identical starting candidates for both optimizers; all their simulations count.
     if (result.counters.proposals === 0) return withinSpace(BASELINE, parameterSpace);
     if (result.counters.proposals === 1) return withinSpace(QUEUE_AWARE, parameterSpace);
     if (method === 'random' || population.length < populationSize)
@@ -289,9 +275,6 @@ export async function runSearch(options: SearchOptions): Promise<SearchResult> {
           emit();
           break outer;
         }
-        // This cache is private to one frozen evaluation. Exact scene indices identify
-        // its validated content without retaining a full map string for every policy.
-        // Horizon and code version are constant throughout this cache's lifetime.
         const key = stableStringify({ scene: scenarios.indexOf(scenario), config, seed });
         const cached = cache.get(key);
         if (cached) {
@@ -363,8 +346,6 @@ export async function runSearch(options: SearchOptions): Promise<SearchResult> {
       else {
         children.push(candidate);
         if (children.length === populationSize - 1) {
-          // Carry exactly one elite into the next generation. Its prior evaluation is
-          // retained, not presented as a new actual simulation.
           const elite = [...population].sort(compareCandidates)[0]!;
           population = [elite, ...children];
           children = [];
@@ -393,7 +374,6 @@ function withinSpace(config: PolicyConfig, space: SearchParameterSpace): PolicyC
   c.congestionWeight = clamp(c.congestionWeight, ...space.congestionWeight);
   c.planningWindow = clamp(c.planningWindow, ...space.planningWindow);
   c.replanInterval = clamp(c.replanInterval, ...space.replanInterval);
-  // Distance routing has no active weight; zero is its canonical disabled value.
   return normalizeConfig(c);
 }
 export function sampleConfigInSpace(

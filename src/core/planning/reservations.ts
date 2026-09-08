@@ -9,7 +9,6 @@ interface Reservation {
   tick: number;
 }
 
-/** Owner-scoped reservations. A path's endpoint remains occupied through the horizon. */
 export class ReservationTable implements MotionReservations {
   private vertices = new Map<string, Reservation>();
   private edges = new Map<string, Reservation>();
@@ -27,7 +26,6 @@ export class ReservationTable implements MotionReservations {
     return (!occupant || occupant === owner) && (!reverse || reverse === owner);
   }
 
-  /** Atomic insertion: failed replacements cannot overwrite another robot's reservation. */
   reservePath(owner: string, start: Point, path: readonly Point[], horizon: number): boolean {
     if (!Number.isInteger(horizon) || horizon < 0)
       throw new Error('Reservation horizon must be nonnegative');

@@ -48,7 +48,6 @@ declare global {
   }
 }
 
-/** Keep the real workers/kernel; delay only specific message and file-read boundaries. */
 async function installControlledBoundaries(page: Page): Promise<void> {
   await page.addInitScript(() => {
     const releases = new Map<string, () => void>();
@@ -134,7 +133,6 @@ async function importJSON(
 async function releaseFile(page: Page, name: string): Promise<void> {
   await page.evaluate(async (fileName) => {
     window.__provenanceTrace.releaseFile(fileName);
-    // Cross the awaiting import continuation and React's commit before asserting.
     await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
     await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
   }, name);

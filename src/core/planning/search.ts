@@ -6,19 +6,15 @@ export interface Grid {
   blocked: ReadonlySet<string>;
 }
 
-/** Exact topology identity: changing a wall, station body or dimensions changes the key. */
 export function topologyKey(grid: Grid): string {
   return `${grid.width}x${grid.height}:${[...grid.blocked].sort().join(';')}`;
 }
 
-// At most 64 fields / 102,400 cells for the supported 40×40 maps. Cache entries contain
-// only derived static distances; eviction and worker boundaries cannot affect decisions.
 const distanceFields = new Map<string, Int32Array>();
 const DISTANCE_FIELD_LIMIT = 64;
 const DISTANCE_FIELD_CELLS = 102_400;
 let cachedCells = 0;
 
-/** Reverse BFS gives a lower bound on every nonnegative weighted time-space route. */
 function staticGoalDistances(grid: Grid, goal: Point): Int32Array {
   const key = `${topologyKey(grid)}>${pointKey(goal)}`;
   const cached = distanceFields.get(key);
@@ -58,13 +54,11 @@ function staticGoalDistances(grid: Grid, goal: Point): Int32Array {
   return distances;
 }
 
-/** Read-only distance lookup for this topology snapshot. -1 means statically unreachable. */
 export function staticDistanceToGoal(grid: Grid, goal: Point): (point: Point) => number {
   const field = staticGoalDistances(grid, goal);
   return (point) => (walkable(grid, point) ? field[point.y * grid.width + point.x] : -1);
 }
 
-/** All path arrays contain future cells, excluding the starting cell. */
 export interface SearchOptions {
   congestion?: (point: Point) => number;
   congestionWeight?: number;
@@ -111,7 +105,6 @@ interface Node {
   sequence: number;
 }
 
-/** Small binary heap with stable tie breaking; iteration order never depends on robot array order. */
 class OpenSet {
   private nodes: Node[] = [];
   get size(): number {
@@ -162,7 +155,6 @@ function unwind(node: Node): Point[] {
   return path.reverse();
 }
 
-/** Static A*: shortest unit-distance path, or weighted path when congestion is enabled. */
 export function aStar(
   grid: Grid,
   start: Point,
@@ -208,7 +200,6 @@ export interface TimedPath {
   explored: number;
 }
 
-/** Prioritized time-space A*. Waiting has cost >= 1 and occupies a real cell. */
 export function spaceTimeAStar(
   grid: Grid,
   start: Point,
@@ -245,8 +236,6 @@ export function spaceTimeAStar(
       if (canHold) return { path: unwind(node), reachedGoal: true, explored };
     }
     if (node.time === horizon) {
-      // All partial endpoints use the same time: prefer remaining static route distance,
-      // then actual routing cost, then insertion order. Never promise an unsafe tail.
       if (!partial || node.h < partial.h || (node.h === partial.h && node.g < partial.g))
         partial = node;
       continue;

@@ -31,7 +31,6 @@ export default defineConfig({
     : {
         command: 'npm run build && npm run preview -- --port 4173 --strictPort',
         url: localBaseURL,
-        // An existing dev server must not silently turn production verification into dev-mode testing.
         reuseExistingServer: false,
         timeout: 120_000,
       },

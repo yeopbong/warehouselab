@@ -135,7 +135,6 @@ describe('request and revision isolation', () => {
       .then(() => {
         oldDone = true;
       });
-    // The first request is paused at an actual cooperative yield, then replaced by a new scene revision.
     const edited = evaluation(8);
     edited.scenarios[0]!.id = 'edited-current-factory';
     edited.scenarios[0]!.obstacles.push({ x: 0, y: 0 });

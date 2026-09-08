@@ -15,7 +15,6 @@ afterEach(() => {
 
 function setup() {
   const messages: SimulationResponse[] = [];
-  // A real Worker structured-clones each postMessage before the mutable kernel advances.
   const runtime = createSimulationRuntime((m) => messages.push(structuredClone(m)));
   runtimes.push(runtime);
   let requestId = 0;

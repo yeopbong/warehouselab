@@ -108,7 +108,6 @@ const heldout: Scenario = {
   ],
   seed: 991,
 };
-/** Fixed demand through tick 9,995+ (no warm-up); use a 600–1,200 tick observation horizon. */
 export const SUSTAINED: Scenario = {
   ...structuredClone(base),
   id: 'sustained-production',
@@ -137,5 +136,4 @@ export const SUSTAINED: Scenario = {
   orderStream: { count: 2000, interval: 5, pattern: 'uniform', quantity: 1, item: 'product' },
   seed: 512,
 };
-// The original finite scenarios and held-out index remain stable for historic reproduction.
 export const PRESETS: Scenario[] = [base, crossing, hotspot, heldout, SUSTAINED];

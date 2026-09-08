@@ -31,7 +31,6 @@ export interface DisplayFrame {
   stations: DisplayStation[];
 }
 export interface DisplaySample {
-  /** State at the floor of the shared presentation tick; business markers never lead motion. */
   frame: DisplayFrame;
   tick: number;
   robots: (DisplayRobot & { direction?: Point })[];
@@ -43,7 +42,6 @@ export interface DisplayDetails {
   heatmap: Record<string, number>;
 }
 
-/** Capture only executed state. Planned routes are never used to infer motion. */
 export function makeDisplayFrame(state: SimState): DisplayFrame {
   return {
     tick: state.tick,
@@ -66,7 +64,6 @@ export function makeDisplayFrame(state: SimState): DisplayFrame {
   };
 }
 
-/** Initial editing frame without constructing or stepping a second simulation. */
 export function frameForScenario(scenario: Scenario): DisplayFrame {
   return {
     tick: 0,
@@ -91,7 +88,6 @@ export function frameForScenario(scenario: Scenario): DisplayFrame {
   };
 }
 
-/** A bounded one-tick-lag presentation clock. The simulation clock is owned by the worker. */
 export class DisplayStore {
   private frames: DisplayFrame[] = [];
   private revision = 0;
@@ -202,7 +198,6 @@ export class DisplayStore {
         this.cursor + (elapsed * BASE_TICKS_PER_SECOND * this.speed) / 1000,
       );
     else this.cursor = this.latest.tick;
-    // Keep the left endpoint and only the as-yet-unpresented suffix.
     while (this.frames.length > 1 && this.frames[1].tick <= this.cursor) this.frames.shift();
     const from = this.frames[0],
       to = this.frames[1];

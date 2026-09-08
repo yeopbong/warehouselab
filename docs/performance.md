@@ -1,8 +1,8 @@
 # Browser performance
 
-Measured 2026-09-05 on the same Apple M2 / 16 GB macOS arm64 machine, Chrome 152.0.7977.76 in headless mode, 1440×900 viewport, DPR 1, reduced motion off. Both builds used the baseline policy, the same scenes/seeds, All paths on and heatmap off. Before source: `063f22c`, production preview 4175. After source: `40aaab7`, production preview 4176. The measured source predates a mobile File-menu alignment change limited to a max-width:759px CSS rule; that rule does not apply at the measured viewport.
+Measured 2026-09-05 on the same Apple M2 / 16 GB macOS arm64 machine, Chrome 152.0.7977.76 in headless mode, 1440×900 viewport, DPR 1, reduced motion off. Both builds used the baseline policy, the same scenes/seeds, All paths on and heatmap off. Before source: `063f22c`, production preview 4175. After source: `40aaab7`, production preview 4176.
 
-Each normal sample lasts 30 seconds; the separate 64× sample lasts 10 seconds. New 1× intentionally means 6 ticks/s; old 1× had a nominal 12.5 ticks/s ceiling before computation. Actual rates below therefore describe different pacing contracts, not a faster-kernel claim. No logical ticks, orders, seeds or search budgets were dropped to improve the figures. The lower message volume reflects both smaller packets and the new lower normal tick rate.
+Each normal sample lasts 30 seconds; the separate 64× sample lasts 10 seconds. New 1× intentionally means 6 ticks/s; old 1× had a nominal 12.5 ticks/s ceiling before computation. Actual rates below therefore describe different pacing contracts, not a faster-kernel claim. The lower message volume reflects both smaller packets and the new lower normal tick rate.
 
 ## Measured results
 
@@ -27,17 +27,15 @@ Each normal sample lasts 30 seconds; the separate 64× sample lasts 10 seconds. 
 | Separate 64× Canvas interval median / P95 | 99.9 / 100.1 ms | 16.7 / 16.8 ms |
 | Page scroll height at 900px viewport | 1080 px | 900 px |
 
-Normal playback produced 1,799 Canvas paint intervals per 30-second sample after the revision, versus 346/285 before. More frequent drawing costs more main-thread time; the measurements do **not** show that React was causing long stalls. They identify snapshot-limited movement, repeated bitmap resets, large state payloads, synchronous cancellation and from-zero replay as concrete problems. All normal/high-speed samples had zero >50ms main-thread tasks, and the completed harness reported zero console errors/failures.
+Normal playback produced 1,799 Canvas paint intervals per 30-second sample after the revision, versus 346/285 before. More frequent drawing costs more main-thread time. All normal/high-speed samples had zero >50ms main-thread tasks, and the completed harness reported zero console errors/failures.
 
-Search interaction sampling also found zero long tasks. The supplemental before run sampled 4 progress messages plus one result (estimated 3.64 KB); after sampled 8 progress messages plus one result (9.85 KB). The revised partial-run progress is more frequent and carries explicit scope/current-tick accounting: these short cancelled samples do not demonstrate a payload reduction. Completed history is now sent at completion rather than copied into every progress message; worker-message schemas and tests verify that bound. The fuller sample duration differs because cancellation now completes sooner.
+Search interaction sampling also found zero long tasks. The supplemental before run sampled 4 progress messages plus one result (estimated 3.64 KB); after sampled 8 progress messages plus one result (9.85 KB). These short cancelled samples have different durations because cancellation now completes sooner; they do not demonstrate a payload reduction.
 
 ## Method and limits
 
-[Before raw data](../results/performance/before.json), [supplemental before interactions](../results/performance/before-interactions.json), and [after raw data](../results/performance/after.json) retain all sampled intervals, CDP Performance task/script/layout totals, PerformanceObserver long tasks, input/worker acknowledgment timestamps and message counts. After data records SHA256/bytes for the actual served JS, CSS and worker bundles. A selected-source fingerprint is a directory snapshot, not a substitute for that build identity. Source versions and experiment conditions are documented in [validation](validation.md).
+[Before raw data](../results/performance/before.json), [supplemental before interactions](../results/performance/before-interactions.json), and [after raw data](../results/performance/after.json) retain all sampled intervals, CDP Performance task/script/layout totals, PerformanceObserver long tasks, input/worker acknowledgment timestamps and message counts. After data records SHA256/bytes for the actual served JS, CSS and worker bundles. A selected-source fingerprint is a directory snapshot, not a substitute for that build identity.
 
 **rAF and Canvas invocation cadence are not physical screen-presented FPS.** Headless Chrome does not measure compositor presentation or a monitor. Canvas API timing covers instrumented drawing calls, not total GPU/render cost. JSON volume is a sampled serialization estimate, not structured-clone transport bytes; instrumentation itself adds overhead. Ordinary feedback is checked at a following rAF, while cancellation uses the actual terminal worker response. These are individual reproducible samples, not statistical latency guarantees. All raw slow intervals remain. Files named `pre-final` contain incomplete interaction measurements and are excluded from the table above.
-
-The runtime targets bounded 6ms/12-tick work chunks, publishes visual frames independently of 200ms property snapshots, and keeps at most 96 executed display frames and 24 replay checkpoints. At >8×, real states are sampled, with no invented interpolation across skipped segments. Checkpoints help nearby retained targets; evicted targets may require replay from tick 0. A single expensive tick remains atomic, so difficult maps can still exceed latency goals. Reduced motion/background resume disable unnecessary interpolation and bound catch-up debt.
 
 Reproduce with production previews and no concurrent benchmarks. The before comparison requires a separate copy of baseline source `063f22c`; this checkout contains the after implementation:
 
@@ -50,6 +48,4 @@ npm run measure:browser -- --mode after --url http://127.0.0.1:4176 --seconds 30
 npm run measure:browser -- --mode before --url http://127.0.0.1:4175 --source-dir /path/to/baseline --out results/runs/performance-before.json
 ```
 
-The harness uses installed Chrome. Browser layout tests cover desktop run/edit/search states at 1440×900 and 1280×800 and the 390px narrow layout, including main controls without page scrolling. Before/after snapshots: [before 1440](before-1440.png), [after 1440](after-1440.png), [before 1280](before-1280.png), [after 1280](after-1280.png).
-
-Implementation references: [MDN rAF timestamps](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame), [MDN Canvas caching](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas), and [React Profiler](https://react.dev/reference/react/Profiler). Profiling instrumentation is optional and adds overhead; the main comparison uses the ordinary production build.
+The harness uses installed Chrome. Before/after snapshots: [before 1440](before-1440.png), [after 1440](after-1440.png), [before 1280](before-1280.png), [after 1280](after-1280.png).

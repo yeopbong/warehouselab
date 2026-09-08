@@ -12,7 +12,6 @@ import {
   type SimulationResponse,
 } from './simulation-protocol';
 
-/** Scheduling clocks never influence the shared kernel's integer-tick decisions. */
 export function createSimulationRuntime(post: (message: SimulationResponse) => void) {
   let state: SimState | null = null;
   let revision = -1,
@@ -93,7 +92,6 @@ export function createSimulationRuntime(post: (message: SimulationResponse) => v
   function cycle() {
     if (!state || !playing) return;
     const now = performance.now();
-    // Cap wall-clock debt after delays/background suspension; do not accumulate a catch-up queue.
     credit = Math.min(
       12,
       credit +

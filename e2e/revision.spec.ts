@@ -458,7 +458,6 @@ test('real worker trajectories drive displayed turns, waits and cargo; playback 
   );
   await page.getByRole('button', { name: 'Reset', exact: true }).click();
   await boundary(page, 0);
-  // Deliver a genuinely captured old response after reset to exercise the late-message guard.
   await page.evaluate(() => {
     const trace = window.__revisionTrace;
     const old = trace.boundaries.find(

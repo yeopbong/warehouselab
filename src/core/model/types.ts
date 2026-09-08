@@ -117,7 +117,6 @@ export interface Metrics {
   throughput: number;
   meanDelay: number | null;
   maxDelay: number | null;
-  /** Age of the oldest arrived, unfinished order; null when no backlog exists. */
   oldestUnfinishedAge: number | null;
   waitingRatio: number;
   stationUtilization: Record<string, number>;
@@ -140,7 +139,6 @@ export interface SimState {
   warning: string | null;
   nextTaskId: number;
   planningMs: number;
-  /** Semantic path-reuse state, retained by structuredClone / JSON replay checkpoints. */
   planner: {
     topology: string;
     paths: Record<string, { goal: string; config: string }>;

@@ -225,8 +225,6 @@ async function main(): Promise<void> {
     }
     if (error || cancelled) break;
   }
-  // Freeze selection using training data only, then compare it with BASELINE on the
-  // separate heldout map. Neither heldout result participates in selection.
   if (!error && !cancelled) {
     const candidates = searches.flatMap((search) =>
       search.records.filter((record) => record.status === 'completed' && record.score),

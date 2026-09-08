@@ -18,7 +18,6 @@ function nextId(prefix: string, ids: string[]): string {
   while (ids.includes(`${prefix}-${i}`)) i++;
   return `${prefix}-${i}`;
 }
-/** Lightweight preview validation; no simulation or scene cloning during a pointer gesture. */
 export function previewEdit(scene: Scenario, action: EditAction): string | null {
   const inside = (p: Point) =>
     Number.isInteger(p.x) &&

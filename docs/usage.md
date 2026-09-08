@@ -1,121 +1,82 @@
 # Using WarehouseLab
 
-## Start a factory
+Open [WarehouseLab](https://yeopbong.github.io/warehouselab/) in a modern browser. **Open floor** starts at tick 0; press **Start** to run it. Simulation and policy search run in your browser. For local installation, see the [README](../README.md#run-locally).
 
-Open [WarehouseLab online](https://yeopbong.github.io/warehouselab/) in a modern browser. No account, installation, or API key is needed; simulation and policy search run in your browser. **Open floor** is ready at tick 0. Press **Start**, then use **Pause** and the timeline to inspect executed ticks. Choose **Policy** to adjust dispatch and routing or **Optimize** to evaluate configurations.
+The example factory turns raw material into parts, assembles two parts into a product, and delivers it. Orders complete after unloading at the delivery station. At **1× = 6 ticks/second**, robots move slowly enough to follow; choose a faster speed to see production sooner.
 
-For local use, install **Node.js 22.12 or newer** and npm, then run from the project directory:
+## Workbench
 
-```sh
-npm ci
-npm run dev
-```
+| Control | Use |
+| --- | --- |
+| Start / Pause / Step +1 | Run continuously, pause at an executed tick, or advance one tick. |
+| Timeline / Reset | Replay previously executed ticks or return to the initial state. |
+| Select | Click a robot or station to inspect tasks, cargo, stock and processing. |
+| Map tools | Paint or erase walls; place or move stations and robots. Editing pauses the run and shows the initial layout. A completed edit resets to tick 0. |
+| Zoom / Pan / Fit | Scroll to zoom, hold Space and drag to pan, or fit the whole factory. |
+| Policy | Change parameters, then choose **Apply policy & reset**. Numeric fields commit with Apply or Enter. |
+| File | Create a scene, save/restore locally, or import/export scene and policy JSON. |
+| Orders / Log | Inspect orders and recent events. |
 
-Open the URL printed by Vite, normally [http://127.0.0.1:5173](http://127.0.0.1:5173). The online and local versions use the same application and simulation kernel. At **1× = 6 ticks/second**, robots move slowly enough to follow; select a faster setting to see production sooner. Click a robot or machine to inspect it.
+Undo/Redo retains 50 edits. Escape cancels an unfinished gesture. Shortcuts outside text fields: **V** select, **H** pan, **W** wall, **E** erase, **M** move, **Ctrl/⌘ Z** undo, **Shift Ctrl/⌘ Z** redo, **Ctrl/⌘ S** save.
 
-```text
-1 raw ── press: 5 ticks ──> 1 part
-2 parts ── assemble: 9 ticks ──> 1 product ── transport/unload ──> delivered order
-```
+Local storage holds one factory for this browser and site. After refreshing, choose **File → Restore**. Export JSON for a backup or to move between devices and the online/local versions.
 
-An order completes only after its finished product reaches the delivery service cell and finishes unloading.
-
-![WarehouseLab workbench](workbench.png)
-
-## Workbench controls
-
-- **Navigate.** Scroll to zoom at the pointer. Hold Space and drag, use the middle mouse button, or choose Pan. Fit restores the whole factory. Clicking an animated robot selects its displayed position and stable ID. Only the selected robot's planned route is shown by default; All paths and Heatmap are optional.
-- **Edit.** Choose Wall or Erase and drag a continuous stroke. Place a supply, process, assembly, delivery station or robot with its tool. Move a selected robot or station; a station's body and service cell move together. The preview shows invalid placement. Entering an edit tool pauses and shows the **initial layout**; one completed gesture validates, resets to tick 0 and creates one undo entry. Undo/Redo retain 50 edits. Escape, tool changes and scene changes cancel an unfinished gesture.
-- **Inspect and configure.** The collapsible properties panel shows tasks, cargo, waiting, stock, reservations and processing. It labels the exact executed snapshot tick; animation may display an earlier tick. Looking at an object or switching panels does not reset the run. Numeric fields accept temporary empty/multi-digit drafts. Press Apply or Enter to commit; invalid input keeps the current run intact. Policy changes apply together with **Apply policy & reset**.
-- **Save.** File contains New scene, Save locally, Restore, Export JSON and Import JSON. JSON includes a validated scene and policy; local storage retains one factory in this browser. New scene starts empty with the two example recipes; adding a delivery station also adds a small fixed order.
-- **Play and replay.** Start/Pause, Step +1, Reset and speed controls use the same kernel. Pause confirms an exact executed tick. The timeline seeks among already executed ticks, coalesces drag requests, and uses bounded checkpoints. Newer requests supersede older seeks. Editing or applying a policy resets the replay range.
-- **Inspect detail.** Bottom metrics include completed and unfinished orders, oldest unfinished age, throughput and waiting. Orders and Log open an on-demand drawer; exports retain all orders and the kernel's bounded 400-event log. About & diagnostics contains code versions, actual tick/s, checkpoint counts and shortcuts.
-
-Shortcuts outside text fields: **V** select, **H** pan, **W** wall, **E** erase, **M** move, **Esc** select, **Ctrl/⌘ Z** undo, **Shift Ctrl/⌘ Z** redo, **Ctrl/⌘ S** save. Space is reserved for map panning and does not hijack text input.
-
-Local saves belong to this browser and site; they do not synchronize between the online version, localhost, or other devices. Export JSON to keep a portable copy or share a factory. Refreshing starts the example again; choose **File → Restore** to load your saved factory.
-
-The desktop layout fits 1440×900 and 1280×800 without scrolling the page. Long properties scroll internally. On narrow screens the properties panel starts collapsed and opens over the map.
-
-Normal animation interpolates adjacent, already executed ticks. It never follows an unexecuted planned path or draws a shortcut across several ticks. Above 8×, with reduced motion, or after background resume, the display uses real discrete samples. If computation cannot meet the requested speed, actual tick/s drops; the simulation does not skip ticks. Replay keeps 24 checkpoints including tick 0. Seeking before evicted checkpoints can require more computation.
+Complex layouts can congest or deadlock. Large runs may run below the requested speed. Replay uses bounded checkpoints, so seeking far back can take longer. Above 8×, or with reduced motion enabled, animation shows discrete executed states.
 
 ## Search and compare
 
-**Optimize → Current factory** is the default. Starting a search freezes the current edited scene, its order seed, horizon, parameter ranges and code/kernel version. **Benchmark set** explicitly evaluates the first three built-in maps. Each candidate costs one actual simulation per map × seed: one call in the default current-factory UI, three in the benchmark UI.
+1. Open **Optimize**, choose Random search or Mixed-variable GA, and set the horizon and simulation budget.
+2. **Current factory** evaluates your edited scene and seed. **Benchmark set** evaluates the first three built-in maps. Each candidate costs one simulation per map × seed.
+3. Start the search. Both methods first evaluate the same two presets, which count toward the budget. The browser defaults to six calls and a 240-tick horizon.
+4. Use **Apply candidate to current factory** to load the policy and reset the current layout. **Compare baseline vs candidate** reruns both policies on that layout and seed for the displayed horizon.
+5. Export the candidate, search results or comparison to retain the configurations and run conditions.
 
-Choose Random search or Mixed-variable GA, set a simulation budget and horizon, then Start search. The browser defaults to six calls and a 240-tick horizon. Both methods start with the same two counted human policies. Progress shows actual calls, proposals, cache hits and compact best results. Cancel is handled at cooperative tick boundaries, including within a long candidate or comparison; already started partial calls remain counted and cannot become the best result. A single expensive tick must finish before cancellation is acknowledged.
+Policies rank by mean completed orders per tick, then fewer unfinished orders and less traffic waiting. Only complete evaluations can win. Cancelled and failed calls remain in exported results and count toward the budget. Cancellation waits for the current simulation tick to finish.
 
-**How configurations are evaluated.** Each policy runs from tick 0 on the frozen maps and seeds for the same horizon. The primary score is mean `completedOrders / horizon`. Ties prefer fewer unfinished orders, then a lower traffic-waiting ratio; canonical configuration order makes any remaining tie deterministic. Delays and stalls are diagnostics, not extra score penalties. Only complete evaluations can win; collision or material-conservation failures stop the search.
+Random search samples legal configurations independently. GA evolves a population with selection, crossover, mutation and one retained elite. Its initial browser population costs three simulations on one map or nine on the benchmark set; a smaller budget may end before it produces offspring. Either method can select a preset. The recorded small experiments did not find a policy better than both supplied presets.
 
-**How proposals are made.** Random search samples the legal categorical choices, integer ranges and continuous congestion weight shown below. The GA first fills a population, including the two presets: three candidates in the browser and default/`--quick` benchmark, or six with `--full`. It then uses two-way tournament selection, uniform categorical/integer inheritance, arithmetic crossover for the continuous weight, bounded mutation and one retained elite per complete generation. Distance routing always normalizes its inactive congestion weight to zero. Both methods use independent caches and count actual simulation calls.
+## Policy parameters
 
-A small budget may finish before the GA produces offspring. Without cache reuse, the browser's initial population costs three calls on one map or nine on the three-map set; allow additional calls to explore offspring. The recorded experiments used small budgets and do not demonstrate that GA outperforms the supplied presets.
-
-Results retain their full frozen scope and scenario hashes. **Baseline** and **Queue aware** are supplied presets; a search candidate can be either of those presets or a newly proposed configuration. Selection alone is not evidence of improvement. Editing later does not relabel an old score as a new-map result. **Apply candidate to current factory** applies only the policy and restarts the currently shown layout and seed. **Compare baseline vs candidate** reruns both from that same current layout and seed, using the displayed comparison horizon. It does not compare a historical training score to a new run. Export best/results/comparison to reproduce the recorded conditions. Imported policies are marked as imported, without invented training provenance.
-
-Superseded calculations emit separate retired accounting records. About & diagnostics can export a bounded archive of three previous/retired results, including cancelled partial calls, while late messages cannot overwrite the active factory.
-
-## Policy parameters and task priority
-
-| Parameter | Type / range | Actual effect |
+| Parameter | Choices / range | Effect |
 | --- | --- | --- |
-| `assignment` | `nearest` / `earliest` | Nearest dispatches an idle robot by Manhattan pickup distance. Earliest estimates remaining service, active task, up to two queued commitments and their endpoint; it is an approximation, not a traffic schedule. |
-| `priority` | `fixed` / `waiting` | Robot planning order uses stable robot ID or consecutive traffic-wait age, with stable ID ties. |
-| `routing` | `distance` / `congestion` | A* action cost is 1, or 1 plus a nonnegative observed-density cost. Safety rules are identical. |
-| `congestionWeight` | continuous, 0–5 | Scales density cost; normalized to 0 when distance routing is chosen. |
-| `planningWindow` | integer, 4–32 ticks | Limits space-time search; a static obstacle-aware distance field guides safe partial paths around detours. |
-| `replanInterval` | integer, 1–8 ticks | Reuses a path only while its goal, policy, geometry and reservations remain valid; invalid paths replan immediately. |
+| `assignment` | `nearest` / `earliest` | Choose the nearest idle robot, or estimate completion time including up to two queued tasks. |
+| `priority` | `fixed` / `waiting` | Plan robots by stable ID or consecutive traffic-wait age. |
+| `routing` | `distance` / `congestion` | Minimize route distance, or add a cost for observed robot density. |
+| `congestionWeight` | 0–5 | Scale the density cost; zero with distance routing. |
+| `planningWindow` | 4–32 ticks | Set the space-time planning horizon. |
+| `replanInterval` | 1–8 ticks | Reuse valid routes between planning calls. |
 
-Baseline: `nearest / fixed / distance / 0 / 12 / 3`. Queue aware: `earliest / waiting / congestion / 1.5 / 16 / 2`. Neither is guaranteed to be best.
+Baseline uses `nearest / fixed / distance / 0 / 12 / 3`; Queue aware uses `earliest / waiting / congestion / 1.5 / 16 / 2`.
 
-**Order priority is separate from robot traffic priority.** Executable deliveries are considered globally by order arrival, then stable order ID, across all delivery stations. Missing stock, unavailable capacity or static disconnection for one old order does not block other executable deliveries or upstream production inputs. Robot, pickup and destination must share a static connected component; traffic reservations still decide safe movement. `oldestUnfinishedAge` reports backlog age; completed-order delay alone can hide unserved demand. Conservative prioritized planning can still stall interacting robots on arbitrary maps; it does not guarantee deadlock freedom.
+## Command-line runs
 
-## Validation and command-line runs
+Run one built-in factory or an imported scene:
 
 ```sh
-# Type check, tests, production build and quick benchmark
-npm run validate
-
-# Production browser workflows
-npx playwright install chromium
-npm run test:e2e
-
-# A single shared-kernel run
 npm run headless -- --scenario open-floor --policy baseline --seed 11 --ticks 240
-
-# An imported scene and configuration
 npm run headless -- --input scenarios/open-floor.json --config configs/queue-aware.json --ticks 600
+```
 
-# Fixed three-map benchmark; 18 actual training calls per method
+Compare both search methods on the fixed benchmark set, a saved factory, or sustained demand:
+
+```sh
 npm run benchmark -- --quick
-
-# Larger fixed-set run, including three independent optimizer seeds
-npm run benchmark -- --full
-
-# Optimize one saved factory, with the same conditions for both methods
 npm run benchmark -- --input scenarios/open-floor.json --horizon 240 --budget 6
-
-# Sustained demand, no warm-up exclusion; 12 robots, same budget per method
 npm run benchmark -- --sustained --horizon 600 --budget 4
 ```
 
-`npm run build` writes `dist/`; `npm run preview` serves it. The application supports [Vite static hosting](https://vite.dev/guide/static-deploy.html). CI runs installation, type checking, tests and a production build, with a separate Chromium workflow job. Use `PW_CHANNEL=chrome npm run test:e2e` to run tests with installed Chrome. `PW_BASE_URL` may point browser tests at an existing production preview.
+`--quick` uses 240 ticks, evaluation seed 11 and 18 training calls per method. It selects on Open floor, Crossroads and Hotspot dispatch, then runs the selected policy and a matched baseline on Held-out offset floor: 38 calls in total. `--full` uses 600 ticks, evaluation seeds 11/29/47, optimizer seeds 7/19/43 and 144 training calls per method per optimizer seed, plus two held-out calls. Current-factory and sustained runs use only their selected scene.
 
-Run records retain scene content/hash, configuration, seed, horizon, counts, backlog/delay/waiting/stall diagnostics, timing, state hash and code/kernel version. Version labels are the current short Git commit plus `-dirty` when needed; Vite captures the label at build/start time. Kernel version is `1.1.0`. Hashes are compact noncryptographic identifiers; caches do not depend on hash collision resistance. Wall-clock diagnostics are excluded from deterministic comparison.
+The original maps have finite order batches. Sustained production has 12 robots and 2,000 seeded orders arriving at five-tick intervals through approximately tick 10,000. No warm-up period is excluded. Run records include scene content, policy, seed, horizon, metrics, hashes and code/kernel versions; see the [recorded experiments](design.md#recorded-experiments).
 
-## Benchmark conditions
+## Development checks
 
-The fixed training set is Open floor, Crossroads and Hotspot dispatch. Held-out offset floor remains excluded from selection. The benchmark freezes one choice from training, then runs it and a matched baseline on the held-out map; these extra calls are reported separately. Current-factory and sustained modes do not silently evaluate an unrelated held-out map.
+```sh
+npm run typecheck
+npm test
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
 
-| Preset benchmark | Horizon | Evaluation seeds per map | Training calls per method / optimizer seed | Optimizer seeds |
-| --- | ---: | --- | ---: | --- |
-| `--quick` | 240 | 11 | 18 | 7 |
-| `--full` | 600 | 11, 29, 47 | 144 | 7, 19, 43 |
-
-The quick fixed-set run uses **38 actual calls**: 18 random + 18 GA + 2 matched held-out runs. Full mode uses 864 training calls plus the 2 held-out calls. Human starting candidates count in those budgets. A candidate on three maps × three seeds costs nine calls. Caches are independent and bounded; proposal limits terminate repeated-candidate sequences. Failed, cancelled and incomplete records stay explicit.
-
-**Finite batches versus sustained demand:** the original maps retain their finite order batches. Some can finish every order by 600 ticks, so end-of-horizon throughput then cannot distinguish earlier completion. **Sustained production** adds 12 robots, three production cells and 2,000 seeded orders at five-tick intervals, covering approximately the first 10,000 ticks. The 600/1,200-tick checks keep receiving demand throughout; horizons beyond the stream coverage eventually include a finite tail. No warm-up period is discarded: every completion through the common horizon counts for all methods. The scene and stream never change to favor an optimizer.
-
-Historical kernel 1.0.0 [37-call smoke results](../results/smoke/summary.md) use different kernel semantics. The kernel 1.1.0 [38-call quick run](../results/revision-smoke/summary.md) matched baseline throughput. In the [8-call sustained run](../results/revision-sustained/summary.md), both optimizers selected the supplied queue-aware policy; neither found a better policy than both human starting candidates. Source versions and limitations are recorded in [validation](validation.md) and [performance](performance.md); small runs do not establish statistical or generalization advantages.
-
-See [design](design.md) for the kernel and search architecture, [planning notes](planning-notes.md) for route and task semantics, and [third-party sources](../THIRD_PARTY.md) for dependencies and references.
+`npm run validate` also runs the quick benchmark. `npm run preview` serves the production build. Set `PW_CHANNEL=chrome` to test with installed Chrome, or `PW_BASE_URL` to test an existing production server. For a subpath deployment, set `VITE_BASE_PATH=/warehouselab/` when building.

@@ -1,4 +1,3 @@
-/** Production browser measurements; rAF cadence is NOT a screen-presented FPS measurement. */
 import { chromium } from '@playwright/test';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
@@ -141,8 +140,6 @@ await page.addInitScript(() => {
           const key = `${role}:${data.type}`;
           const count = (sample.workerMessages[key] ?? 0) + 1;
           sample.workerMessages[key] = count;
-          // Sample one in 20 JSON encodings. This estimates payload volume; it is not a
-          // measurement of the structured-clone wire representation or its full cost.
           if (count === 1 || count % 20 === 0) {
             const start = performance.now();
             const bytes = new TextEncoder().encode(JSON.stringify(data)).byteLength;

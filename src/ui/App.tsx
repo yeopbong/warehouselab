@@ -727,7 +727,7 @@ export default function App() {
                   </a>
                   {' · '}
                   <a
-                    href="https://github.com/yeopbong/warehouselab/blob/main/docs/validation.md"
+                    href="https://github.com/yeopbong/warehouselab/blob/main/docs/design.md#recorded-experiments"
                     target="_blank"
                     rel="noreferrer"
                   >

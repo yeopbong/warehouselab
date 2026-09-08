@@ -314,7 +314,6 @@ export default function CanvasMap(props: Props) {
           ctx.fillRect(...box({ x, y }, 1));
         }
       }
-      // These dashed routes are optional future plans, distinct from executed-frame motion.
       if (!display?.sampled)
         for (const [id, path] of Object.entries(p.store.details.paths)) {
           const selected = sameSelection(p.selection, 'robot', id);
@@ -699,7 +698,6 @@ export default function CanvasMap(props: Props) {
         cancelGesture();
         return;
       }
-      // Include the final pointer position even if the browser coalesced its last move.
       pointerMove(event);
       gesture.current = null;
       updatePreview(null);

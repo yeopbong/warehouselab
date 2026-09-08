@@ -90,7 +90,6 @@ describe('executed-frame presentation', () => {
     );
     expect(store.buffered).toBe(MAX_DISPLAY_FRAMES);
     store.sample(0);
-    // Background restoration shows a real discrete snapshot instead of replaying a stale queue.
     expect(store.sample(60_000)).toMatchObject({ tick: 200, sampled: true });
     expect(store.buffered).toBe(1);
     store.push([frame(201), frame(202)], { playing: true, speed: 32, revision: 1 });

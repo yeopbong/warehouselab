@@ -32,7 +32,6 @@ export function zoomAt(view: Viewport, point: Point, factor: number): Viewport {
   const cell = Math.max(5, Math.min(160, view.cell * factor));
   return { ...view, cell, x: point.x - world.x * cell, y: point.y - world.y * cell };
 }
-/** Supercover cell traversal includes every crossed tile and bridges diagonal corner crossings. */
 export function rasterizeStroke(from: Point, to: Point): Point[] {
   const points: Point[] = [{ ...from }];
   const dx = to.x - from.x,

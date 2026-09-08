@@ -214,7 +214,6 @@ describe('global delivery order priority and backlog', () => {
       position: { x: 5, y: 1 },
       service: { x: 5, y: 2 },
     });
-    // R1 is Manhattan-nearer to the right pickup but is separated from it by the wall.
     scenario.robots = [
       { id: 'R1', position: { x: 2, y: 2 } },
       { id: 'R2', position: { x: 4, y: 6 } },
@@ -287,7 +286,5 @@ describe('global delivery order priority and backlog', () => {
       ).toBe(true);
     expect(metrics(state).oldestUnfinishedAge).toBeGreaterThan(0);
     assertInvariants(state);
-    // A full 600-tick / 12-robot invariant check is CPU-bound, not a latency assertion.
-    // The Linux CI runner measured 5.86s; retain every tick and assertion on slower runners.
   }, 20_000);
 });

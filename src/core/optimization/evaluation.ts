@@ -34,7 +34,6 @@ export interface FrozenEvaluation extends EvaluationInput {
   evaluationHash: string;
   kernelVersion: string;
   evaluationsPerCandidate: number;
-  /** No warm-up exclusion: every completion through horizon counts for every policy. */
   measurement: 'completed-orders-through-horizon';
 }
 export interface RunTickProgress {
@@ -80,7 +79,6 @@ function validateParameterSpace(value: SearchParameterSpace): SearchParameterSpa
   return space;
 }
 
-/** Clone synchronously before the first yield: edits to the caller cannot change a run. */
 export function freezeEvaluation(input: EvaluationInput): FrozenEvaluation {
   if (input.scope !== 'current-factory' && input.scope !== 'benchmark-set')
     throw new Error('Unknown evaluation scope');
@@ -103,7 +101,6 @@ export function freezeEvaluation(input: EvaluationInput): FrozenEvaluation {
     throw new Error('Evaluation seeds must be distinct');
   if (!input.codeVersion.trim()) throw new Error('Code version is required');
   const scenarios = input.scenarios.map(validateScenario);
-  // A hash is metadata; canonical content, not a short hash, keys the simulator cache.
   if (new Set(scenarios.map(stableStringify)).size !== scenarios.length)
     throw new Error('Evaluation scenarios must be distinct');
   const parameters = {
@@ -121,7 +118,6 @@ export function freezeEvaluation(input: EvaluationInput): FrozenEvaluation {
   return { ...parameters, evaluationHash: contentHash(parameters) };
 }
 
-/** One kernel, integer steps, bounded work, and cancellation only at safe tick boundaries. */
 export async function runSimulationCooperatively(
   scenario: Scenario,
   config: PolicyConfig,
@@ -163,7 +159,6 @@ export async function runSimulationCooperatively(
         performance.now() - chunkStart < chunkMs
       );
       options.onTickProgress?.({ scenarioId: scenario.id, seed, tick: state.tick, horizon });
-      // Let control messages run even when a single simulator invocation is very long.
       await yieldControl();
       if (options.shouldCancel?.()) {
         status = 'cancelled';

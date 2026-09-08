@@ -17,7 +17,7 @@ test('usage help provides practical links without resetting the current simulati
   );
   await expect(help.getByRole('link', { name: 'Recorded results', exact: true })).toHaveAttribute(
     'href',
-    'https://github.com/yeopbong/warehouselab/blob/main/docs/validation.md',
+    'https://github.com/yeopbong/warehouselab/blob/main/docs/design.md#recorded-experiments',
   );
   await help.getByRole('button', { name: 'Close details', exact: true }).click();
   await expect(page.getByTestId('tick')).toHaveText('1');

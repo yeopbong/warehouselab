@@ -67,7 +67,6 @@ export type SearchResponse = RequestIdentity &
     | { type: 'error'; error: string }
   );
 
-/** Both policies use the same frozen maps, order seeds and horizon, including cancellation. */
 export async function runComparison(
   evaluationInput: EvaluationInput,
   candidateInput: PolicyConfig,
@@ -133,7 +132,6 @@ export async function runComparison(
       }
     result[`${phase}Score`] = aggregate(result[phase], evaluation.horizon);
   }
-  // Partial comparisons retain raw evidence but never present a comparable score pair.
   if (result.status !== 'completed') {
     result.baselineScore = null;
     result.candidateScore = null;
@@ -142,7 +140,6 @@ export async function runComparison(
   return result;
 }
 
-/** Testable worker control loop. A replacement invalidates every late message from its predecessor. */
 export function createSearchRuntime(
   postMessage: (response: SearchResponse) => void,
   options: { yieldControl?: () => Promise<void>; progressIntervalMs?: number } = {},
@@ -193,8 +190,6 @@ export function createSearchRuntime(
               }
             },
           });
-          // Superseded jobs are accounting evidence, never active UI state. Consumers
-          // archive this explicit message separately with its original scene identity.
           if (current()) post({ ...identity, type: 'result', result });
           else postMessage({ ...identity, type: 'retired-result', result });
         } else {

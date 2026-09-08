@@ -13,7 +13,6 @@ export { aStar, spaceTimeAStar, staticDistanceToGoal, topologyKey, walkable } fr
 export type { Grid, SearchOptions, TimedPath } from './search';
 export { ReservationTable } from './reservations';
 
-/** Safety backstop for simultaneously proposed actions. No array-order physical effects. */
 export function validateSimultaneousMoves(
   robots: readonly Pick<Robot, 'id' | 'position'>[],
   proposals: ReadonlyMap<string, Point>,
@@ -77,10 +76,6 @@ function validCachedPath(grid: Grid, start: Point, path: readonly Point[]): bool
   return true;
 }
 
-/**
- * Plans from one position snapshot, consumes the first path cell, and returns all next positions.
- * Mutates robot.path/pathPlannedAt, serializable planner reuse state and diagnostic planningMs.
- */
 export function planRobotMoves(state: SimState, goals: Map<string, Point>): Map<string, Point> {
   const started = performance.now();
   const horizon = state.config.planningWindow;
@@ -99,7 +94,6 @@ export function planRobotMoves(state: SimState, goals: Map<string, Point>): Map<
   const topology = topologyKey(grid);
   if (state.planner.topology !== topology) state.planner = { topology, paths: {} };
   const metadata = state.planner.paths;
-  // A scenario can remove robots between calls; semantic metadata never grows beyond the fleet.
   for (const id of Object.keys(metadata))
     if (!state.robots.some((robot) => robot.id === id)) delete metadata[id];
   const configKey = JSON.stringify(state.config);
@@ -108,12 +102,10 @@ export function planRobotMoves(state: SimState, goals: Map<string, Point>): Map<
       (state.config.priority === 'waiting' ? b.waitTicks - a.waitTicks : 0) ||
       (a.id < b.id ? -1 : a.id > b.id ? 1 : 0),
   );
-  // Pessimistic full-horizon occupancy prevents an unplanned, failed, or idle robot disappearing.
   for (const robot of ordered) {
     if (!table.reservePath(robot.id, robot.position, [], horizon))
       throw new Error('Invalid initial robot occupancy');
   }
-  // Observable density around the current positions. Static obstacles do not create extra cost.
   const congestion = new Map<string, number>();
   for (const robot of ordered) {
     for (let dx = -1; dx <= 1; dx += 1)
