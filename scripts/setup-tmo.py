@@ -108,7 +108,9 @@ def linux_compiler_flags(build: Path) -> str:
                 flags = line.partition('=')[2]
                 break
     # Parse fmt before the upstream global boost::heap::compare declaration.
-    prefix = '-include spdlog/spdlog.h'
+    # Including the logger here would require its libraries in compiler probes.
+    flags = flags.replace('-include spdlog/spdlog.h', '').strip()
+    prefix = '-include fmt/format.h'
     return flags if prefix in flags else f'{flags} {prefix}'.strip()
 
 
