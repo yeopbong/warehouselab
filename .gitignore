@@ -11,3 +11,10 @@ playwright-report/
 test-results/
 results/runs/
 .tmp/
+.venv/
+.runtime/
+.cache/
+.sorting-data/
+__pycache__/
+.pytest_cache/
+*.egg-info/

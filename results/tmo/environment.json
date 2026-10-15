@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.14",
+  "logicalCPUs": 8,
+  "workerCount": 2,
+  "device": "cpu",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "torch": "2.14.1"
+  },
+  "simulator": {
+    "ready": true,
+    "upstreamRevision": "c2566ac6aa7e1debd94756bb04ce7bd794d1fbed",
+    "plannerRevision": "4d2db54c760145e83f5d86ec4da7b512e57fc5fb",
+    "patchRevision": "d41bfd1bd27cf7b2e48ffd3e156c84250077ff095fd80f5e5a87af71d7ae74ed",
+    "buildHash": "36afc4b0c059e1d62273c293be070e399bac8aa6d19285a4dcd72e3b134a5499",
+    "version": "rss-1.1-parcel-routing"
+  },
+  "implementationHash": "757bb0205322eb83613989d7b61653f4cdfc7275f3cc3db82c3ebb52c3013864",
+  "torchThreadsAtEnvironmentCapture": 4,
+  "modelFitThreadsPerWorker": 1,
+  "threadScope": "The captured count describes the recording process. Neural model fitting sets one thread per worker when used."
+}

@@ -1,6 +1,49 @@
-# Using WarehouseLab
+# Sorting workbench
 
-Open [WarehouseLab](https://yeopbong.github.io/warehouselab/) in a modern browser. **Open floor** starts at tick 0; press **Start** to run it. Simulation and policy search run in your browser. For local installation, see the [README](../README.md#run-locally).
+The default workbench reads actual native simulation records. Public hosting serves saved results; it does not execute native evaluations. Run the local service for new search and evaluation. No account or external API key is needed.
+
+## Native dependencies
+
+On macOS, install command-line developer tools and `brew install cmake boost spdlog libomp`. On Ubuntu, install:
+
+```sh
+sudo apt-get install build-essential cmake libboost-program-options-dev libboost-filesystem-dev libboost-log-dev libboost-iostreams-dev libspdlog-dev libomp-dev
+```
+
+Follow the Python and npm commands in the [README](../README.md). Linux users can install a CPU-only PyTorch wheel before `pip install -e '.[test]'`:
+
+```sh
+pip install 'torch>=2.2,<3' --index-url https://download.pytorch.org/whl/cpu
+```
+
+`setup-tmo.py` fetches pinned sources into `.cache/tmo`, applies the runtime patch, and builds `tmo-run`. It keeps upstream files and existing declarations in that local checkout. `--jobs 2` reduces compilation parallelism. Windows native compilation has not been validated.
+
+## Inspect and evaluate
+
+Click an actual point on the search curve to see its mapping, pre-evaluation prediction, independent simulation seeds, calls and elapsed time. Model disagreement is not a calibrated confidence interval. The prediction panel shows 12 spatial zones: navigation waiting excludes loading/unloading; closure is closed chute-ticks divided by the zone's chute-ticks. Residuals are predictive errors, not causal effects.
+
+Select a destination or chute to avoid drawing every destination in a different color. Legal edits can transfer one chute or swap two assignments. Evaluation always starts a new simulation from the initial state. A fixed-mapping test under changed demand retains the assignment and relaxes only the new search quota if needed; reoptimization uses that condition's original quotas.
+
+Use A/B replay to compare actual robot positions, goals, parcel identities, chute closures, reroutes and recirculation. Public records include selected full traces; other candidates retain their measured summaries. Local evaluations record full traces. Export/import preserves experiment records for viewing; imported records do not execute code or load model checkpoints.
+
+Cancel stops after the current native call. Its cost and result remain recorded. A candidate missing any required repetition cannot train the model or become the incumbent. Restarting the service does not resume a running simulator from a checkpoint.
+
+```sh
+python -m warehouse_sorting search --scenario sparse-600-721 --method spatial_aux --budget 24 --seeds 11 29 --trace
+```
+
+The budget counts native calls, including repetitions. `--batch-size` counts distinct mappings. Six search methods are selectable in the interface; `random` is also available from the CLI. To run browser tests against the production service:
+
+```sh
+PW_BASE_URL=http://127.0.0.1:8000 PW_SORTING_LIVE=1 npm run test:e2e
+```
+
+## Factory example
+
+Open `/#factory` for the original production/assembly simulator. Its controls and historical experiments below refer to its separate TypeScript kernel, not the native sorting model.
+
+
+Open the [factory example](https://yeopbong.github.io/warehouselab/#factory) in a modern browser. **Open floor** starts at tick 0; press **Start** to run it. Simulation and policy search run in your browser. For local installation, see the [README](../README.md#run-locally).
 
 The example factory turns raw material into parts, assembles two parts into a product, and delivers it. Orders complete after unloading at the delivery station. At **1× = 6 ticks/second**, robots move slowly enough to follow; choose a faster speed to see production sooner.
 

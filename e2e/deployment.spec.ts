@@ -20,7 +20,7 @@ test('published path loads assets and both workers and remains usable after refr
   });
 
   for (let visit = 0; visit < 2; visit++) {
-    const response = visit === 0 ? await page.goto('./') : await page.reload();
+    const response = visit === 0 ? await page.goto('./#factory') : await page.reload();
     expect(response?.status()).toBe(200);
     expect(new URL(page.url()).pathname).toBe(root.pathname);
     await expect(page.getByTestId('workbench')).toHaveAttribute('data-busy', 'false');

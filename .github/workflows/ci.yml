@@ -45,9 +45,70 @@ jobs:
         with:
           name: browser-failure
           path: test-results/
+  sorting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake libboost-program-options-dev libboost-filesystem-dev libboost-log-dev libboost-iostreams-dev libspdlog-dev libomp-dev
+      - name: Install research dependencies
+        run: |
+          python -m pip install 'torch>=2.2,<3' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[test]'
+      - name: Build sorting runtime
+        run: python scripts/setup-tmo.py
+      - name: Test sorting runtime and learned search
+        run: python -m pytest -q
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Test the production interface with native evaluations
+        env:
+          PW_BASE_URL: http://127.0.0.1:8000
+          PW_SORTING_LIVE: '1'
+        run: |
+          python -m warehouse_sorting --data "$RUNNER_TEMP/sorting-e2e" serve --port 8000 > sorting-service.log 2>&1 &
+          service_pid=$!
+          trap 'kill "$service_pid" 2>/dev/null || true; wait "$service_pid" 2>/dev/null || true' EXIT
+          python - <<'PY'
+          import json
+          import time
+          import urllib.error
+          import urllib.request
+          for _ in range(60):
+              try:
+                  with urllib.request.urlopen('http://127.0.0.1:8000/api/sorting/status', timeout=1) as response:
+                      if json.load(response)['simulator']['ready']:
+                          break
+              except (OSError, urllib.error.URLError):
+                  pass
+              time.sleep(1)
+          else:
+              raise SystemExit('The local simulation service did not become ready')
+          PY
+          npx playwright test e2e/sorting.spec.ts
+      - name: Save sorting failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sorting-failure
+          path: |
+            sorting-service.log
+            test-results/
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: [core, browser]
+    needs: [core, browser, sorting]
     runs-on: ubuntu-latest
     permissions:
       pages: write

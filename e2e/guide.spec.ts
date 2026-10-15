@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('usage help provides practical links without resetting the current simulation', async ({
   page,
 }) => {
-  await page.goto('./');
+  await page.goto('./#factory');
   await expect(page.getByTestId('workbench')).toHaveAttribute('data-busy', 'false');
   await page.getByRole('button', { name: 'Step +1', exact: true }).click();
   await expect(page.getByTestId('tick')).toHaveText('1');
@@ -27,7 +27,7 @@ test('usage help provides practical links without resetting the current simulati
 test('search explains budget and method choices and identifies supplied preset results', async ({
   page,
 }) => {
-  await page.goto('./');
+  await page.goto('./#factory');
   await expect(page.getByTestId('workbench')).toHaveAttribute('data-busy', 'false');
   await page.getByRole('tab', { name: 'Optimize', exact: true }).click();
   const budget = page.getByRole('spinbutton', { name: 'Simulation budget', exact: true });

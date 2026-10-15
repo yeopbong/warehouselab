@@ -1,0 +1,2 @@
+# Unified diffs preserve the prefix on empty context lines.
+native/tmo/runtime.patch -whitespace

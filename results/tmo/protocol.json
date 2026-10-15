@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "objective": "Sorted parcels per simulation tick",
+  "simulator": {
+    "ready": true,
+    "upstreamRevision": "c2566ac6aa7e1debd94756bb04ce7bd794d1fbed",
+    "plannerRevision": "4d2db54c760145e83f5d86ec4da7b512e57fc5fb",
+    "patchRevision": "d41bfd1bd27cf7b2e48ffd3e156c84250077ff095fd80f5e5a87af71d7ae74ed",
+    "buildHash": "36afc4b0c059e1d62273c293be070e399bac8aa6d19285a4dcd72e3b134a5499",
+    "version": "rss-1.1-parcel-routing"
+  },
+  "implementationHash": "757bb0205322eb83613989d7b61653f4cdfc7275f3cc3db82c3ebb52c3013864",
+  "pilotStudyIds": [
+    "pilot-1d13954791-min-dist",
+    "pilot-1d13954791-cluster",
+    "pilot-1d13954791-random"
+  ],
+  "horizon": 1500,
+  "methods": [
+    "ea",
+    "simple",
+    "flat_aux",
+    "spatial",
+    "spatial_aux_top",
+    "spatial_aux"
+  ],
+  "learningMethods": [
+    "simple",
+    "flat_aux",
+    "spatial",
+    "spatial_aux_top",
+    "spatial_aux"
+  ],
+  "trainScenarios": [
+    "sparse-450-721",
+    "sparse-300-55"
+  ],
+  "validationScenario": "sparse-450-55",
+  "testScenarios": [
+    "sparse-600-721",
+    "sparse-450-85"
+  ],
+  "crossMapScenario": "dense-600-721",
+  "crossMapMethods": [
+    "simple",
+    "spatial_aux"
+  ],
+  "optimizerSeeds": [
+    7,
+    19,
+    43
+  ],
+  "selectionSeeds": [
+    11,
+    29
+  ],
+  "historySeeds": [
+    101,
+    211
+  ],
+  "finalSeeds": [
+    1009,
+    2029,
+    3049,
+    4051,
+    5059
+  ],
+  "onlineBudget": 24,
+  "historyBudgetPerScenario": 96,
+  "batchSize": 3,
+  "poolSize": 128,
+  "epochs": 70,
+  "initialSize": 4,
+  "auxiliaryWeight": 0.25,
+  "ensembleSize": 3,
+  "bootstrapSamples": 4000,
+  "bootstrapSeed": 817,
+  "randomization": "Simulation and optimizer seeds are separate. Equal simulator seeds form comparison blocks, not identical exogenous random streams across mappings.",
+  "finalSelection": "Choose each run's best measured mapping using selection seeds; evaluate it on independent final seeds without further selection or tuning.",
+  "costAccounting": "Count every started native call, including failures and replicates. Report cache hits, executed ticks and training time separately. Historical data generation is charged once and its access is declared for every history run.",
+  "historyPolicy": "All learning methods receive the same measured training-condition data. EA remains a cold-start reference; no optimized mapping is transferred for free.",
+  "inferenceScope": "Two unseen demand/fleet conditions on the same map. Cross-map reoptimization, if enabled, is a separate test. Three optimizer repetitions support descriptive uncertainty, not strong significance claims.",
+  "plannedCalls": {
+    "history": 192,
+    "coldOptimization": 864,
+    "historyOptimization": 720,
+    "finalEvaluation": 330,
+    "greedyEvaluation": 20,
+    "crossMapOptimization": 288,
+    "crossMapFinal": 70,
+    "total": 2484
+  },
+  "pilotCost": {
+    "started": 9,
+    "completed": 9,
+    "failed": 0,
+    "cancelled": 0,
+    "cacheHits": 0,
+    "replicates": 6,
+    "executedTicks": 13500,
+    "unknownExecutedTickRuns": 0,
+    "simulationSeconds": 9.966965375031577,
+    "trainingSeconds": 0.7866850840218831,
+    "selectionSeconds": 0.18124574999092147
+  },
+  "estimatedNativeSeconds": 2727.555059853941,
+  "protocolHash": "57d98c498b8291d5bf35c1b54bb7a23a5d391777ab7e9b2a250b6e606c0a1830"
+}
