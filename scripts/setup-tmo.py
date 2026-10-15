@@ -99,6 +99,19 @@ def apply_runtime_patch(source: Path, revision: str, patch: Path) -> None:
         raise RuntimeError('The runtime patch did not produce the expected source tree.')
 
 
+def linux_compiler_flags(build: Path) -> str:
+    flags = os.environ.get('CXXFLAGS', '')
+    cache = build / 'CMakeCache.txt'
+    if cache.is_file():
+        for line in cache.read_text().splitlines():
+            if line.startswith('CMAKE_CXX_FLAGS:STRING='):
+                flags = line.partition('=')[2]
+                break
+    # Parse fmt before the upstream global boost::heap::compare declaration.
+    prefix = '-include spdlog/spdlog.h'
+    return flags if prefix in flags else f'{flags} {prefix}'.strip()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cache', type=Path, default=ROOT / '.cache' / 'tmo')
@@ -116,6 +129,8 @@ def main() -> None:
     apply_runtime_patch(wppl, WPPL_REV, patch)
     command = [cmake, '-S', str(ROOT / 'native' / 'tmo'), '-B', str(cache / 'build'),
                f'-DTMO_SOURCE_DIR={wppl}', '-DCMAKE_BUILD_TYPE=Release']
+    if sys.platform.startswith('linux'):
+        command += [f'-DCMAKE_CXX_FLAGS={linux_compiler_flags(cache / "build")}']
     if sys.platform == 'darwin':
         brew = shutil.which('brew')
         if brew:

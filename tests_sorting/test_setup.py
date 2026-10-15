@@ -11,6 +11,17 @@ setup = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(setup)
 
 
+def test_linux_header_order_preserves_flags_and_repeated_configuration(tmp_path, monkeypatch):
+    monkeypatch.setenv("CXXFLAGS", "-fPIC")
+    assert setup.linux_compiler_flags(tmp_path) == "-fPIC -include spdlog/spdlog.h"
+    cache = tmp_path / "CMakeCache.txt"
+    cache.write_text("CMAKE_CXX_FLAGS:STRING=-g -fPIC\n")
+    flags = setup.linux_compiler_flags(tmp_path)
+    assert flags == "-g -fPIC -include spdlog/spdlog.h"
+    cache.write_text(f"CMAKE_CXX_FLAGS:STRING={flags}\n")
+    assert setup.linux_compiler_flags(tmp_path) == flags
+
+
 def git(repo, *args):
     return subprocess.check_output(["git", *args], cwd=repo, text=True).strip()
 
